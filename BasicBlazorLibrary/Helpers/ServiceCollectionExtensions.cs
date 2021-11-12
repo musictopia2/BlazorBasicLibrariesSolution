@@ -1,5 +1,5 @@
-﻿using CommonBasicLibraries.BasicDateTimeProcesses;
-using Microsoft.Extensions.DependencyInjection;
+﻿using CommonBasicLibraries.BasicDateTimeProcesses; //not common enough.
+using Microsoft.Extensions.DependencyInjection; //not common enough to put to globals
 namespace BasicBlazorLibrary.Helpers;
 public static class ServiceCollectionExtensions
 {
