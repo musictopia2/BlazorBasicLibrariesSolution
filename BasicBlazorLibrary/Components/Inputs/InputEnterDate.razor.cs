@@ -5,6 +5,8 @@ public partial class InputEnterDate<TValue>
     private string _value = "";
     private DateOnly? _dateChosen;
     private TextBoxHelperClass? _helps;
+    [Inject]
+    private IToast? Toast { get; set; }
     public override async Task LoseFocusAsync()
     {
         _value = await _helps!.GetValueAsync(InputElement);
@@ -16,7 +18,7 @@ public partial class InputEnterDate<TValue>
         bool rets = _value.IsValidDate(out DateOnly? date);
         if (rets == false)
         {
-            UIPlatform.ShowUserErrorToast("Invalid Date");
+            Toast!.ShowUserErrorToast("Invalid Date");
             CurrentValue = default;
             await ClearTextAsync();
             return;

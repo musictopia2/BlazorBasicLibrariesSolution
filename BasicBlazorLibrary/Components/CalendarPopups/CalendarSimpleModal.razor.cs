@@ -3,6 +3,8 @@ using aa = BasicBlazorLibrary.Components.CssGrids.Helpers;
 namespace BasicBlazorLibrary.Components.CalendarPopups;
 public partial class CalendarSimpleModal<TValue>
 {
+    [Inject]
+    private IToast? Toast { get; set; }
     //this time, can't inherit from the base popup class because i need hotkey features.
     [Parameter]
     public EventCallback Cancelled { get; set; }
@@ -78,7 +80,7 @@ public partial class CalendarSimpleModal<TValue>
                 DateOnly? selectedDate = (DateOnly?)temps;
                 if (selectedDate.HasValue == false)
                 {
-                    UIPlatform.ShowInfoToast("There was no date.  Rethink"); //needs toasts afterall.
+                    Toast!.ShowInfoToast("There was no date.  Rethink"); //needs toasts afterall.
                     return;
                 }
                 DayClicked(_todisplay!.Value);
@@ -88,7 +90,7 @@ public partial class CalendarSimpleModal<TValue>
             bool rets = _realValue.IsValidDate(out DateOnly? date);
             if (rets == false)
             {
-                UIPlatform.ShowUserErrorToast("Invalid Date");
+                Toast!.ShowUserErrorToast("Invalid Date");
                 ClearText();
                 return;
             }

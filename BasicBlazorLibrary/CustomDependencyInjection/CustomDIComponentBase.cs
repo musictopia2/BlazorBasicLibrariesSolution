@@ -1,11 +1,13 @@
-﻿using CommonBasicLibraries.BasicUIProcesses; //iffy.
+﻿using CommonBasicLibraries.BasicUIProcesses; //needed to use interfaces
 namespace BasicBlazorLibrary.CustomDependencyInjection;
 //try to do without reflection eventually
 public abstract class CustomDIComponentBase : ComponentBase
 {
     protected virtual bool RequireServices { get; } = true;
     protected virtual bool RequiresAtLeastOne { get; } = false;
-    public CustomDIComponentBase()
+    [Inject]
+    private ISystemError? Error { get; set; }
+    public CustomDIComponentBase() //try this way (?)
     {
         RunProcesses();
     }
@@ -19,7 +21,7 @@ public abstract class CustomDIComponentBase : ComponentBase
         BasicList<PropertyInfo> pp = tt.GetAllPropertiesWithAttribute<CustomInjectAttribute>().ToBasicList();
         if (RequiresAtLeastOne && pp.Count == 0)
         {
-            UIPlatform.ShowSystemError("Required at least one custom inject service.  However, found none.  If on android, requires the property to be public");
+            Error!.ShowSystemError("Required at least one custom inject service.  However, found none.  If on android, requires the property to be public");
             return;
         }
         foreach (var item in pp)

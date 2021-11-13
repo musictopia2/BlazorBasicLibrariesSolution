@@ -1,18 +1,22 @@
 ﻿using BasicBlazorLibrary.Components.Toasts;
-using BasicBlazorLibrary.Layouts;
-
 namespace SampleToastServerSide.ViewModels;
 public class SampleViewModel : ISampleViewModel
 {
     private readonly IToastComponent _toast;
+    private readonly IMessageBox _message;
 
-    public SampleViewModel(IToastComponent toast)
+    public SampleViewModel(IToastComponent toast, IMessageBox message)
     {
         _toast = toast;
+        _message = message;
     }
-    public void RunTest()
+    async Task ISampleViewModel.TestMessageBoxAsync()
+    {
+        await _message.ShowMessageAsync("Message Successful 1");
+        await _message.ShowMessageAsync("Message Successful 2");
+    }
+    void ISampleViewModel.TestToast()
     {
         _toast.ShowSuccessToast("This was successful");
-        //UIPlatform.ShowSuccessToast("This was sucessful.  Try from multiple clients");
     }
 }

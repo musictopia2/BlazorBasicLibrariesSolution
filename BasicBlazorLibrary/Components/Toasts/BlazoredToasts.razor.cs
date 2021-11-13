@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Components.Routing;
-using aa = CommonBasicLibraries.BasicUIProcesses.UIPlatform;
 namespace BasicBlazorLibrary.Components.Toasts;
 public partial class BlazoredToasts
 {
@@ -27,10 +26,10 @@ public partial class BlazoredToasts
     protected override void OnInitialized()
     {
         Toast!.Toast = this;
-        aa.ShowUserErrorToast = Toast.ShowUserErrorToast;
-        aa.ShowInfoToast = Toast.ShowInfoToast;
-        aa.ShowSuccessToast = Toast.ShowSuccessToast;
-        aa.ShowWarningToast = Toast.ShowWarningToast;
+        //aa.ShowUserErrorToast = Toast.ShowUserErrorToast;
+        //aa.ShowInfoToast = Toast.ShowInfoToast;
+        //aa.ShowSuccessToast = Toast.ShowSuccessToast;
+        //aa.ShowWarningToast = Toast.ShowWarningToast;
         if (RemoveToastsOnNavigation)
         {
             NavigationManager!.LocationChanged += ClearToasts;

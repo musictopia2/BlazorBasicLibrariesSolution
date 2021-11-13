@@ -21,19 +21,13 @@ public partial class PopupCenteredFull
             return base.ProtectedHiddenFull;
         }
     }
-    private async Task CenterDivAsync()
-    {
-        await _reference!.InvokeVoidAsync("center", _element);
-    }
-    private IJSObjectReference? _reference;
     protected override string GetWidth => Width;
     private ElementReference? _element;
-    //private CenterClass? _center;
+    private CenterClass? _center;
     protected override void OnInitialized()
     {
         _element = null;
-        //eventually see if i can do source generators to possibly create this or even have strongly typed methods (?)
-        _reference = JS!.InvokeAsync<IJSObjectReference>("import", "./_content/BasicBlazorLibrary.Components.Modals/PopupCenteredFull.razor.js").Result;
+        _center = new CenterClass(JS!);
         base.OnInitialized();
     }
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -44,7 +38,7 @@ public partial class PopupCenteredFull
         }
         if (FullScreen == false && DisableParentClickThrough == false)
         {
-            await CenterDivAsync();
+            await _center!.CenterDiv(_element);
         }
     }
 }

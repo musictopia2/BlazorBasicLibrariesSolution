@@ -3,8 +3,12 @@ public partial class SampleComponent
 {
     [Inject]
     public ISampleViewModel? DataContext { get; set; }
-    public void RunTest()
+    public void TestToast()
     {
-        DataContext!.RunTest();
+        DataContext!.TestToast();
+    }
+    public async Task TestMessageAsync()
+    {
+        await DataContext!.TestMessageBoxAsync();
     }
 }

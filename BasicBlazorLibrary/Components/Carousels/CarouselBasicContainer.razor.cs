@@ -3,16 +3,17 @@ public partial class CarouselBasicContainer
 {
     [Parameter]
     public RenderFragment? ChildContent { get; set; } //timed ones will not be the simple one.
-    private IJSObjectReference? _reference;
-    protected override async Task OnInitializedAsync()
+    private SimpleCarouselClass? _helps;
+    protected override void OnInitialized()
     {
-        _reference = await JS!.InvokeAsync<IJSObjectReference>("import", "./_content/BasicBlazorLibrary.Components/CarouselBasicContainer.razor.js");
+        _helps = new(JS!);
+        base.OnInitialized();
     }
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await _reference!.InvokeVoidAsync("start");
+            await _helps!.StartAsync();
         }
     }
 }

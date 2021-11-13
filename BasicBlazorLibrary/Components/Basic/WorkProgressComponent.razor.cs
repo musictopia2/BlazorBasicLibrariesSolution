@@ -8,6 +8,8 @@ public partial class WorkProgressComponent<TValue>
         Progress,
         Completed
     }
+    [Inject]
+    private IToast? Toast { get; set; }
     [Parameter]
     public RenderFragment<TValue>? WorkContent { get; set; }
     [Parameter]
@@ -106,7 +108,7 @@ public partial class WorkProgressComponent<TValue>
     {
         if (_index < 1)
         {
-            UIPlatform.ShowUserErrorToast("Cannot go to previous one because you are already at the beginning");
+            Toast!.ShowUserErrorToast("Cannot go to previous one because you are already at the beginning");
             return;
         }
         _index--;

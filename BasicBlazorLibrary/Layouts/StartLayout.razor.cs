@@ -1,9 +1,13 @@
-using aa = CommonBasicLibraries.BasicUIProcesses.UIPlatform;
+using BasicBlazorLibrary.Components.Toasts;
+using CommonBasicLibraries.BasicUIProcesses;
 namespace BasicBlazorLibrary.Layouts;
 public partial class StartLayout
 {
     [Inject]
     private ILayout? Layout { get; set; }
+    [Inject]
+    private IToast? Toast { get; set; }
+
     public static string DefaultGridHeight => "730px";
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
@@ -39,7 +43,7 @@ public partial class StartLayout
     internal void ExitApp()
     {
         Exited = true;
-        aa.ShowSuccessToast("Should close out because you are finished with everything.  Please close out manually");
+        Toast!.ShowSuccessToast("Should close out because you are finished with everything.  Please close out manually");
         _ = JS!.ExitFullScreen(); //has to exit full screen if you are closing out.
         StateHasChanged();
     }
@@ -47,7 +51,7 @@ public partial class StartLayout
     {
         if (ShowFriendlyError)
         {
-            aa.ShowUserErrorToast($"System Error: {message}");
+            Toast!.ShowUserErrorToast($"System Error: {message}");
         }
         else
         {
@@ -60,9 +64,10 @@ public partial class StartLayout
         {
             return;
         }
-        aa.ExitApp = Layout!.ExitApp;
-        aa.ShowMessageAsync = Layout.ShowMessageAsync;
-        aa.ShowSystemError = Layout.ShowSystemError;
+        Layout!.Layout = this; //i think
+        //aa.ExitApp = Layout!.ExitApp;
+        //aa.ShowMessageAsync = Layout.ShowMessageAsync;
+        //aa.ShowSystemError = Layout.ShowSystemError;
 
         //aa.ExitApp = () =>
         //{

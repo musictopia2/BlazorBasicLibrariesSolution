@@ -2,6 +2,8 @@
 namespace BasicBlazorLibrary.Components.Basic;
 public partial class DateComponent<TValue>
 {
+    [Inject]
+    private IToast? Toast { get; set; }
     private string _value = "";
     private DateOnly? _dateChosen;
     private TextBoxHelperClass? _helps;
@@ -16,7 +18,7 @@ public partial class DateComponent<TValue>
         bool rets = _value.IsValidDate(out DateOnly? date);
         if (rets == false)
         {
-            UIPlatform.ShowUserErrorToast("Invalid Date"); //for now.
+            Toast!.ShowUserErrorToast("Invalid Date"); //for now.
             CurrentValue = default;
             await ClearTextAsync();
             return;
