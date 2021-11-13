@@ -1,0 +1,35 @@
+﻿.single-large {
+    width: 21vmin;
+    height: 21vmin;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 6vmin;
+}
+.number {
+    font-size: 25vmin;
+}
+.double-number{
+    font-size: 19vmin;
+}
+.triple-number{
+    font-size: 12vmin;
+}
+.cell {
+    width: 21vmin;
+    height: 21vmin;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.value {
+    font-size: 15vmin;
+}
+.container{
+    width: 95vmin;
+    height: 95vmin;
+}

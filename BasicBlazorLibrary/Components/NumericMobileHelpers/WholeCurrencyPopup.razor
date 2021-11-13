@@ -1,0 +1,81 @@
+﻿@using BasicBlazorLibrary.Components.Modals
+@using BasicBlazorLibrary.Components.MediaQueries.MediaListUseClasses
+@using BasicBlazorLibrary.Components.CssGrids
+@using BasicBlazorLibrary.Components.Arrows 
+@inherits PopupBase
+<PopupFullScreen @bind-Visible="Visible"
+                 Style="user-select:none">
+    @{
+        int row = 1;
+        int column = 1;
+    }
+    <FlexibleOrientationComponent>
+        <MainContent>
+            <div class="container">
+                <GridContainer Rows="@GetRowsColumns" Columns="@GetRowsColumns">
+                    @foreach (var number in _numbers)
+                    {
+                        <GridItem Row="row" Column="column">
+                            <div class="cell number" @onclick="() => UpdateValue(number)">
+                                @number
+                            </div>
+                        </GridItem>
+                        column++;
+                        if (column > 3)
+                        {
+                            column = 1;
+                            row++;
+                        }
+                    }
+                    <GridItem Row="1" Column="4">
+                        <div class="single-large" @onclick="ProcessEnter">
+                            Enter
+                        </div>
+                    </GridItem>
+                    <GridItem Row="2" Column="4">
+                        <div class="single-large" @onclick="ProcessCancel">
+                            Cancel
+                        </div>
+                    </GridItem>
+                    <GridItem Row="3" Column="4">
+                        <div class="single-large" @onclick="Clear">
+                            Clear
+                        </div>
+                    </GridItem>
+                    <GridItem Row="4" Column="4">
+                        <div class="cell">
+                            <ArrowLeftComponent Clicked="() => BackSpace()"
+                                                TargetHeight="19vmin" />
+                        </div>
+                    </GridItem>
+                    <GridItem Row="4">
+                        <div class="cell" @onclick="() => UpdateValue(0)">
+                            <div class="number">
+                                0
+                            </div>
+                        </div>
+                    </GridItem>
+                    <GridItem Row="4" Column="2">
+                        <div class="cell" @onclick="() => Extra0s(1)">
+                            <div class="double-number">
+                                00
+                            </div>
+                        </div>
+                    </GridItem>
+                    <GridItem Row="4" Column="3">
+                        <div class="cell" @onclick="() => Extra0s(2)">
+                            <div class="triple-number">
+                                000
+                            </div>
+                        </div>
+                    </GridItem>
+                </GridContainer>
+            </div>
+        </MainContent>
+        <SideContent>
+            <div class="value">
+                @GetDisplay()
+            </div>
+        </SideContent>
+    </FlexibleOrientationComponent>
+</PopupFullScreen>

@@ -1,0 +1,53 @@
+﻿@using BasicBlazorLibrary.Components.Layouts
+@if (MaximumPrice < 0)
+{
+    <p>Maximum price must be 0 or greater</p>
+    return;
+}
+<div style="font-size: @FontSize;">
+    @if (Orientation == Layouts.EnumOrientation.Vertical)
+    {
+        <div style="font-weight: bold; user-select:none;">
+            @Title
+        </div>
+        <div>
+
+            <button style="background-color: @BackgroundColor; color: @TextColor; width: 95%; margin: 5px;" @onclick="@ShowPopup">
+                @GetText
+            </button>
+            @if (MaximumPrice > 0)
+            {
+                <button style="background-color: @BackgroundColor; color: @TextColor; font-size: 2rem; width: 95%; height: 5rem; margin: 5px;" @onclick="() => OnChangeNumeric(MaximumPrice)">
+                    @MaximumText
+                </button>
+            }
+        </div>
+    }
+    else
+    {
+        <StackLayout>
+            <StackItem>
+                <div style="font-weight: bold; user-select:none;">
+                    @Title
+                </div>
+            </StackItem>
+            <StackItem Length="1fr">
+                <button style="background-color: @BackgroundColor; color: @TextColor; width: 95%; margin: 5px;" @onclick="@ShowPopup">
+                    @GetText
+                </button>
+            </StackItem>
+            @if (MaximumPrice is not 0)
+            {
+                <StackItem Length="1fr">
+                    <button style="background-color: @BackgroundColor; color: @TextColor; width: 95%; margin: 5px;" @onclick="() => OnChangeNumeric(MaximumPrice)">
+                        @MaximumText
+                    </button>
+                </StackItem>
+            }
+        </StackLayout>
+    }
+</div>
+<WholeCurrencyPopup @bind-Visible="_visible"
+                    Value="Value"
+                    ValueChanged="OnChangeNumeric"
+                    />
