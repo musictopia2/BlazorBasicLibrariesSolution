@@ -59,7 +59,7 @@ public partial class InputEnterDate<TValue>
     private async Task ChoseDate()
     {
         DateOnly date = _dateChosen!.Value;
-        _value = GetFormattedDate(date)
+        _value = GetFormattedDate(date);
         await _helps!.SetNewValueAloneAsync(InputElement, _value);
         TabContainer.OtherScreen = false;
         ProcessEnter();
