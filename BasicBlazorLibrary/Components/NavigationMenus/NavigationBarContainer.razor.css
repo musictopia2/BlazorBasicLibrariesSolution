@@ -1,0 +1,23 @@
+﻿.main {
+    width: 100%;
+}
+
+.firstflex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.centerdiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select:none;
+}
+
+
+.hidden {
+    display: none;
+}
+.inline {
+    display: inline-block;
+}

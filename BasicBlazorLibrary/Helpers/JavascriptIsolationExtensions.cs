@@ -1,6 +1,9 @@
 ﻿namespace BasicBlazorLibrary.Helpers;
 public static class JavascriptIsolationExtensions //sometimes i need this as well.
 {
+
+    //public static 
+
     private static string GetJsName(string name)
     {
         string jsName = name;

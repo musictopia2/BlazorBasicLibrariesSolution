@@ -1,0 +1,18 @@
+﻿.customscroll {
+    overflow:auto;
+}
+
+div:focus {
+    outline: none;
+}
+.customdiv{
+    cursor:pointer;
+    user-select:none;
+}
+.noscroll{
+    overflow: hidden;
+/*
+    attempting to have a case where i can't scroll it.  can be helpful in some cases to keep me from making mistakes.
+    in this case attempt to make arrowing down do what it needs to (?)
+*/
+}

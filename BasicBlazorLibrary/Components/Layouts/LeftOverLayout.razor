@@ -1,0 +1,12 @@
+﻿<div @ref="MainElement" style="height: 100%; display: grid; grid-row-gap: 2px; grid-template-rows: auto 1fr auto">
+    <div>
+        @TopContent
+    </div> 
+ @* will always assume its scrollable.  if i decide to change my mind, rethink *@
+    <div style="overflow-y: auto; overflow-x: hidden">
+        @MainContent
+    </div>
+    <div>
+        @BottomContent
+    </div>
+</div>

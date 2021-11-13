@@ -1,0 +1,10 @@
+﻿@using BasicBlazorLibrary.Components.InputNavigations
+@inherits HotkeyComponentBase
+@implements IDataEntryGrid
+<InputTabOrderNavigationContainer @ref="_tabs" FocusFirst="true">
+    <CascadingValue Value="this">
+        <div @ref="MainElement" tabindex="0">
+            @ChildContent
+        </div>
+    </CascadingValue>
+</InputTabOrderNavigationContainer>

@@ -1,0 +1,9 @@
+﻿@inherits LayoutComponentBase
+@using BasicBlazorLibrary.Components.Toasts;
+@using BasicBlazorLibrary.Components.MediaQueries.ParentClasses; 
+<MediaQueryListComponent>
+    <BlazoredToasts />
+    <StartLayout ShowFriendlyError="true">
+        @Body
+    </StartLayout>
+</MediaQueryListComponent>

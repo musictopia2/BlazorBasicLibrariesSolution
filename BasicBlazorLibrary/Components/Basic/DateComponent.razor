@@ -1,0 +1,20 @@
+﻿@using BasicBlazorLibrary.Components.CalendarPopups
+@typeparam TValue
+@inherits TextComponentBase<TValue>
+@if (_invalid)
+{
+    <p>You must use date or nullable date</p>
+    return;
+}
+<input type="text"
+       @onclick:stopPropagation="true" @onclick:preventDefault="true"
+       id="@TabIndex"
+       class="@Class"
+       @ref="InputElement" />
+
+@if (TabContainer!.OtherScreen)
+{
+    <CalendarSimpleModal Cancelled="Cancelled"
+                         @bind-DateToDisplay="_dateChosen"
+                         ChoseDate="ChoseDate" />
+}

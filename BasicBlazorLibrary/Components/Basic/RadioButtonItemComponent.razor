@@ -1,0 +1,19 @@
+﻿@typeparam TValue
+@if (WidthHeight == "")
+{
+    <input type="radio" value="@SelectedValue" style="zoom: @Zoom" name="@GetName" checked="@Checked" @onchange="OnChange" />
+    @if (ShowLabel)
+    {
+        <span style="cursor: pointer;  " @onclick="ManuelChange">
+            @GetText
+        </span>
+    }
+    return;
+}
+<input type="radio" value="@SelectedValue" style="height: @WidthHeight; width: @WidthHeight; vertical-align: middle;" name="@GetName" checked="@Checked" @onchange="OnChange" />
+@if (ShowLabel)
+{
+    <span style="cursor: pointer; vertical-align:middle; margin-left: 10px;  " @onclick="ManuelChange">
+        @GetText
+    </span>
+}

@@ -1,0 +1,24 @@
+﻿<CascadingValue IsFixed="true" Value="this">
+    <CascadingValue IsFixed="false" Value="_fixedEditContext">
+        @if (FullHeight == false)
+        {
+            <div @key="_fixedEditContext!.GetHashCode()" @onkeydown="KeyDown">
+                @if (ChildContent != null)
+                {
+                    @ChildContent(_fixedEditContext!)
+                }
+            </div>
+            return;
+        }
+        else
+        {
+            <div @key="_fixedEditContext!.GetHashCode()" style="height: 100%;" @onkeydown="KeyDown">
+                @if (ChildContent != null)
+                {
+                    @ChildContent(_fixedEditContext!)
+                }
+            </div>
+            return;
+        }
+    </CascadingValue>
+</CascadingValue>

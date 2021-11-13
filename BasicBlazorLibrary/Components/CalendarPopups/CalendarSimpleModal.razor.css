@@ -1,0 +1,28 @@
+﻿
+.monthheader {
+    width: 100%;
+    text-align: center;
+    font-size: 3vw;
+}
+
+.daysofweek {
+    font-size: 3vw;
+    text-align: center;
+}
+
+.dayoncalendar {
+    border: solid black 1px;
+    font-size: 3vw;
+    text-align: center;
+}
+
+.smallheader {
+    font-size: 2vmin;
+    display: inline;
+}
+
+.textdisplay {
+    font-size: 2vmin;
+    margin: 2px;
+    width: 10vw;
+}

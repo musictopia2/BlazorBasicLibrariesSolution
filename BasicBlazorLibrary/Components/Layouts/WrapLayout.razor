@@ -1,0 +1,19 @@
+﻿@* try to take advantage of type inference for children.  since this could have children components
+    looks like requires cascading (?)
+    not sure yet if i have to use cascading component (?)
+*@
+@attribute [CascadingTypeParameter(nameof(T))]
+@typeparam T
+@if (ChildContent == null)
+{
+    return;
+}
+@foreach (var item in RenderList)
+{
+    <div style="width: @ColumnWidth; display: inline-block; margin: @Margins; @Style">
+        @ChildContent(item)
+    </div>
+}
+@*<CascadingValue IsFixed="true" Value="this">
+
+</CascadingValue>*@

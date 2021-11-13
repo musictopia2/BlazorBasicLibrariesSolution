@@ -1,0 +1,11 @@
+﻿@if (TabContainer!.CollapsePages)
+{
+    <div style="display: @GetDisplay; height: 100%; ">
+        @ChildContent
+    </div>
+    return;
+}
+@if (TabContainer!.ActivePage == this)
+{
+    @ChildContent
+}

@@ -1,0 +1,12 @@
+﻿@if (StartsOnNextLine == false)
+{
+    <span style="font-size: @FontSize; @GetStyle" @attributes="InputAttributes">
+        @ChildContent
+    </span>
+}
+else
+{
+    <div style="font-size: @FontSize; @GetStyle" @attributes="InputAttributes">
+        @ChildContent
+    </div>
+}

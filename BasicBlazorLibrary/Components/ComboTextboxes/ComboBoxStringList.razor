@@ -1,0 +1,179 @@
+﻿@using BasicBlazorLibrary.Components.AutoCompleteHelpers
+@using BasicBlazorLibrary.Components.Layouts 
+@if (RequiredTab && TabIndex ==-1)
+{
+    <div>Required Tab.  Rethink</div>
+    return;
+}
+@{
+    int x = 0;
+}
+@if (Style.Height == "100%")
+{
+    //this is full screen.  this means needs to repeat stuff.  this time, has to use leftovers.
+    <LeftOverLayout>
+        <TopContent>
+            <ManuelTextBoxComponent Placeholder="@Placeholder"
+                                    Style="Style"
+                                    TabIndex="@TabIndex"
+                                    @ref="_text" />
+        </TopContent>
+        <MainContent>
+            @if (Virtualized == false)
+            {
+                <div class="customscroll" style="width: @Style.Width; height: @Style.Height; background-color: @Style.ComboBackgroundColor ;">
+                    @foreach (var item in ItemList!)
+                    {
+                        int y;
+                        y = x;
+                        @if (y == _service!.ElementScrollTo)
+                        {
+                            <div @onclick="() => ElementClicked(y)"
+                                 @ondblclick="() => ElementDoubleClicked()"
+                                 style="@GetColorStyle(y)" @ref="_scrollreference"
+                                 onmouseover="this.style.background='@GetHoverColor(y)'"
+                                 onmouseout="this.style.background='@GetBackgroundColor(y)'">
+                                <div style="@GetTextStyle()">
+                                    @item
+                                </div>
+                            </div>
+                        }
+                        else if (y == 0)
+                        {
+                            <div @onclick="() => ElementClicked(y)"
+                                 @ondblclick="() => ElementDoubleClicked()"
+                                 style="@GetColorStyle(y)" @ref="_firstreference"
+                                 onmouseover="this.style.background='@GetHoverColor(y)'"
+                                 onmouseout="this.style.background='@GetBackgroundColor(y)'">
+                                <div style="@GetTextStyle()">
+                                    @item
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div @onclick="() => ElementClicked(y)" style="@GetColorStyle(y)"
+                                 @ondblclick="() => ElementDoubleClicked()"
+                                 onmouseover="this.style.background='@GetHoverColor(y)'"
+                                 onmouseout="this.style.background='@GetBackgroundColor(y)'">
+                                <div style="@GetTextStyle()">
+                                    @item
+                                </div>
+                            </div>
+                        }
+
+                        x++;
+                    }
+
+                </div>
+
+            }
+            else
+            {
+                <VirtualSimpleComponent Items="ItemList"
+                                        HasSolidBlackBorders="true"
+                                        ContainerWidth="@Style.Width"
+                                        ContainerHeight="@Style.Height"
+                                        LineHeight="@Style.LineHeight"
+                                        Context="item"
+                                        BackgroundColor="@Style.ComboBackgroundColor"
+                                        @ref="_virtual">
+                    <div @onclick="() => ElementClicked(item.Index)"
+                         @ondblclick="() => ElementDoubleClicked()"
+                         style="@GetColorStyle(item.Index)"
+                         onmouseover="this.style.background='@GetHoverColor(item.Index)'"
+                         onmouseout="this.style.background='@GetBackgroundColor(item.Index)'">
+                        <div style="@GetTextStyle()">
+                            @item.Element
+                        </div>
+                    </div>
+
+                </VirtualSimpleComponent>
+
+
+            }
+        </MainContent>
+    </LeftOverLayout>
+    return;
+}
+
+<ManuelTextBoxComponent Placeholder="@Placeholder"
+                        Style="Style"
+                        TabIndex="@TabIndex"
+                        @ref="_text"
+                        />
+
+@if (Virtualized == false)
+{
+    <div class="customscroll" style="width: @Style.Width; height: @Style.Height; background-color: @Style.ComboBackgroundColor ;">
+        @foreach (var item in ItemList!)
+        {
+            int y;
+            y = x;
+            @if (y == _service!.ElementScrollTo)
+            {
+                <div @onclick="() => ElementClicked(y)"
+                     @ondblclick="() => ElementDoubleClicked()"
+                     style="@GetColorStyle(y)" @ref="_scrollreference"
+                     onmouseover="this.style.background='@GetHoverColor(y)'"
+                     onmouseout="this.style.background='@GetBackgroundColor(y)'">
+                    <div style="@GetTextStyle()">
+                        @item
+                    </div>
+                </div>
+            }
+            else if (y == 0)
+            {
+                <div @onclick="() => ElementClicked(y)"
+                     @ondblclick="() => ElementDoubleClicked()"
+                     style="@GetColorStyle(y)" @ref="_firstreference"
+                     onmouseover="this.style.background='@GetHoverColor(y)'"
+                     onmouseout="this.style.background='@GetBackgroundColor(y)'">
+                    <div style="@GetTextStyle()">
+                        @item
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div @onclick="() => ElementClicked(y)" style="@GetColorStyle(y)"
+                     @ondblclick="() => ElementDoubleClicked()"
+                     onmouseover="this.style.background='@GetHoverColor(y)'"
+                     onmouseout="this.style.background='@GetBackgroundColor(y)'">
+                    <div style="@GetTextStyle()">
+                        @item
+                    </div>
+                </div>
+            }
+
+            x++;
+        }
+
+    </div>
+
+}
+else
+{
+    <VirtualSimpleComponent Items="ItemList"
+                            HasSolidBlackBorders="true"
+                            ContainerWidth="@Style.Width"
+                            ContainerHeight="@Style.Height"
+                            LineHeight="@Style.LineHeight"
+                            Context="item"
+                            BackgroundColor="@Style.ComboBackgroundColor"
+                            @ref="_virtual">
+        <div @onclick="() => ElementClicked(item.Index)"
+             @ondblclick="() => ElementDoubleClicked()"
+             style="@GetColorStyle(item.Index)"
+             onmouseover="this.style.background='@GetHoverColor(item.Index)'"
+             onmouseout="this.style.background='@GetBackgroundColor(item.Index)'"
+             >
+            <div style="@GetTextStyle()">
+                @item.Element
+            </div>
+        </div>
+        
+    </VirtualSimpleComponent>
+
+
+}

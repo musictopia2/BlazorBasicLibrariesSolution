@@ -1,0 +1,19 @@
+﻿@inherits TextComponentBase<string>
+@if (Title != "")
+{
+
+    if (CanHaveTitle == false)
+    {
+        <div>Cannot have title because you chose to use data entry item</div>
+        return;
+    }
+
+    <div style="font-weight: bold; font-size: @GetHeaderFontSize">
+        @Title
+    </div>
+    <div>
+        <input type="text" @onclick:stopPropagation="true" @onclick:preventDefault="true" class="@Class" @ref="InputElement" style="@GetStyle" @bind="CurrentValue" @bind:event="oninput" />
+    </div>
+    return;
+}
+<input type="text" @onclick:stopPropagation="true" @onclick:preventDefault="true" class="@Class" @ref="InputElement" style="@GetStyle" @bind="CurrentValue" @bind:event="oninput" />

@@ -1,0 +1,17 @@
+﻿@typeparam T
+@using BasicBlazorLibrary.Components.Layouts; 
+<LeftOverLayout>
+    <TopContent>
+        <div style="@GetMainStyle()">
+            @foreach (var item in Pages)
+            {
+                <div style="color: @GetLabelColorStyle(item); display: inline-block;  @GetOtherStyles()" @onclick="() => Container!.ActivatePage(item)" class="clickable">
+                    @item.Text
+                </div>
+            }
+        </div>
+    </TopContent>
+    <MainContent>
+        @Container!.ChildContent
+    </MainContent>
+</LeftOverLayout>

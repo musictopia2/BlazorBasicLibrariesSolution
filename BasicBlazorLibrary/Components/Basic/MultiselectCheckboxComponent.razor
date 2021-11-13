@@ -1,0 +1,80 @@
+﻿@using BasicBlazorLibrary.Components.CssGrids
+@using BasicBlazorLibrary.Components.Layouts;
+@typeparam TValue
+@if (_state == EnumState.NotValid)
+{
+    <div>If you send in images for checkboxes, you must send in both check and unchecked</div>
+    return;
+}
+@if (Mobile == false)
+{
+    <GridContainer Columns="@GetColumns" ColumnGap="2px">
+        @foreach (var item in Data)
+        {
+            int index = Data.IndexOf(item);
+            int row = index + 1;
+            <GridItem Row="row">
+                @if (Mobile == false)
+                {
+                    <div style="cursor: pointer" @onclick="() => SelectUnselectItem(item)">
+                        @RetrieveValue!(item)
+                    </div>
+                }
+                else
+                {
+                    <div style="cursor: pointer; font-size: 3rem;" @onclick="() => SelectUnselectItem(item)">
+                        @RetrieveValue!(item)
+                    </div>
+                }
+            </GridItem>
+            <GridItem Row="row" Column="2">
+                @if (_state == EnumState.Old)
+                {
+                    @if (Mobile == false)
+                    {
+                        <input type="checkbox" style="zoom: 1.5" checked="@IsSelected(item)"
+                               @onchange="(args) => OnCheckboxChanged(item, args.Value!)" />
+                    }
+                    else
+                    {
+                        <input type="checkbox" style="zoom: 4.0" checked="@IsSelected(item)"
+                               @onchange="(args) => OnCheckboxChanged(item, args.Value!)" />
+                    }
+                }
+                else
+                {
+                    string path;
+                    if (IsSelected(item))
+                    {
+                        path = CheckBoxedImage;
+                    }
+                    else
+                    {
+                        path = UncheckedImage;
+                    }
+                    <img src="@path" @onclick="() => SelectUnselectItem(item)" />
+                }
+            </GridItem>
+        }
+    </GridContainer>
+    return;
+}
+@if (_state != EnumState.Old)
+{
+    <div>Unable to handle images for mobile for now.</div>
+    return;
+}
+@foreach (var item in Data)
+{
+    <StackLayout>
+        <StackItem Length="1fr">
+            <BootstrapPrimaryButton Style="width: 95%;" FontSize="2rem" OnClick="() => SelectUnselectItem(item)">
+                @RetrieveValue!(item)
+            </BootstrapPrimaryButton>
+        </StackItem>
+        <StackItem>
+            <input type="checkbox" style="zoom: 6.0" checked="@IsSelected(item)"
+                   @onchange="(args) => OnCheckboxChanged(item, args.Value!)" />
+        </StackItem>
+    </StackLayout>
+}

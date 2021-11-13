@@ -1,0 +1,58 @@
+﻿@using BasicBlazorLibrary.Components.CssGrids
+@if (MediaList == null)
+{
+    <p>Needs media list in order to use the flexible orientation component</p>
+    return;
+}
+@if (MediaList.ScreenOrientation == ParentClasses.EnumScreenOrientation.Portrait)
+{
+    <GridContainer Rows="@GetRows(false)">
+        @if (HeaderContent != null)
+        {
+            <GridItem>
+                @HeaderContent
+            </GridItem>
+            <GridItem Row="2">
+                @MainContent
+            </GridItem>
+            <GridItem Row="3">
+                @SideContent
+            </GridItem>
+        }
+        else
+        {
+            <GridItem>
+                @MainContent
+            </GridItem>
+            <GridItem Row="2">
+                @SideContent
+            </GridItem>
+        }
+    </GridContainer>
+    return;
+}
+<GridContainer Columns="@GetColumns" Rows="@GetRows(true)">
+    @if (HeaderContent != null)
+    {
+        <GridItem>
+            @MainContent
+        </GridItem>
+        <GridItem Column="2">
+            <div>
+                @HeaderContent
+            </div>
+            <div>
+                @SideContent
+            </div>
+        </GridItem>
+    }
+    else
+    {
+        <GridItem>
+            @MainContent
+        </GridItem>
+        <GridItem Column="2">
+            @SideContent
+        </GridItem>
+    }
+</GridContainer>

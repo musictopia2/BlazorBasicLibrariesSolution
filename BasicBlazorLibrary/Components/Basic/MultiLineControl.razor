@@ -1,0 +1,8 @@
+﻿@inherits JavascriptComponentBase
+@if (string.IsNullOrWhiteSpace(Value))
+{
+    return;
+}
+<div style="white-space: pre-wrap; @Style">
+    @Value
+</div>

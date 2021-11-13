@@ -1,0 +1,19 @@
+﻿@typeparam TValue
+@inherits TextComponentBase<TValue>
+@if (Title == "")
+{
+
+    <input type="number" @ref="InputElement" step="@_stepAttributeValue" @onclick:stopPropagation="true" @onclick:preventDefault="true" class="@Class" style=" width: @Width; @Style" @bind="CurrentValue" @bind:event="oninput" />
+    return;
+}
+@if (CanHaveTitle == false)
+{
+    <div>Cannot have title because you chose to use data entry item</div>
+    return;
+}
+<div style="font-weight: bold; font-size: @GetHeaderFontSize">
+    @Title
+</div>
+<div>
+    <input type="number" step="@_stepAttributeValue" @ref="InputElement" @onclick:stopPropagation="true" @onclick:preventDefault="true" class="@Class" style=" width: @Width; @Style" @bind="CurrentValue" @bind:event="oninput" />
+</div>

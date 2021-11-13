@@ -1,0 +1,32 @@
+﻿@inherits JavascriptComponentBase
+@typeparam TItem
+<div @ref="_sampleElement" style="height: @LineHeight; position:absolute; top: -10000px; left: -10000px; ">
+
+</div>
+<div @ref="_sampleContainer" style="height: @GetContainerSize(); position: absolute; top: -10000px; left: -10000px;">
+
+</div>
+<div @ref="_mainScroll" style="overflow-x: auto; @GetBorders() background-color: @BackgroundColor; height: @ContainerHeight; width: @ContainerWidth;">
+    @if (_clientHeight > 0)
+    {
+        <div style="height: @GetContainerSize();  position:relative; ">
+            @{
+                int fit = ElementsFit();
+                int starts = GetNextItem();
+                int upto = starts + fit;
+            }
+            @for (int i = starts; i < upto; i++)
+            {
+                int x = i + 1;
+                int index = i;
+                if (index < Items.Count)
+                {
+                    <div style="height: @LineHeight; width: 100%; position: absolute; top: @GetPosition(index)">
+                        @ChildContent!(GetContent(index))
+                    </div>
+                }
+
+            }
+        </div>
+    }
+</div>

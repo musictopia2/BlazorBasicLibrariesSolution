@@ -1,0 +1,17 @@
+﻿@inherits TabContainerBase<TabPage>
+<div style="width: 100%;">
+    @foreach (TabPage tabPage in Pages)
+    {
+        <button type="button"
+                style="margin-right: 5px; margin-bottom: 5px;"
+                class="btn @GetButtonClass(tabPage)"
+                @onclick=@( () => ActivatePage(tabPage) )>
+            @tabPage.Text
+        </button>
+    }
+</div>
+<CascadingValue Value="this">
+    <div>
+        @ChildContent
+    </div>
+</CascadingValue>

@@ -1,0 +1,36 @@
+﻿@using BasicBlazorLibrary.Components.CssGrids
+@if (UseGrid == false && Row > 0)
+{
+    <div>You must use a grid if the row is greater than 0</div>
+    return;
+}
+@if (UseGrid == false)
+{
+    <span style="margin-right: 2px; font-size: @FontSize; @GetStyle">
+        @HeaderText:
+    </span>
+    <span style="margin-right: 20px; font-size: @FontSize">
+        @MainText
+    </span>
+    return;
+}
+@if (UseGrid && Row == 0)
+{
+    <div style="margin-right: 2px; font-size: @FontSize; @GetStyle">
+        @HeaderText:
+    </div>
+    <div style="margin-right: 20px; font-size: @FontSize">
+        @MainText
+    </div>
+    return;
+}
+<GridItem Row="@Row">
+    <div style="font-size: @FontSize; font-weight: bold">
+        @HeaderText:
+    </div>
+</GridItem>
+<GridItem Row="@Row" Column="2">
+    <div style="font-size: @FontSize;">
+        @MainText
+    </div>
+</GridItem>

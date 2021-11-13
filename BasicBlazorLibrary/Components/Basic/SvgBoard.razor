@@ -1,0 +1,8 @@
+﻿@if (ChildContent == null)
+{
+    return;
+}
+<svg @onclick="PrivateClicked"
+     x="@X" y="@Y" style="@GetSvgStyle()" viewBox="@GetViewBox()">
+    @ChildContent
+</svg>

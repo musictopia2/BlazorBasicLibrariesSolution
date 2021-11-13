@@ -1,0 +1,88 @@
+﻿@typeparam TValue
+@inherits JavascriptComponentBase
+@using BasicBlazorLibrary.Components.ComboTextboxes
+@if (ItemList is null || RetrieveValue is null)
+{
+    return;
+}
+@if (ManuelHeight != "")
+{
+    @if (IsChild)
+    {
+        <div style="overflow: auto">
+            <RowLayout Rows="@GetRows" RowGap="0px">
+                <div style="font-size: @GetHeaderFontSize; font-weight: bold">
+                    @Title
+                </div>
+                <ComboBoxGenericList ItemList="ItemList"
+                                     TValue="TValue"
+                                     Style="Style"
+                                     ComboEnterPressed="ComboEnterPressed"
+                                     RetrieveValue="RetrieveValue"
+                                     @ref="_comboBox"
+                                     Value="@Value"
+                                     Virtualized="Virtualized"
+                                     ValueChanged="PrivateChange" />
+            </RowLayout>
+        </div>
+        return;
+    }
+    <RowLayout Rows="@GetRows" RowGap="0px">
+        <div style="font-size: @GetHeaderFontSize; font-weight: bold">
+            @Title
+        </div>
+        <ComboBoxGenericList ItemList="ItemList"
+                             TValue="TValue"
+                             Style="Style"
+                             ComboEnterPressed="ComboEnterPressed"
+                             RetrieveValue="RetrieveValue"
+                             @ref="_comboBox"
+                             Value="@Value"
+                             Virtualized="Virtualized"
+                             ValueChanged="PrivateChange" />
+    </RowLayout>
+    return;
+}
+@if (IsChild)
+{
+    <div style="overflow: auto">
+        <LeftOverLayout>
+            <TopContent>
+                <div style="font-size: @GetHeaderFontSize; font-weight: bold">
+                    @Title
+                </div>
+
+            </TopContent>
+            <MainContent>
+                <ComboBoxGenericList ItemList="ItemList"
+                                     TValue="TValue"
+                                     Style="Style"
+                                     ComboEnterPressed="ComboEnterPressed"
+                                     RetrieveValue="RetrieveValue"
+                                     @ref="_comboBox"
+                                     Value="@Value"
+                                     Virtualized="Virtualized"
+                                     ValueChanged="PrivateChange" />
+            </MainContent>
+        </LeftOverLayout>
+    </div>
+    return;
+}
+<LeftOverLayout>
+    <TopContent>
+        <div style="font-size: @GetHeaderFontSize; font-weight: bold">
+            @Title
+        </div>
+    </TopContent>
+    <MainContent>
+        <ComboBoxGenericList ItemList="ItemList"
+                             TValue="TValue"
+                             Style="Style"
+                             ComboEnterPressed="ComboEnterPressed"
+                             RetrieveValue="RetrieveValue"
+                             @ref="_comboBox"
+                             Value="@Value"
+                             Virtualized="Virtualized"
+                             ValueChanged="PrivateChange" />
+    </MainContent>
+</LeftOverLayout>

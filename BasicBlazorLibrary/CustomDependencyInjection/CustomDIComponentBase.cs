@@ -1,6 +1,6 @@
 ﻿using CommonBasicLibraries.BasicUIProcesses; //iffy.
-using System.Reflection; //still needs reflection.  eventually try to do without reflection via source generators.
 namespace BasicBlazorLibrary.CustomDependencyInjection;
+//try to do without reflection eventually
 public abstract class CustomDIComponentBase : ComponentBase
 {
     protected virtual bool RequireServices { get; } = true;

@@ -1,0 +1,25 @@
+﻿.mainposition{
+    top: 4rem;
+    right: 2rem;
+}
+
+.blazored-toast-container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 100;
+}
+
+@media (max-width: 500px){
+    .blazored-toast {
+        width: 30rem;
+        border-radius: .25rem;
+    }
+}
+
+@media (min-width: 576px) {
+    .blazored-toast {
+        width: 30rem;
+        border-radius: .25rem;
+    }
+}

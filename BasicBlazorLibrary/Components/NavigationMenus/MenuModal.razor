@@ -1,0 +1,30 @@
+﻿@using BasicBlazorLibrary.Components.BaseClasses
+@using BasicBlazorLibrary.Components.Modals
+@inherits PopupBase
+<PopupCornered CornerPosition="EnumCornerPosition.TopRight"
+               Visible="Visible"
+               VisibleChanged="VisibleChanged"
+               DisableBackgroundClick="false"
+               Margins="10px;"
+               BackgroundColor="black"
+               FullScreen="false"
+               ShowHeader="false"
+               Style="@GetMainStyle()"
+               Width="@Width"
+               Height="@Height">
+    @foreach (var item in MenuList)
+    {
+        @if (ItemHeight == "")
+        {
+            <div class="clickable" @onclick="() => ClickMenu(item)">
+                @item.Text
+            </div>
+        }
+        else
+        {
+            <div style="height: @ItemHeight" class="clickable" @onclick="() => ClickMenu(item)">
+                @item.Text
+            </div>
+        }
+    }
+</PopupCornered>
