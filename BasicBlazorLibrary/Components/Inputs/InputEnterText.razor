@@ -1,0 +1,35 @@
+﻿@inherits EnterBase<string>
+@if (Title != "")
+{
+    @if (Item is not null)
+    {
+        <div>Cannot have a title because you are using data entry item</div>
+        return;
+    }
+    <div style="font-size: @GetHeaderFontSize; font-weight: bold;">
+        @Title
+    </div>
+    <div>
+        <input type="text"
+               @bind="CurrentValue"
+               @ref="InputElement"
+               @onclick:stopPropagation="true" @onclick:preventDefault="true"
+               id="@TabIndex"
+               class="@CssClass"
+               style="@GetStyle()"
+               placeholder="@Placeholder"
+               @attributes="AdditionalAttributes"
+               @bind:event="oninput" />
+    </div>
+    return;
+}
+<input type="text"
+       @bind="CurrentValue"
+       @ref="InputElement"
+       @onclick:stopPropagation="true" @onclick:preventDefault="true"
+       id="@TabIndex"
+       class="@CssClass"
+       style="@GetStyle()"
+       placeholder="@Placeholder"
+       @attributes="AdditionalAttributes"
+       @bind:event="oninput" />

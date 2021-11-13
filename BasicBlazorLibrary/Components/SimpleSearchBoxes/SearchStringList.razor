@@ -1,0 +1,59 @@
+﻿@inherits JavascriptComponentBase
+@using BasicBlazorLibrary.Components.AutoCompleteHelpers
+@if (RequiredTab && TabIndex ==-1)
+{
+    <div>Required Tab.  Rethink</div>
+    return;
+}
+@{
+    int x = 0;
+}
+<ManuelTextBoxComponent Placeholder="@Placeholder"
+                        Style="Style"
+                        TabIndex="@TabIndex"
+                        @ref="_text"
+                        />
+
+<div class="customscroll" style="width: @Style.Width; height: @Style.Height; background-color: @Style.ComboBackgroundColor ;">
+    @foreach (var item in _displayList!)
+    {
+        int y;
+        y = x;
+        @if (y == _service!.ElementScrollTo)
+        {
+            <div @onclick="() => ElementClicked(y)"
+                    @ondblclick="() => ElementDoubleClicked()"
+                    style="@GetColorStyle(y)" @ref="_scrollreference"
+                    onmouseover="this.style.background='@GetHoverColor(y)'"
+                    onmouseout="this.style.background='@GetBackgroundColor(y)'">
+                <div style="@GetTextStyle()">
+                    @item
+                </div>
+            </div>
+        }
+        else if (y == 0)
+        {
+            <div @onclick="() => ElementClicked(y)"
+                    @ondblclick="() => ElementDoubleClicked()"
+                    style="@GetColorStyle(y)" @ref="_firstreference"
+                    onmouseover="this.style.background='@GetHoverColor(y)'"
+                    onmouseout="this.style.background='@GetBackgroundColor(y)'">
+                <div style="@GetTextStyle()">
+                    @item
+                </div>
+            </div>
+        }
+        else
+        {
+            <div @onclick="() => ElementClicked(y)" style="@GetColorStyle(y)"
+                    @ondblclick="() => ElementDoubleClicked()"
+                    onmouseover="this.style.background='@GetHoverColor(y)'"
+                    onmouseout="this.style.background='@GetBackgroundColor(y)'">
+                <div style="@GetTextStyle()">
+                    @item
+                </div>
+            </div>
+        }
+        x++;
+    }
+</div>

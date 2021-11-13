@@ -1,0 +1,72 @@
+﻿@typeparam TValue
+@inherits EnterBase<TValue>
+@if (Title != "")
+{
+    @if (Item is not null)
+    {
+        <div>Cannot have a title because you are using data entry item</div>
+        return;
+    }
+    @if (ValidateOnInput == false)
+    {
+        <div style="font-size: @GetHeaderFontSize; font-weight: bold">
+            @Title
+        </div>
+        <div>
+            <input type="number"
+                   step="@_stepAttributeValue"
+                   @onclick:stopPropagation="true" @onclick:preventDefault="true"
+                   @bind="CurrentValue"
+                   @ref="InputElement"
+                   class="@CssClass"
+                   id="@TabIndex"
+                   placeholder="@Placeholder"
+                   @attributes="AdditionalAttributes" />
+        </div>
+    }
+    else
+    {
+        <div style="font-size: @GetHeaderFontSize; font-weight: bold">
+            @Title
+        </div>
+        <div>
+            <input type="number"
+                   step="@_stepAttributeValue"
+                   @onclick:stopPropagation="true" @onclick:preventDefault="true"
+                   @bind="CurrentValue"
+                   @ref="InputElement"
+                   class="@CssClass"
+                   id="@TabIndex"
+                   placeholder="@Placeholder"
+                   @attributes="AdditionalAttributes"
+                   @bind:event="oninput" />
+        </div>
+    }
+    return;
+}
+
+@if (ValidateOnInput == false)
+{
+    <input type="number"
+           step="@_stepAttributeValue"
+           @onclick:stopPropagation="true" @onclick:preventDefault="true"
+           @bind="CurrentValue"
+           @ref="InputElement"
+           class="@CssClass"
+           id="@TabIndex"
+           placeholder="@Placeholder"
+           @attributes="AdditionalAttributes" />
+}
+else
+{
+    <input type="number"
+           step="@_stepAttributeValue"
+           @onclick:stopPropagation="true" @onclick:preventDefault="true"
+           @bind="CurrentValue"
+           @ref="InputElement"
+           class="@CssClass"
+           id="@TabIndex"
+           placeholder="@Placeholder"
+           @attributes="AdditionalAttributes"
+           @bind:event="oninput" />
+}

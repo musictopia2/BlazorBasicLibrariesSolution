@@ -1,0 +1,28 @@
+﻿@inherits EnterBase<string>
+@if (ReadOnly && FullPage)
+{
+    <div>Currently does not support full page and read only</div>
+    return;
+}
+@if (FullPage)
+{
+    <div style="margin: 3px;  height: 100%;">
+        <textarea id="@TabIndex" placeholder="@Placeholder" @ref="InputElement"
+       @attributes="AdditionalAttributes" class="@CssClass" @oninput="HandleOnChange" @onclick:stopPropagation="true" @onclick:preventDefault="true" style="resize: none; width: 100%; height: 100%;">
+            @Value
+        </textarea>
+    </div>
+    return;
+}
+@if (ReadOnly)
+{
+    <textarea id="@TabIndex" class="@CssClass" placeholder="@Placeholder" @ref="InputElement"
+       @attributes="AdditionalAttributes" @oninput="HandleOnChange" @onclick:stopPropagation="true" @onclick:preventDefault="true" style="resize: none; width: @Width; " readonly rows="@Rows">
+        @Value
+    </textarea>
+    return;
+}
+<textarea id="@TabIndex" class="@CssClass" placeholder="@Placeholder" @ref="InputElement"
+       @attributes="AdditionalAttributes" @oninput="HandleOnChange" @onclick:stopPropagation="true" @onclick:preventDefault="true" style="resize: none; width: @Width; " rows="@Rows">
+    @Value
+</textarea>

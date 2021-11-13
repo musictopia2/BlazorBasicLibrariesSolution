@@ -1,0 +1,16 @@
+﻿@using BasicBlazorLibrary.Components.BaseClasses
+@typeparam TValue
+@inherits ScrollableTableComponentBase<TValue>
+@GetAllContent
+@code{
+    protected override RenderFragment Render(TValue item) => __builder =>
+    {
+        <tr @onclick="() => OnItemClick(item)"
+            style="@GetColorStyle(item)"
+            onmouseover="this.style.background='@GetHoverColor(item)'"
+            onmouseout="this.style.background='@GetBackgroundColor(item)'"
+            >
+            @ChildContent!(item)
+        </tr>
+    };
+}

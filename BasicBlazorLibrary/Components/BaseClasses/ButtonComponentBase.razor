@@ -1,0 +1,20 @@
+﻿@if (Visible == false)
+{
+    return;
+}
+@if (FontSize == "")
+{
+    @if (IsEnabled == false)
+    {
+        <button style="background-color: @BackColor; margin-right: @RightSpacing; color: @DisabledColor" disabled>@ChildContent</button>
+        return;
+    }
+    <button @onclick="OnClick" @onmouseover="OnMouseOver" @onmouseout="OnMouseOut" style="background-color: @BackColor; margin-right: @RightSpacing;  color: @TextColor">@ChildContent</button>
+    return;
+}
+@if (IsEnabled == false)
+{
+    <button style="background-color: @BackColor; font-size:@FontSize; margin-right: @RightSpacing; color: @DisabledColor" disabled>@ChildContent</button>
+    return;
+}
+<button @onclick="OnClick" @onmouseover="OnMouseOver" @onmouseout="OnMouseOut" style="background-color: @BackColor;  font-size: @FontSize; margin-right: @RightSpacing;  color: @TextColor">@ChildContent</button>

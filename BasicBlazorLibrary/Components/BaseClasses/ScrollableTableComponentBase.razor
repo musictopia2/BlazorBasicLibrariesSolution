@@ -1,0 +1,27 @@
+﻿@typeparam TValue
+@code{
+    protected RenderFragment GetAllContent => __builder =>
+    {
+        <div style="overflow-y: auto; height: @Height">
+            <table>
+                <thead>
+                    <tr>
+                        @foreach (var item in Headers)
+                            {
+                            <th style="background-color: @GetColor()">@item</th>
+                            }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ItemList)
+                        {
+
+                            @Render(item)
+
+                        
+                        }
+                </tbody>
+            </table>
+        </div>
+    };
+}
