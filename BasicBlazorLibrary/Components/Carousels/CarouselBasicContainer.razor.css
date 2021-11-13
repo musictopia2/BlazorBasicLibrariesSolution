@@ -1,0 +1,9 @@
+﻿.simple-slider-container {
+    margin: 0;
+    height: 100%;
+    display: inline-flex;
+    overflow-x: hidden;
+    transform: translateX(0);
+    transition: .3s ease-out;
+    cursor: grab;
+}

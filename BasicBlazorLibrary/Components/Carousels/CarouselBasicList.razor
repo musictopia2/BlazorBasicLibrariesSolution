@@ -1,0 +1,10 @@
+﻿@typeparam TValue
+@attribute [CascadingTypeParameter(nameof(TValue))]
+<CarouselBasicContainer>
+    @foreach (var item in RenderList)
+    {
+    <CarouselBasicItem>
+        @ChildContent!(item)
+    </CarouselBasicItem>
+    }
+</CarouselBasicContainer>

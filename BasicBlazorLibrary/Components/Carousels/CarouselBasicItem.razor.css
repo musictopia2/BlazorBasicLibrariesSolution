@@ -1,0 +1,6 @@
+﻿.simple-slide {
+    max-height: 100%;
+    overflow-y: auto;
+    min-width: 100vw;
+    user-select: none;
+}
