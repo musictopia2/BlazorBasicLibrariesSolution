@@ -2,8 +2,8 @@ using aa = CommonBasicLibraries.BasicUIProcesses.UIPlatform;
 namespace BasicBlazorLibrary.Layouts;
 public partial class StartLayout
 {
-    [CascadingParameter]
-    public ILayout? Layout { get; set; }
+    [Inject]
+    private ILayout? Layout { get; set; }
     public static string DefaultGridHeight => "730px";
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
