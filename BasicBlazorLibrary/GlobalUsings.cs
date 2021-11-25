@@ -8,3 +8,4 @@ global using BasicBlazorLibrary.Helpers;
 global using BasicBlazorLibrary.BasicJavascriptClasses;
 global using cc = CommonBasicLibraries.BasicDataSettingsAndProcesses.SColorString;
 global using bb = CommonBasicLibraries.BasicDataSettingsAndProcesses.BasicDataFunctions;
+global using jj = CommonBasicLibraries.AdvancedGeneralFunctionsAndProcesses.JsonSerializers.SystemTextJsonStrings;

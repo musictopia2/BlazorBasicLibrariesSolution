@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -14,7 +14,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0" />
-	  <PackageReference Include="CommonBasicLibraries" Version="4.0.3" />
+	  <!--
+	  <PackageReference Include="CommonBasicLibraries" Version="4.0.3" />-->
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonBasicLibrariesSolution\CommonBasicLibraries\CommonBasicLibraries.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,14 +1,10 @@
-﻿using Newtonsoft.Json; //not common enough.  eventually can use system.json but not yet.
-namespace BasicBlazorLibrary.Helpers;
+﻿namespace BasicBlazorLibrary.Helpers;
 public static class StorageExtensions
 {
     public static async Task StorageSetItemAsync(this IJSRuntime js, string key, object value)
     {
-        JsonSerializerSettings settings = new()
-        {
-            Formatting = Formatting.Indented
-        };
-        string temps = JsonConvert.SerializeObject(value, settings);
+       
+        string temps = jj.SerializeObject(value);
         await js.InvokeVoidAsync("localStorage.setItem", key, temps);
     }
     public static async Task StorageSetStringAsync(this IJSRuntime js, string key, string value)
@@ -27,7 +23,8 @@ public static class StorageExtensions
         {
             return default!;
         }
-        return JsonConvert.DeserializeObject<T>(serialisedData)!;
+        return jj.DeserializeObject<T>(serialisedData);
+        //return JsonConvert.DeserializeObject<T>(serialisedData)!;
     }
     public static async Task StorageClearAsync(this IJSRuntime js)
     {
