@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommonBasicLibraries" Version="5.0.1" />
+    <PackageReference Include="CommonBasicLibraries" Version="5.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0" />
 	  <!--
 	  <PackageReference Include="CommonBasicLibraries" Version="4.0.3" />-->

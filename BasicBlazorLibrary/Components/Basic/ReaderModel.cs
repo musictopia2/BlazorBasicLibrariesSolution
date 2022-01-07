@@ -5,4 +5,9 @@ public class ReaderModel
     public int ElementHighlighted { get; internal set; } = 0;
     public int ElementScrollTo { get; set; }
     public bool ScrollVisible { get; set; } = true;
+    public void Reset()
+    {
+        ElementScrollTo = 0;
+        ElementHighlighted = 0; //there are cases especially when navigating where i have to reset.  since this is not doing automatically.
+    }
 }
