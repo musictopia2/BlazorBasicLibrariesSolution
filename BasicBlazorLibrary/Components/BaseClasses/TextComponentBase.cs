@@ -141,6 +141,14 @@ public abstract class TextComponentBase<TValue> : JavascriptComponentBase, IFocu
                 await InputElement!.Value.FocusAsync();
             }
         }
+        else if (firstRender == false && KeyStrokeHelper is not null)
+        {
+            await OnAfterFirstRenderAsync();
+        }
+    }
+    protected virtual Task OnAfterFirstRenderAsync()
+    {
+        return Task.CompletedTask;
     }
     protected virtual Task OnFirstRenderAsync()
     {

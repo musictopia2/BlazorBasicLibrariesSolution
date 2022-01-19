@@ -119,4 +119,8 @@ public partial class DateComponent<TValue>
     {
         await _helps!.SetInitTextAsync(InputElement, _value);
     }
+    protected override async Task OnAfterFirstRenderAsync()
+    {
+         await _helps!.SetNewValueAloneAsync(InputElement, _value);
+    }
 }
