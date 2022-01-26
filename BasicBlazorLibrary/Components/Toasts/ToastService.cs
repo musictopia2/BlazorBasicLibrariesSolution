@@ -2,6 +2,10 @@
 namespace BasicBlazorLibrary.Components.Toasts;
 public class ToastService : IToastComponent
 {
+    public ToastService()
+    {
+        BlazorUIHelpers.Toast = this; //try this way (?)
+    }
     public BlazoredToasts? Toast { get; set; }
     private void CheckToast()
     {
