@@ -5,6 +5,9 @@ public abstract class CustomBootstrapperBase
     public CustomBootstrapperBase()
     {
         ServiceCollection services = new();
+        services.AddSingleton(BlazorUIHelpers.Toast!);
+        services.AddSingleton(BlazorUIHelpers.MessageBox!);
+        services.AddSingleton(BlazorUIHelpers.SystermError!);
         Configure(services);
         RegisterAdditionalServices?.Invoke(services); //this means can transfer anything else over.
         GlobalDIClass.NewProvider = services.BuildServiceProvider();
