@@ -4,7 +4,7 @@ public class LayoutService : ILayout
 {
     public LayoutService()
     {
-        BlazorUIHelpers.SystermError = this;
+        BlazorUIHelpers.SystemError = this;
         BlazorUIHelpers.MessageBox = this;
     }
     public StartLayout? Layout { get; set; }
