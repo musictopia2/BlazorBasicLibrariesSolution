@@ -1,10 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-	  <Version>3.0.5</Version>
+	  <Version>3.0.6</Version>
   </PropertyGroup>
 
 
@@ -13,10 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommonBasicLibraries" Version="5.0.8" />
+    <PackageReference Include="CommonBasicLibraries" Version="6.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0" />
-	  <!--
-	  <PackageReference Include="CommonBasicLibraries" Version="4.0.3" />-->
   </ItemGroup>
 
 </Project>

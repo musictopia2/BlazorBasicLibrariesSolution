@@ -16,4 +16,6 @@ legend {
     line-height: initial;
     white-space: initial;
     border-bottom: none;
+    margin-left: 2px;
+    float: none;
 }

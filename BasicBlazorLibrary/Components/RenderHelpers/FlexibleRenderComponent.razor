@@ -1,7 +1,14 @@
 ﻿<VisibleHiddenComponent Visible="@Visible">
-    <RefreshComponent 
+    @if (Key is null)
+    {
+        @ChildContent
+    }
+    else
+    {
+        <RefreshComponent 
                       CanRender="@CanRender"
                       Key="@Key">
-        @ChildContent
-    </RefreshComponent>
+            @ChildContent
+        </RefreshComponent>
+    }
 </VisibleHiddenComponent>
