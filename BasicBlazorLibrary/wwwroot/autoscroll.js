@@ -22,6 +22,23 @@ function start() {
     }
     wasrippedoff = false; //no longer ripped off because now the arrow up and arrow down won't do default functions which is scroll up/down (since i am handling it via code)
 }
+//try to add another function so the old can keep working as is.  not sure yet if the autocomplete needs the new or not (?)
+export function scrolltoelementparent(parent, index) {
+    if (parent == undefined || parent == null) {
+        return;
+    }
+    if (wasrippedoff) {
+        start();
+    }
+    var bb = parent.children;
+    console.log(index);
+    console.log(bb.length);
+    var needs = bb[index];
+
+    //this is what needs to be autoscrolled.
+    needs.scrollIntoView();
+}
+
 export function scrolltoelement(element) {
     if (element == undefined || element == null) {
         return;

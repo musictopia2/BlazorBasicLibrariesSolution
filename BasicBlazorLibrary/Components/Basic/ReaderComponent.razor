@@ -11,7 +11,20 @@
     return;
 }
 <div tabindex="1" @ref="_main" class="@GetClass" style="width: @Width; height: @Height;">
-    <GridContainer>
+    @foreach (var item in RenderList)
+    {
+        int y;
+        int z;
+        y = x;
+        z = y + 1;
+        <div @onclick="() => ElementClicked(y)" class="customdiv" style="@GetColorStyle(y)">
+            @ChildContent(item)
+        </div>
+        x++;
+    }
+
+
+    @*<GridContainer>
         @foreach (var item in RenderList)
         {
             int y;
@@ -19,20 +32,11 @@
             y = x;
             z = y + 1;
             <GridItem Row="z">
-                @if (y == DataContext.ElementScrollTo)
-                {
-                    <div @onclick="() => ElementClicked(y)" class="customdiv" style="@GetColorStyle(y)" @ref="_reference">
-                        @ChildContent(item)
-                    </div>
-                }
-                else
-                {
-                    <div @onclick="() => ElementClicked(y)" class="customdiv" style="@GetColorStyle(y)">
-                        @ChildContent(item)
-                    </div>
-                }
+                <div @onclick="() => ElementClicked(y)" class="customdiv" style="@GetColorStyle(y)">
+                    @ChildContent(item)
+                </div>
             </GridItem>
             x++;
         }
-    </GridContainer>
+    </GridContainer>*@
 </div>

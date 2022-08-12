@@ -43,7 +43,7 @@ public partial class ReaderComponent<T> : IAsyncDisposable
         return $"background-color: {DataContext.HighlightColor};";
     }
     private string GetClass => DataContext!.ScrollVisible ? "customscroll" : "noscroll";
-    private ElementReference? _reference;
+    //private ElementReference? _reference; //no longer needed since it can't be trusted anyways
     private ElementReference? _main;
     private bool _needsToScroll = true;
     private void ElementClicked(int x)
@@ -73,7 +73,6 @@ public partial class ReaderComponent<T> : IAsyncDisposable
     }
     protected override void OnInitialized()
     {
-        _reference = null;
         _previousRecord = GetRecord;
         _main = null;
         _keystroke = new KeystrokeClass(JS!);
@@ -207,12 +206,16 @@ public partial class ReaderComponent<T> : IAsyncDisposable
                 await _main!.Value.FocusAsync();
             }
         }
-        if (_reference == null)
+        if (_main is null)
         {
-            return; //try this way.  hopefully no never ending loop (?)
+            return; //try this now.
         }
-        await _autoScroll!.ScrollToElementAsync(_reference);
-        _reference = null; //for next time (?)
+        await _autoScroll!.ScrollToElementAsync(_main, DataContext!.ElementScrollTo);
+        //if (_reference == null)
+        //{
+        //    return; //try this way.  hopefully no never ending loop (?)
+        //}
+        //await _autoScroll!.ScrollToElementAsync(_reference);
         _needsToScroll = false;
     }
     private bool _needsFocus;

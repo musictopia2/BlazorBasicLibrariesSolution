@@ -11,6 +11,14 @@ public class AutoScrollClass : BaseLibraryJavascriptClass
         }
         await ModuleTask.InvokeVoidFromClassAsync("scrolltoelement", element);
     }
+    public async Task ScrollToElementAsync(ElementReference? parent, int index)
+    {
+        if (parent == null)
+        {
+            return;
+        }
+        await ModuleTask.InvokeVoidFromClassAsync("scrolltoelementparent", parent, index);
+    }
     public async Task SetScrollPosition(ElementReference? element, float position)
     {
         await ModuleTask.InvokeVoidFromClassAsync("setscroll", element, position);
