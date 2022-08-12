@@ -6,6 +6,8 @@ public partial class TextAreaComponent
     [Parameter]
     public bool FullPage { get; set; } = false;
     [Parameter]
+    public bool UseLeftOvers { get; set; } = false;
+    [Parameter]
     public string Value { get; set; } = "";
     [Parameter]
     public bool ReadOnly { get; set; }

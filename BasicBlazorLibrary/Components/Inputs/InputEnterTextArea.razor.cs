@@ -8,6 +8,8 @@ public partial class InputEnterTextArea
     [Parameter]
     public bool ReadOnly { get; set; }
     [Parameter]
+    public bool UseLeftOvers { get; set; } = false;
+    [Parameter]
     public string Width { get; set; } = "100%";
     [Parameter]
     public ConsoleKey HotKeyForSubmit { get; set; } = ConsoleKey.NoName;
