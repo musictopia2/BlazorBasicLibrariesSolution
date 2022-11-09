@@ -8,7 +8,9 @@ public partial class SearchStringList : IAsyncDisposable
     private BasicList<string> _displayList = new();
     private string _value = "";
     [Parameter]
+#pragma warning disable BL0007 // Component parameters should be auto properties
     public string Value
+#pragma warning restore BL0007 // Component parameters should be auto properties
     {
         get => _value;
         set
@@ -224,7 +226,9 @@ public partial class SearchStringList : IAsyncDisposable
             _scrollreference = null;
         }
     }
+#pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
     ValueTask IAsyncDisposable.DisposeAsync()
+#pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
     {
         if (_service == null)
         {

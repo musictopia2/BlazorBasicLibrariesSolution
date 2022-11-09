@@ -1,4 +1,4 @@
-using aa = BasicBlazorLibrary.Components.CssGrids.Helpers;
+using aa1 = BasicBlazorLibrary.Components.CssGrids.Helpers;
 namespace BasicBlazorLibrary.Components.NumericMobileHelpers;
 public partial class WholeCurrencyPopup
 {
@@ -7,7 +7,7 @@ public partial class WholeCurrencyPopup
     [Parameter]
     public EventCallback<decimal> ValueChanged { get; set; }
     private string _display = "";
-    private static string GetRowsColumns => aa.RepeatMinimum(4);
+    private static string GetRowsColumns => aa1.RepeatMinimum(4);
     private readonly BasicList<int> _numbers = new()
     {
         7,

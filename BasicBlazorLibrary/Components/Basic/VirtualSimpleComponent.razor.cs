@@ -19,7 +19,7 @@ public partial class VirtualSimpleComponent<TItem> : IAsyncDisposable
     [Parameter]
     public bool HasSolidBlackBorders { get; set; } = false;
     [Parameter]
-    public string BackgroundColor { get; set; } = cc.White.ToWebColor();
+    public string BackgroundColor { get; set; } = cc1.White.ToWebColor();
     private ScrollListenerClass? _listen;
     private AutoScrollClass? _autoScroll;
     private ElementReference? _mainScroll;
@@ -150,7 +150,9 @@ public partial class VirtualSimpleComponent<TItem> : IAsyncDisposable
             _needsToScroll = false;
         }
     }
+#pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
     public ValueTask DisposeAsync()
+#pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
     {
 
         _listen!.Scrolled -= Listen_Scroll;

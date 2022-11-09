@@ -27,7 +27,7 @@ public partial class ReaderComponent<T> : IAsyncDisposable
     public bool CanFocusFirst { get; set; } = true;
     [Parameter]
     public bool Enabled { get; set; } = true; //sometimes won't even be enabled.
-    private bool NeedsHighlighting => DataContext!.HighlightColor != cc.Transparent.ToWebColor();
+    private bool NeedsHighlighting => DataContext!.HighlightColor != cc1.Transparent.ToWebColor();
     private KeystrokeClass? _keystroke;
     private AutoScrollClass? _autoScroll;
     private string GetColorStyle(int id)
@@ -228,7 +228,9 @@ public partial class ReaderComponent<T> : IAsyncDisposable
         }
         _needsFocus = true;
     }
+#pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
     public ValueTask DisposeAsync()
+#pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
     {
         _keystroke!.RemoveAllActions();
         return ValueTask.CompletedTask;

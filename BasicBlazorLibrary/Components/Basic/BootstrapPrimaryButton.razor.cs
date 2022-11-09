@@ -13,7 +13,7 @@ public partial class BootstrapPrimaryButton
     public string FontSize { get; set; } = "";
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
-    private static string DisabledColor => cc.LightGray.ToWebColor();
+    private static string DisabledColor => cc1.LightGray.ToWebColor();
     [Parameter]
     public string ConfirmationMessage { get; set; } = "";
     [Parameter]

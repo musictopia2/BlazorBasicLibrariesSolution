@@ -32,7 +32,9 @@ public partial class WorkProgressComponent<TValue>
     private EnumStatus _status = EnumStatus.NoneToBegin;
     private BasicList<TValue> _itemList = new();
     [Parameter]
+#pragma warning disable BL0007 // Component parameters should be auto properties
     public BasicList<TValue> ItemList
+#pragma warning restore BL0007 // Component parameters should be auto properties
     {
         get => _itemList;
         set

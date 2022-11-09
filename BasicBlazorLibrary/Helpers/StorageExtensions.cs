@@ -4,7 +4,7 @@ public static class StorageExtensions
     public static async Task StorageSetItemAsync(this IJSRuntime js, string key, object value)
     {
        
-        string temps = jj.SerializeObject(value);
+        string temps = jj1.SerializeObject(value);
         await js.InvokeVoidAsync("localStorage.setItem", key, temps);
     }
     public static async Task StorageSetStringAsync(this IJSRuntime js, string key, string value)
@@ -23,7 +23,7 @@ public static class StorageExtensions
         {
             return default!;
         }
-        return jj.DeserializeObject<T>(serialisedData);
+        return jj1.DeserializeObject<T>(serialisedData);
         //return JsonConvert.DeserializeObject<T>(serialisedData)!;
     }
     public static async Task StorageClearAsync(this IJSRuntime js)

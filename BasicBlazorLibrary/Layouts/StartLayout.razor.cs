@@ -60,7 +60,7 @@ public partial class StartLayout
     }
     protected override void OnInitialized()
     {
-        if (bb.OS == bb.EnumOS.WindowsDT)
+        if (bb1.OS == bb1.EnumOS.WindowsDT)
         {
             return;
         }

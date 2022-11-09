@@ -40,7 +40,7 @@ public partial class GridContainer
     public RenderFragment? ChildContent { get; set; }
     private string GetStyle()
     {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new ();
         if (Height != "")
         {
             sb.Append($"height: {Height};");

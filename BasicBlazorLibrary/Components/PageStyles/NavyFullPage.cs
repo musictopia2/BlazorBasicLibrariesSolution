@@ -2,6 +2,6 @@
 namespace BasicBlazorLibrary.Components.PageStyles;
 public class NavyFullPage : FullPageComponentBase
 {
-    public override string BackgroundColor => cc.Navy.ToWebColor();
-    public override string TextColor => cc.Aqua.ToWebColor();
+    public override string BackgroundColor => cc1.Navy.ToWebColor();
+    public override string TextColor => cc1.Aqua.ToWebColor();
 }

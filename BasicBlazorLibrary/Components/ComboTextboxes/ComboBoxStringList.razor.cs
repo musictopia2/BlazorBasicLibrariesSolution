@@ -1,11 +1,5 @@
 using BasicBlazorLibrary.Components.AutoCompleteHelpers;
 using BasicBlazorLibrary.Components.Basic;
-using CommonBasicLibraries.CollectionClasses;
-using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 namespace BasicBlazorLibrary.Components.ComboTextboxes;
 public partial class ComboBoxStringList : IAsyncDisposable
 {
@@ -16,7 +10,9 @@ public partial class ComboBoxStringList : IAsyncDisposable
     public BasicList<string>? ItemList { get; set; }
     private string _value = "";
     [Parameter]
+#pragma warning disable BL0007 // Component parameters should be auto properties
     public string Value //may have to do this way now.
+#pragma warning restore BL0007 // Component parameters should be auto properties
     {
         get => _value;
         set
@@ -309,7 +305,9 @@ public partial class ComboBoxStringList : IAsyncDisposable
             _virtual!.ScrollToSpecificElement(_service.ElementHighlighted);
         }
     }
+#pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
     ValueTask IAsyncDisposable.DisposeAsync()
+#pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
     {
         if (_service == null)
         {

@@ -1,5 +1,5 @@
 using BasicBlazorLibrary.Components.MediaQueries.ParentClasses;
-using aa = BasicBlazorLibrary.Components.CssGrids.Helpers;
+using aa1 = BasicBlazorLibrary.Components.CssGrids.Helpers;
 namespace BasicBlazorLibrary.Components.MediaQueries.MediaListUseClasses;
 public partial class FlexibleOrientationComponent
 {
@@ -17,9 +17,9 @@ public partial class FlexibleOrientationComponent
         {
             if (HeaderContent == null)
             {
-                return aa.RepeatMaximum(2);
+                return aa1.RepeatMaximum(2);
             }
-            return $"{aa.RepeatMaximum(1)} {aa.RepeatSpreadOut(1)}";
+            return $"{aa1.RepeatMaximum(1)} {aa1.RepeatSpreadOut(1)}";
         }
     }
     private string GetRows(bool horizontal)
@@ -28,9 +28,9 @@ public partial class FlexibleOrientationComponent
         {
             if (HeaderContent == null)
             {
-                return aa.RepeatAuto(2);
+                return aa1.RepeatAuto(2);
             }
-            return aa.RepeatAuto(3);
+            return aa1.RepeatAuto(3);
         }
         return "auto";
     }

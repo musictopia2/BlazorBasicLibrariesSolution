@@ -1,4 +1,4 @@
-using aa = BasicBlazorLibrary.Components.CssGrids.Helpers;
+using aa1 = BasicBlazorLibrary.Components.CssGrids.Helpers;
 namespace BasicBlazorLibrary.Components.CssGrids;
 public partial class GridList<T>
 {
@@ -12,5 +12,5 @@ public partial class GridList<T>
     public string ColumnGap { get; set; } = "5px";
     [Parameter]
     public RenderFragment<T>? ChildContent { get; set; }
-    private string GetColumns => aa.RepeatAuto(Columns);
+    private string GetColumns => aa1.RepeatAuto(Columns);
 }

@@ -1,9 +1,9 @@
 ﻿using System.Timers;
-using tt = System.Timers;
+using tt1 = System.Timers;
 namespace BasicBlazorLibrary.Components.Toasts;
 internal class CountdownTimer : IDisposable
 {
-    private tt.Timer? _timer;
+    private tt1.Timer? _timer;
     private readonly int _timeout;
     private readonly int _countdownTotal;
     private int _percentComplete;
@@ -22,7 +22,7 @@ internal class CountdownTimer : IDisposable
     }
     private void SetupTimer()
     {
-        _timer = new tt.Timer(_timeout);
+        _timer = new tt1.Timer(_timeout);
         _timer.Elapsed += HandleTick;
         _timer.AutoReset = false;
     }

@@ -20,13 +20,13 @@ public partial class NavigationBarContainer
     [Parameter]
     public string CloseHeight { get; set; } = "2rem";
     [Parameter]
-    public string MainBackgroundColor { get; set; } = cc.Blue.ToWebColor();
+    public string MainBackgroundColor { get; set; } = cc1.Blue.ToWebColor();
     [Parameter]
-    public string MenuBackgroundColor { get; set; } = cc.Black.ToWebColor();
+    public string MenuBackgroundColor { get; set; } = cc1.Black.ToWebColor();
     [Parameter]
-    public string MainTextColor { get; set; } = cc.White.ToWebColor();
+    public string MainTextColor { get; set; } = cc1.White.ToWebColor();
     [Parameter]
-    public string MenuTextColor { get; set; } = cc.White.ToWebColor();
+    public string MenuTextColor { get; set; } = cc1.White.ToWebColor();
     [Parameter]
     public string MenuFontSize { get; set; } = "1.5rem";
     [Parameter]
@@ -36,7 +36,7 @@ public partial class NavigationBarContainer
     [Parameter]
     public string CircleSize { get; set; } = "10px";
     [Parameter]
-    public string CircleColor { get; set; } = cc.White.ToWebColor();
+    public string CircleColor { get; set; } = cc1.White.ToWebColor();
     [Parameter]
     public string MenuHeight { get; set; } = "300px";
     [Parameter]

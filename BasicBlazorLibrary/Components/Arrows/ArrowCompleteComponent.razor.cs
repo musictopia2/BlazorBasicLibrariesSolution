@@ -1,5 +1,5 @@
 using System.Drawing;
-using aa = BasicBlazorLibrary.Components.CssGrids.Helpers;
+using aa1 = BasicBlazorLibrary.Components.CssGrids.Helpers;
 namespace BasicBlazorLibrary.Components.Arrows;
 public partial class ArrowCompleteComponent
 {
@@ -14,9 +14,9 @@ public partial class ArrowCompleteComponent
     [Parameter]
     public EventCallback DownClicked { get; set; }
     [Parameter]
-    public string BackgroundColor { get; set; } = cc.Black.ToWebColor();
+    public string BackgroundColor { get; set; } = cc1.Black.ToWebColor();
     [Parameter]
-    public string StrokeColor { get; set; } = cc.Transparent.ToWebColor();
+    public string StrokeColor { get; set; } = cc1.Transparent.ToWebColor();
     [Parameter]
     public string StrokeWidth { get; set; } = "1px";
     [Parameter]
@@ -74,6 +74,6 @@ public partial class ArrowCompleteComponent
             return output;
         }
     }
-    private static string GetCommonRowsColumns => aa.RepeatMinimum(2);
-    private static string GetThreeColumns => aa.RepeatMinimum(3);
+    private static string GetCommonRowsColumns => aa1.RepeatMinimum(2);
+    private static string GetThreeColumns => aa1.RepeatMinimum(3);
 }

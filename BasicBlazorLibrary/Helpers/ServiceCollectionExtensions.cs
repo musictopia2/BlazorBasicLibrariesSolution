@@ -24,7 +24,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ToastService>();
         services.AddScoped<IToast>(xx => xx.GetRequiredService<ToastService>());
         services.AddScoped<IToastComponent>(xx => xx.GetRequiredService<ToastService>());
-        if (bb.OS == BasicDataFunctions.EnumOS.WindowsDT)
+        if (bb1.OS == BasicDataFunctions.EnumOS.WindowsDT)
         {
             return services; //nothing to register because windows does something different for them.
         }

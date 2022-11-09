@@ -1,5 +1,5 @@
 using CommonBasicLibraries.BasicUIProcesses;
-using aa = BasicBlazorLibrary.Components.CssGrids.Helpers;
+using aa1 = BasicBlazorLibrary.Components.CssGrids.Helpers;
 namespace BasicBlazorLibrary.Components.CalendarPopups;
 public partial class CalendarSimpleModal<TValue>
 {
@@ -10,8 +10,8 @@ public partial class CalendarSimpleModal<TValue>
     public EventCallback Cancelled { get; set; }
     [Parameter]
     public EventCallback ChoseDate { get; set; }
-    private static string GetColumns() => aa.RepeatSpreadOut(7);
-    private static string GetRows() => aa.RepeatSpreadOut(8);
+    private static string GetColumns() => aa1.RepeatSpreadOut(7);
+    private static string GetRows() => aa1.RepeatSpreadOut(8);
     [Parameter]
     public TValue? DateToDisplay { get; set; }
     private DateOnly? _todisplay;
@@ -23,7 +23,7 @@ public partial class CalendarSimpleModal<TValue>
         {
             if (_todisplay.Value.Day == date.Day)
             {
-                return $"background-color: {cc.Aqua.ToWebColor()};";
+                return $"background-color: {cc1.Aqua.ToWebColor()};";
             }
         }
         return "";
