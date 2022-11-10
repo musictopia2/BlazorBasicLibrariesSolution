@@ -1,5 +1,5 @@
 namespace BasicBlazorLibrary.Components.Basic;
-public partial class BootstrapPrimaryButton
+public partial class PrimaryButton
 {
     [Parameter]
     public EventCallback OnClick { get; set; }

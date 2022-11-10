@@ -12,7 +12,7 @@
         @Title
     </div>
     <div>
-        <input type="text" @onclick:stopPropagation="true" @onclick:preventDefault="true" class="@Class" @ref="InputElement" style="@GetStyle" @bind="CurrentValue" @bind:event="oninput" />
+        <input type="text" @onclick:stopPropagation="true" @onclick:preventDefault="true" spellcheck="@SpellCheck" class="@Class" @ref="InputElement" style="@GetStyle" @bind="CurrentValue" @bind:event="oninput" />
     </div>
     return;
 }

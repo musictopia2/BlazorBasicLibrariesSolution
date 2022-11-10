@@ -18,6 +18,8 @@ public abstract class TextComponentBase<TValue> : JavascriptComponentBase, IFocu
     public string Class { get; set; } = "";
     [Parameter]
     public string Style { get; set; } = "";
+    [Parameter]
+    public bool SpellCheck { get; set; }
     /// <summary>
     /// Gets or sets the value of the input. This should be used with two-way binding.
     /// </summary>

@@ -6,6 +6,8 @@ public partial class SearchStringList : IAsyncDisposable
     [Parameter]
     public BasicList<string>? ItemList { get; set; }
     private BasicList<string> _displayList = new();
+    [Parameter]
+    public bool SpellCheck { get; set; }
     private string _value = "";
     [Parameter]
 #pragma warning disable BL0007 // Component parameters should be auto properties

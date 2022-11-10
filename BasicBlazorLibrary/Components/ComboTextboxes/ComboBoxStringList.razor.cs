@@ -8,6 +8,8 @@ public partial class ComboBoxStringList : IAsyncDisposable
     private IJSRuntime? JS { get; set; }
     [Parameter]
     public BasicList<string>? ItemList { get; set; }
+    [Parameter]
+    public bool SpellCheck { get; set; }
     private string _value = "";
     [Parameter]
 #pragma warning disable BL0007 // Component parameters should be auto properties

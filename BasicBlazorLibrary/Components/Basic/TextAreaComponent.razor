@@ -16,7 +16,7 @@
 }
 @if (UseLeftOvers)
 {
-    <textarea class="@Class" @ref="_text" @oninput="HandleOnChange" @onclick:stopPropagation="true" @onclick:preventDefault="true" style="resize: none;width: 100%; height: 100%; @Style">
+    <textarea spellcheck="@SpellCheck" class="@Class" @ref="_text" @oninput="HandleOnChange" @onclick:stopPropagation="true" @onclick:preventDefault="true" style="resize: none;width: 100%; height: 100%; @Style">
         @Value
     </textarea>
     return;
@@ -24,7 +24,7 @@
 @if (FullPage)
 {
     <div style="height: 99%; margin-left: 3px; margin-right: 3px;">
-        <textarea class="@Class" @ref="_text" @oninput="HandleOnChange" @onclick:stopPropagation="true" @onclick:preventDefault="true" style="resize: none;width: 100%; height: 100%; @Style">
+        <textarea spellcheck="@SpellCheck" class="@Class" @ref="_text" @oninput="HandleOnChange" @onclick:stopPropagation="true" @onclick:preventDefault="true" style="resize: none;width: 100%; height: 100%; @Style">
             @Value
         </textarea>
     </div>
@@ -36,11 +36,11 @@
 }
 @if (ReadOnly)
 {
-    <textarea class="@Class" @oninput="HandleOnChange" @onclick:stopPropagation="true" @onclick:preventDefault="true" style="resize: none; width: @Width; @Style" readonly rows="@Rows">
+    <textarea spellcheck="@SpellCheck" class="@Class" @oninput="HandleOnChange" @onclick:stopPropagation="true" @onclick:preventDefault="true" style="resize: none; width: @Width; @Style" readonly rows="@Rows">
         @Value
     </textarea>
     return;
 }
-<textarea class="@Class" @ref="_text" @oninput="HandleOnChange" @onclick:stopPropagation="true" @onclick:preventDefault="true" style="resize: none; width: @Width; @Style" rows="@Rows">
+<textarea spellcheck="@SpellCheck" class="@Class" @ref="_text" @oninput="HandleOnChange" @onclick:stopPropagation="true" @onclick:preventDefault="true" style="resize: none; width: @Width; @Style" rows="@Rows">
     @Value
 </textarea>

@@ -24,6 +24,8 @@ public abstract class EnterBase<TValue> : ComponentBase, IFocusInput, IDisposabl
     public int TabIndex { get; set; } = -1;
     [Parameter]
     public string Placeholder { get; set; } = "";
+    [Parameter]
+    public bool SpellCheck { get; set; }
     public ElementReference? InputElement { get; set; }
     protected KeystrokeClass KeyStrokeHelper;
     private async void ProcessShiftTab()

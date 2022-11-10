@@ -20,9 +20,13 @@
     </table>
     return;
 }
-@ChildContent
+<main>
+    <BasicStyleComponent>
+        @ChildContent
+    </BasicStyleComponent>
+    
+</main>
 @if (_messageOpened)
 {
-    <div>Test</div>
     <MessageBoxBlazor CloseClicked="ClosePopupAsync" Message="@_messageShown" />
 }
