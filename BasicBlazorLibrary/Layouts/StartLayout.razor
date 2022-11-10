@@ -28,5 +28,8 @@
 </main>
 @if (_messageOpened)
 {
-    <MessageBoxBlazor CloseClicked="ClosePopupAsync" Message="@_messageShown" />
+    <BasicStyleComponent>
+        <MessageBoxBlazor CloseClicked="ClosePopupAsync" Message="@_messageShown" />
+    </BasicStyleComponent>
+    
 }

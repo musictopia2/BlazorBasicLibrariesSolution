@@ -1,4 +1,5 @@
-﻿<PopupCenteredFull ShowHeader="false"
+﻿@using css1 = BasicBlazorLibrary.Components.Basic.BasicStyleComponent;
+<PopupCenteredFull ShowHeader="false"
                    Visible="true"
                    Width=""
                    Height=""
@@ -20,8 +21,8 @@
         }
     }
     <div>
-        <button @onclick="@CloseClicked" class="btn btn-primary">
+        <PrimaryButton OnClick="CloseClicked">
             Okay
-        </button>
+        </PrimaryButton>
     </div>
 </PopupCenteredFull>
