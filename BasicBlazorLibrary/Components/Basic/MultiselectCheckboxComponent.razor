@@ -68,9 +68,9 @@
 {
     <StackLayout>
         <StackItem Length="1fr">
-            <BootstrapPrimaryButton Style="width: 95%;" FontSize="2rem" OnClick="() => SelectUnselectItem(item)">
+            <PrimaryButton Style="width: 95%;" FontSize="2rem" OnClick="() => SelectUnselectItem(item)">
                 @RetrieveValue!(item)
-            </BootstrapPrimaryButton>
+            </PrimaryButton>
         </StackItem>
         <StackItem>
             <input type="checkbox" style="zoom: 6.0" checked="@IsSelected(item)"
