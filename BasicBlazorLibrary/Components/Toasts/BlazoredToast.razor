@@ -1,10 +1,16 @@
 ﻿<div class="blazored-toast @ToastSettings!.BaseClass @ToastSettings.AdditionalClasses">
     <div class="blazored-toast-body">
         <div class="blazored-toast-header">
-            <h5 class="blazored-toast-heading">@ToastSettings.Heading</h5>
+            <span class="customheading">
+                @ToastSettings.Heading
+            </span>
+            
             <span @onclick="@Close" class="closemodal">X</span>
         </div>
-        <p class="blazored-toast-message">@ToastSettings.Message</p>
+        <div class="blazored-message">
+            @ToastSettings.Message
+        </div>
+        
     </div>
     @if (ToastSettings.ShowProgressBar)
     {

@@ -13,6 +13,7 @@
     padding: 1rem 1.25rem;
     color: #fff;
     width: 100vw;
+    box-sizing: border-box;
     box-shadow: rgba(0,0,0,0.25) 0px 10px 40px;
 }
 
@@ -46,32 +47,37 @@
     flex: 1;
 }
 
-    .blazored-toast-body .blazored-toast-header {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-    }
+.blazored-message {
+    margin-top: 5px;
+}
 
-        .blazored-toast-body .blazored-toast-header h5 {
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 1.5rem;
-            margin-bottom: 0;
-            line-height: 32px;
-        }
+.blazored-toast-body .blazored-toast-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
 
-        .blazored-toast-body .blazored-toast-header .blazored-toast-close {
-            background-color: transparent;
-            border: 0;
-            -webkit-appearance: none;
-            color: inherit;
-            font-size: 1.25rem;
-        }
-
-    .blazored-toast-body p {
+    .blazored-toast-body .blazored-toast-header .customheading {
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 1.5rem;
         margin-bottom: 0;
-        font-size: 1rem;
+        line-height: 32px;
+        margin-top: -5px;
     }
+
+    .blazored-toast-body .blazored-toast-header .blazored-toast-close {
+        background-color: transparent;
+        border: 0;
+        -webkit-appearance: none;
+        color: inherit;
+        font-size: 1.25rem;
+    }
+
+.blazored-toast-body p {
+    margin-bottom: 0;
+    font-size: 1rem;
+}
 
 .blazored-toast-progressbar {
     position: absolute;
