@@ -28,3 +28,34 @@
 ::deep .bold{
     font-weight: bold;
 }
+::deep .table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+    ::deep .table th {
+        padding: .25rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+    ::deep .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+    }
+::deep .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0,0,0,.05)
+}
+::deep .thead-dark th {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #454d55;
+}
+::deep th{
+    text-align: inherit;
+}
+::deep table{
+    border-collapse:collapse;
+}
+::deep .table td{
+    padding: .25rem;
+}
