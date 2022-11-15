@@ -19,4 +19,5 @@ public abstract partial class ButtonComponentBase
     public bool Visible { get; set; } = true;
     public virtual string FontSize => "";
     public virtual string RightSpacing => "5px";
+    public virtual string Padding => "10px";
 }

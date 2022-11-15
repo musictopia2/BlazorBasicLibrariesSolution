@@ -6,15 +6,15 @@
 {
     @if (IsEnabled == false)
     {
-        <button style="background-color: @BackColor; margin-right: @RightSpacing; color: @DisabledColor" disabled>@ChildContent</button>
+        <button style="background-color: @BackColor; margin-right: @RightSpacing; color: @DisabledColor; padding: @Padding;" disabled>@ChildContent</button>
         return;
     }
-    <button @onclick="OnClick" @onmouseover="OnMouseOver" @onmouseout="OnMouseOut" style="background-color: @BackColor; margin-right: @RightSpacing;  color: @TextColor">@ChildContent</button>
+    <button @onclick="OnClick" @onmouseover="OnMouseOver" @onmouseout="OnMouseOut" style="background-color: @BackColor; margin-right: @RightSpacing;  color: @TextColor; padding: @Padding;">@ChildContent</button>
     return;
 }
 @if (IsEnabled == false)
 {
-    <button style="background-color: @BackColor; font-size:@FontSize; margin-right: @RightSpacing; color: @DisabledColor" disabled>@ChildContent</button>
+    <button style="background-color: @BackColor; font-size:@FontSize; margin-right: @RightSpacing; color: @DisabledColor; padding: @Padding;" disabled>@ChildContent</button>
     return;
 }
-<button @onclick="OnClick" @onmouseover="OnMouseOver" @onmouseout="OnMouseOut" style="background-color: @BackColor;  font-size: @FontSize; margin-right: @RightSpacing;  color: @TextColor">@ChildContent</button>
+<button @onclick="OnClick" @onmouseover="OnMouseOver" @onmouseout="OnMouseOut" style="background-color: @BackColor;  font-size: @FontSize; margin-right: @RightSpacing;  color: @TextColor; padding: @Padding;">@ChildContent</button>

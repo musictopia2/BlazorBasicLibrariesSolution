@@ -30,6 +30,7 @@
                         @if (y == _service!.ElementScrollTo)
                         {
                             <div @onclick="() => ElementClicked(y)"
+                                class="customdiv"
                                  @ondblclick="() => ElementDoubleClicked()"
                                  style="@GetColorStyle(y)" @ref="_scrollreference"
                                  onmouseover="this.style.background='@GetHoverColor(y)'"
@@ -42,6 +43,7 @@
                         else if (y == 0)
                         {
                             <div @onclick="() => ElementClicked(y)"
+                                class="customdiv"
                                  @ondblclick="() => ElementDoubleClicked()"
                                  style="@GetColorStyle(y)" @ref="_firstreference"
                                  onmouseover="this.style.background='@GetHoverColor(y)'"
@@ -54,6 +56,7 @@
                         else
                         {
                             <div @onclick="() => ElementClicked(y)" style="@GetColorStyle(y)"
+                                class="customdiv"
                                  @ondblclick="() => ElementDoubleClicked()"
                                  onmouseover="this.style.background='@GetHoverColor(y)'"
                                  onmouseout="this.style.background='@GetBackgroundColor(y)'">
@@ -80,6 +83,7 @@
                                         BackgroundColor="@Style.ComboBackgroundColor"
                                         @ref="_virtual">
                     <div @onclick="() => ElementClicked(item.Index)"
+                         class="customdiv"
                          @ondblclick="() => ElementDoubleClicked()"
                          style="@GetColorStyle(item.Index)"
                          onmouseover="this.style.background='@GetHoverColor(item.Index)'"
@@ -115,6 +119,7 @@
             @if (y == _service!.ElementScrollTo)
             {
                 <div @onclick="() => ElementClicked(y)"
+                    class="customdiv"
                      @ondblclick="() => ElementDoubleClicked()"
                      style="@GetColorStyle(y)" @ref="_scrollreference"
                      onmouseover="this.style.background='@GetHoverColor(y)'"
@@ -127,6 +132,7 @@
             else if (y == 0)
             {
                 <div @onclick="() => ElementClicked(y)"
+                    class="customdiv"
                      @ondblclick="() => ElementDoubleClicked()"
                      style="@GetColorStyle(y)" @ref="_firstreference"
                      onmouseover="this.style.background='@GetHoverColor(y)'"
@@ -140,6 +146,7 @@
             {
                 <div @onclick="() => ElementClicked(y)" style="@GetColorStyle(y)"
                      @ondblclick="() => ElementDoubleClicked()"
+                     class="customdiv"
                      onmouseover="this.style.background='@GetHoverColor(y)'"
                      onmouseout="this.style.background='@GetBackgroundColor(y)'">
                     <div style="@GetTextStyle()">
@@ -167,6 +174,7 @@ else
         <div @onclick="() => ElementClicked(item.Index)"
              @ondblclick="() => ElementDoubleClicked()"
              style="@GetColorStyle(item.Index)"
+             class="customdiv"
              onmouseover="this.style.background='@GetHoverColor(item.Index)'"
              onmouseout="this.style.background='@GetBackgroundColor(item.Index)'"
              >

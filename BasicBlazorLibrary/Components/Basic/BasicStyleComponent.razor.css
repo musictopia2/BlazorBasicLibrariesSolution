@@ -59,3 +59,8 @@
 ::deep .table td{
     padding: .25rem;
 }
+::deep input button{
+    line-height: inherit;
+    font-family: inherit;
+    margin: 0;
+}
