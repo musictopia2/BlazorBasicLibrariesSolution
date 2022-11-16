@@ -1,4 +1,11 @@
 ﻿@inherits AttributeBase
+@if (IsPrimary)
+{
+    <PrimaryButton OnClick="Form!.HandleSubmitAsync">
+        @ChildContent
+    </PrimaryButton>
+    return;
+}
 <button class="@CssClass" @onclick="Form!.HandleSubmitAsync">
     @ChildContent
 </button>
