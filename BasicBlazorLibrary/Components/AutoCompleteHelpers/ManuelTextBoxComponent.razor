@@ -4,7 +4,7 @@
     {
         <input @ref="Text"
                style="@GetTextStyle() background-color: @GetTextBackgroundColor;"
-               spellcheck="@SpellCheck"
+               spellcheck="@IsSpells"
                @onkeypress:preventDefault="true"
                @onclick:stopPropagation="true" @onclick:preventDefault="true"
                type="text"
@@ -16,7 +16,7 @@
     {
         <input @ref="Text"
                style="@GetTextStyle() background-color: @GetTextBackgroundColor;"
-               spellcheck="@SpellCheck"
+               spellcheck="@IsSpells"
                @onkeypress:preventDefault="true"
                @onclick:stopPropagation="true" @onclick:preventDefault="true"
                type="text"

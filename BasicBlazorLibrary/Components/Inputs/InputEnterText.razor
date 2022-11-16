@@ -11,7 +11,7 @@
     </div>
     <div>
         <input type="text"
-               spellcheck="@SpellCheck"
+               spellcheck="@IsSpells"
                @bind="CurrentValue"
                @ref="InputElement"
                @onclick:stopPropagation="true" @onclick:preventDefault="true"
@@ -25,7 +25,7 @@
     return;
 }
 <input type="text"
-       spellcheck="@SpellCheck"
+       spellcheck="@IsSpells"
        @bind="CurrentValue"
        @ref="InputElement"
        @onclick:stopPropagation="true" @onclick:preventDefault="true"

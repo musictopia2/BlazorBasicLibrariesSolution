@@ -7,6 +7,7 @@ public partial class ManuelTextBoxComponent
     public AutoCompleteStyleModel? Style { get; set; } = new();
     [Parameter]
     public bool SpellCheck { get; set; }
+    private string IsSpells => SpellCheck ? "true" : "false";
     [Parameter]
     public int TabIndex { get; set; } = -1;
     [Parameter]

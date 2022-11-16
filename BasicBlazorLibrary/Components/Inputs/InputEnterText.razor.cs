@@ -9,4 +9,5 @@ public partial class InputEnterText
     [Parameter]
     public string HeaderFontSize { get; set; } = "";
     private string GetHeaderFontSize => HeaderFontSize == "" ? "1em" : HeaderFontSize;
+    private string IsSpells => SpellCheck ? "true" : "false";
 }
