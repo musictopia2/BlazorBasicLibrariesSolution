@@ -20,7 +20,8 @@ public partial class TextAreaComponent
     [Parameter]
     public string Style { get; set; } = "";
     [Parameter]
-    public bool SpellCheck { get; set; }
+    public bool SpellCheck { get; set; } = false;
+    private string IsSpells => SpellCheck ? "true" : "false";
     [Parameter]
     public ConsoleKey MainHotKey { get; set; } = ConsoleKey.NoName;
     [Parameter]

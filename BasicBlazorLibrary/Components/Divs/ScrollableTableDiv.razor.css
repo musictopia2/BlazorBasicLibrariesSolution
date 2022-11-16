@@ -4,3 +4,6 @@
     background-color: white;
     position: sticky;
 }
+::deep td {
+    padding: .25rem;
+}
