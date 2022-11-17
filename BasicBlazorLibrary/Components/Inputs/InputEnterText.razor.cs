@@ -3,7 +3,7 @@ public partial class InputEnterText
 {
     [Parameter]
     public bool FullWidth { get; set; }
-    private string GetStyle() => FullWidth || Item is not null ? "width: 100%;" : "";
+    private string GetStyle() => FullWidth || Item is not null ? "width: 99%;" : "";
     [Parameter]
     public string Title { get; set; } = "";
     [Parameter]

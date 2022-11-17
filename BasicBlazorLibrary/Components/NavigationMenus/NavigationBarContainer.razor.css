@@ -21,3 +21,7 @@
 .inline {
     display: inline-block;
 }
+
+.barcontent{
+    margin-right: 10px;
+}

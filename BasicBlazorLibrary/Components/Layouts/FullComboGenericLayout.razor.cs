@@ -43,7 +43,7 @@ public partial class FullComboGenericLayout<TValue> : IFocusInput
     protected override void OnInitialized()
     {
         Style.Height = "100%";
-        Style.Width = "100%";
+        Style.Width = "99.5%";
         _comboBox = null;
         if (TabContainer is not null)
         {
