@@ -1,0 +1,20 @@
+﻿@if (_showConfirm)
+{
+    <ConfirmationBlazor Message="@ConfirmationMessage" Title="@ConfirmationTitle" Results="PrivateConfirm" />
+}
+@if (FontSize == "")
+{
+    @if (IsEnabled == false)
+    {
+        <button class="btn @ButtonClass" style="margin: @Spacing; color: @DisabledColor; @Style "disabled>@ChildContent</button>
+        return;
+    }
+    <button class="btn @ButtonClass" @onclick="PrivateClick" style="margin: @Spacing; @Style">@ChildContent</button>
+    return;
+}
+@if (IsEnabled == false)
+{
+    <button class="btn @ButtonClass" style=" font-size:@FontSize; margin: @Spacing; color: @DisabledColor; @Style" disabled>@ChildContent</button>
+    return;
+}
+<button @onclick="PrivateClick" class="btn @ButtonClass" style=" font-size: @FontSize; margin: @Spacing; @Style">@ChildContent</button>

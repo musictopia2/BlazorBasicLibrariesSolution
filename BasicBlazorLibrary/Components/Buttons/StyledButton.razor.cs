@@ -1,6 +1,9 @@
-namespace BasicBlazorLibrary.Components.Basic;
-public partial class PrimaryButton
+namespace BasicBlazorLibrary.Components.Buttons;
+public abstract partial class StyledButton
 {
+    protected abstract string ButtonClass { get; }
+    protected const string BtnPrimary = "btn-primary";
+    protected const string BtnDanger = "btn-danger";
     [Parameter]
     public EventCallback OnClick { get; set; }
     [Parameter]

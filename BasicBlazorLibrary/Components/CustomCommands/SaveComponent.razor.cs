@@ -1,4 +1,4 @@
-namespace BasicBlazorLibrary.Components.Basic;
+namespace BasicBlazorLibrary.Components.CustomCommands;
 public partial class SaveComponent
 {
     /// <summary>
