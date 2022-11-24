@@ -1,4 +1,6 @@
 using BasicBlazorLibrary.Components.MediaQueries.ResizeHelpers;
+using System.Runtime.CompilerServices;
+
 namespace BasicBlazorLibrary.Components.MediaQueries.ParentClasses;
 public partial class MediaQueryListComponent : IAsyncDisposable
 {
@@ -64,6 +66,7 @@ public partial class MediaQueryListComponent : IAsyncDisposable
             return;
         }
     }
+    public event Action? SizeChangedEvent;
     private void MediaQueryListComponent_OnResized(BrowserSize obj)
     {
         BrowserInfo = obj;
@@ -88,6 +91,8 @@ public partial class MediaQueryListComponent : IAsyncDisposable
         };
         _loading = false;
         StateHasChanged();
+        SizeChangedEvent?.Invoke(); //this time, we need events because more than one may be needed.  this seems to be the best way to handle this.
+        //this is used when we don't care about the height and widths of the entire screen but may need to know the size of something within it.
     }
     public ValueTask DisposeAsync()
     {
