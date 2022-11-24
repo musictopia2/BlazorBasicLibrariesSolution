@@ -49,6 +49,16 @@ public static class BasicJavascriptExtensions
         var moduleTask = js.GetModuleTask();
         return await moduleTask.InvokeDisposeAsync<int>("getparentWidth", element);
     }
+    public static async Task<int> GetBrowserHeight(this IJSRuntime js)
+    {
+        var moduleTask = js.GetModuleTask();
+        return await moduleTask.InvokeDisposeAsync<int>("getbrowserheight");
+    }
+    public static async Task<int> GetBrowserWidth(this IJSRuntime js)
+    {
+        var moduleTask = js.GetModuleTask();
+        return await moduleTask.InvokeDisposeAsync<int>("getbrowserwidth");
+    }
     public static async Task<int> PixelsPerRem(this IJSRuntime js)
     {
         var moduleTask = js.GetModuleTask();

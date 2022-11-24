@@ -41,3 +41,9 @@ export function getparentWidth(element) {
 export function scrolltotop() {
     window.scrollTo(0, 0);
 }
+export function getbrowserheight() {
+    return window.innerHeight;
+}
+export function getbrowserwidth() {
+    return window.innerWidth;
+}
