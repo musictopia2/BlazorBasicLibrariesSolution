@@ -4,6 +4,7 @@ public abstract partial class StyledButton
     protected abstract string ButtonClass { get; }
     protected const string BtnPrimary = "btn-primary";
     protected const string BtnDanger = "btn-danger";
+    protected const string BtnSecondary = "btn-secondary";
     [Parameter]
     public EventCallback OnClick { get; set; }
     [Parameter]

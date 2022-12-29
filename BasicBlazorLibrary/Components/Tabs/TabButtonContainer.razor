@@ -2,12 +2,18 @@
 <div style="width: 100%;">
     @foreach (TabPage tabPage in Pages)
     {
-        <button type="button"
-                style="margin-right: 5px; margin-bottom: 5px;"
-                class="btn @GetButtonClass(tabPage)"
-                @onclick=@( () => ActivatePage(tabPage) )>
-            @tabPage.Text
-        </button>
+        @if (tabPage == ActivePage)
+        {
+            <PrimaryButton OnClick="() => ActivatePage(tabPage)">
+                @tabPage.Text
+            </PrimaryButton>
+        }
+        else
+        {
+            <SecondaryButton OnClick="() => ActivatePage(tabPage)">
+                @tabPage.Text
+            </SecondaryButton>
+        }
     }
 </div>
 <CascadingValue Value="this">
