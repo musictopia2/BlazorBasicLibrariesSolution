@@ -10,6 +10,8 @@ public partial class DataEntryFormGridComponent : IDataEntryGrid
         Key!.AddAction(key, action);
     }
     [Parameter]
+    public string SubmitKey { get; set; } = "";
+    [Parameter]
     public EventCallback OnSubmit { get; set; }
     [Parameter]
     public EventCallback OnValidSubmit { get; set; }
