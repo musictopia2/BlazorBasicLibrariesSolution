@@ -1,4 +1,3 @@
-using BasicBlazorLibrary.Components.Toasts;
 using CommonBasicLibraries.BasicUIProcesses;
 namespace BasicBlazorLibrary.Layouts;
 public partial class StartLayout
@@ -7,7 +6,8 @@ public partial class StartLayout
     private ILayout? Layout { get; set; }
     [Inject]
     private IToast? Toast { get; set; }
-
+    [Parameter]
+    public BasicList<string> ExtraCssFiles { get; set; } = new();
     public static string DefaultGridHeight => "730px";
     [Parameter]
     public RenderFragment? ChildContent { get; set; }

@@ -3,10 +3,14 @@ public partial class BasicStyleComponent
 {
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
-    public const string Btn = "btn"; //this will help with intellisense for different class names.
 
+    [Parameter]
+    public BasicList<string> ExtraCssFiles { get; set; } = new();
+
+    //[Parameter]
+    //public RenderFragment? HeadContent { get; set; }
+    public const string Btn = "btn"; //this will help with intellisense for different class names.
     public const string NoSelect = "usernoselect";
-    public const string TestRed = "testred";
     public const string Bold = "bold";
     public const string Table = "table";
     public const string TableStriped = "table-striped";

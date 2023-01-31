@@ -8,6 +8,10 @@
 <HeadContent>
     <link href="_content/BasicBlazorLibrary/custom.css" rel="stylesheet" />
     <link href="_content/BasicBlazorLibrary/reducedmotion.css" rel="stylesheet" />
+    @foreach (var item in ExtraCssFiles)
+    {
+        <link href="@item" rel="stylesheet" />
+    }
 </HeadContent>
 @{
     //the purpose of this is to have several deep classes to replace bootstrap stuff.  will contain all the common stuff i had from bootstrap plus one for testing.

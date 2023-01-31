@@ -21,15 +21,14 @@
     return;
 }
 <main>
-    <BasicStyleComponent>
+    <BasicStyleComponent ExtraCssFiles="ExtraCssFiles">
         @ChildContent
     </BasicStyleComponent>
     
 </main>
 @if (_messageOpened)
 {
-    <BasicStyleComponent>
+    <BasicStyleComponent ExtraCssFiles="ExtraCssFiles">
         <MessageBoxBlazor CloseClicked="ClosePopupAsync" Message="@_messageShown" />
-    </BasicStyleComponent>
-    
+    </BasicStyleComponent>   
 }
