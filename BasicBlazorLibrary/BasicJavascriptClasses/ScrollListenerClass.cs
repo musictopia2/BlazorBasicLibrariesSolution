@@ -6,8 +6,9 @@ public class ScrollListenerClass : BaseLibraryJavascriptClass
     }
     public event Action<int>? Scrolled;
     [JSInvokable]
-    public void ScrollChanged(int value)
+    public void ScrollChanged(decimal temps)
     {
+        int value = Convert.ToInt32(temps);
         Scrolled?.Invoke(value);
     }
     public async Task InitAsync(ElementReference? element, bool isVertical = true)
