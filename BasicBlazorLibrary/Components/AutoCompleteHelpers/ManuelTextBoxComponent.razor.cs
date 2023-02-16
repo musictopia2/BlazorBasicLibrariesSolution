@@ -12,6 +12,9 @@ public partial class ManuelTextBoxComponent
     public int TabIndex { get; set; } = -1;
     [Parameter]
     public string Placeholder { get; set; } = "";
+    [Parameter]
+    public bool FromFullScreenCombo { get; set; }
+    private string GetWidth => FromFullScreenCombo == false ? Style!.Width : "98%";
     private string GetTextStyle()
     {
         return $"font-size: {Style!.FontSize}; color: {Style.HeaderTextColor};";

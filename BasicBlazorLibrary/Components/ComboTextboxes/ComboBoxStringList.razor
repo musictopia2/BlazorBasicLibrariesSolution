@@ -16,13 +16,14 @@
             <ManuelTextBoxComponent Placeholder="@Placeholder"
                                     SpellCheck="SpellCheck"
                                     Style="Style"
+                                    FromFullScreenCombo=true
                                     TabIndex="@TabIndex"
                                     @ref="_text" />
         </TopContent>
         <MainContent>
             @if (Virtualized == false)
             {
-                <div class="customscroll" style="width: @Style.Width; height: 99.6%;  background-color: @Style.ComboBackgroundColor ;">
+                <div class="customscroll" style="width: @Style.Width; height: 98%;  background-color: @Style.ComboBackgroundColor ;">
                     @foreach (var item in ItemList!)
                     {
                         int y;
@@ -77,7 +78,7 @@
                 <VirtualSimpleComponent Items="ItemList"
                                         HasSolidBlackBorders="true"
                                         ContainerWidth="@Style.Width"
-                                        ContainerHeight="@Style.Height"
+                                        ContainerHeight="98%"
                                         LineHeight="@Style.LineHeight"
                                         Context="item"
                                         BackgroundColor="@Style.ComboBackgroundColor"
