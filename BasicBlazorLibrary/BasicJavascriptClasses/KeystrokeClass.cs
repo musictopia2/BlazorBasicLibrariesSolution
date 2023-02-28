@@ -1,4 +1,14 @@
 ﻿namespace BasicBlazorLibrary.BasicJavascriptClasses;
+internal static class KeystrokeHelpers
+{
+    //this may later be put into the common functions extensions (?)
+    public static void AddLatest(this Dictionary<ConsoleKey, Action> list, ConsoleKey key, Action action)
+    {
+        list.Remove(key);
+        list.Add(key, action);
+    }
+}
+
 /// <summary>
 /// this class handles the parts that had to be done via javascript for keydown.
 /// other classes are responsible for figuring out what to do with arrow up/down and the backspace.
@@ -26,23 +36,23 @@ public class KeystrokeClass : BaseLibraryJavascriptClass
     }
     public void AddAction(ConsoleKey key, Action action)
     {
-        _simpleActions.Add(key, action);
+        _simpleActions.AddLatest(key, action); //well see if this fixes the problem (hopefully no problem later).
     }
     public void AddShiftTab(Action action)
     {
-        _shiftActions.Add(ConsoleKey.Tab, action);
+        _shiftActions.AddLatest(ConsoleKey.Tab, action);
     }
     public void AddShiftAction(ConsoleKey key, Action action)
     {
-        _shiftActions.Add(key, action);
+        _shiftActions.AddLatest(key, action);
     }
     public void AddControlAction(ConsoleKey key, Action action)
     {
-        _controlActions.Add(key, action);
+        _controlActions.AddLatest(key, action);
     }
     public void AddAltAction(ConsoleKey key, Action action)
     {
-        _altActions.Add(key, action);
+        _altActions.AddLatest(key, action);
     }
     public void AddArrowUpAction(Action action)
     {
@@ -72,6 +82,7 @@ public class KeystrokeClass : BaseLibraryJavascriptClass
         {
             return;
         }
+        
         _oldKey = key switch
         {
             16 => EnumOtherKeyCategory.Shift,
@@ -101,25 +112,25 @@ public class KeystrokeClass : BaseLibraryJavascriptClass
             _needsreleased = false;
             if (_oldKey == EnumOtherKeyCategory.Shift)
             {
-                if (_shiftActions.ContainsKey(consoleKey))
+                if (_shiftActions.TryGetValue(consoleKey, out Action? value))
                 {
-                    _shiftActions[consoleKey].Invoke();
+                    value.Invoke();
                     return;
                 }
             }
             if (_oldKey == EnumOtherKeyCategory.Control)
             {
-                if (_controlActions.ContainsKey(consoleKey))
+                if (_controlActions.TryGetValue(consoleKey, out Action? value))
                 {
-                    _controlActions[consoleKey].Invoke();
+                    value.Invoke();
                     return;
                 }
             }
             if (_oldKey == EnumOtherKeyCategory.Alt)
             {
-                if (_altActions.ContainsKey(consoleKey))
+                if (_altActions.TryGetValue(consoleKey, out Action? value))
                 {
-                    _altActions[consoleKey].Invoke();
+                    value.Invoke();
                     return;
                 }
             }

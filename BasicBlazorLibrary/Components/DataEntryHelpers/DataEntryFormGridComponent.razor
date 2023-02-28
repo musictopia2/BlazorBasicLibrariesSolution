@@ -3,18 +3,20 @@
 @inherits HotkeyComponentBase
 @implements IDataEntryGrid
 <InputTabOrderNavigationContainer @ref="_tabs" FocusFirst="true">
-    <SubmitForm OnValidSubmit="OnValidSubmit"
-                OnSubmit="OnSubmit"
-                OnInvalidSubmit="OnInvalidSubmit"
-                SubmitKey="@SubmitKey"
-                Model="Model"
-                EditContext="EditContext">
-        <CascadingValue Value="this">
-            <div @ref="MainElement" tabindex="0" style="display: grid; grid-template-columns: max-content 1fr; column-gap: 5px; grid-row-gap: 5px;">
-                @ChildContent
-            </div>
-        </CascadingValue>
-        <DataAnnotationsValidator />
-        <ValidationSummary />
-    </SubmitForm>
+    <div @ref="MainElement" tabindex="0">
+        <SubmitForm OnValidSubmit="OnValidSubmit"
+                    OnSubmit="OnSubmit"
+                    OnInvalidSubmit="OnInvalidSubmit"
+                    SubmitKey="@SubmitKey"
+                    Model="Model"
+                    EditContext="EditContext">
+            <CascadingValue Value="this">
+                <div style="display: grid; grid-template-columns: max-content 1fr; column-gap: 5px; grid-row-gap: 5px;">
+                    @ChildContent
+                </div>
+            </CascadingValue>
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+        </SubmitForm>
+    </div>
 </InputTabOrderNavigationContainer>

@@ -1,4 +1,4 @@
-using BasicBlazorLibrary.Components.InputNavigations;
+//using BasicBlazorLibrary.Components.InputNavigations;
 using Microsoft.AspNetCore.Components.Forms;
 namespace BasicBlazorLibrary.Components.DataEntryHelpers;
 public partial class DataEntryFormGridComponent : IDataEntryGrid
@@ -22,12 +22,14 @@ public partial class DataEntryFormGridComponent : IDataEntryGrid
     [Parameter] public EditContext? EditContext { get; set; }
     protected override void OnInitialized()
     {
-        _tabs = null;
+        //_tabs = null;
         base.OnInitialized();
     }
-    private InputTabOrderNavigationContainer? _tabs;
-    public async Task FocusFirstAsync()
-    {
-        await _tabs!.FocusFirstAsync();
-    }
+    //decided to remove the function for focusfirstasync because it may not work anyways since i don't see where the inputtabnavigation is even being created.
+
+    //private InputTabOrderNavigationContainer? _tabs;
+    //public async Task FocusFirstAsync() //can be iffy actually (?)
+    //{
+    //    await _tabs!.FocusFirstAsync();
+    //}
 }
