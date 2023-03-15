@@ -7,13 +7,13 @@ public partial class InputEnterDate<TValue>
     private TextBoxHelperClass? _helps;
     [Inject]
     private IToast? Toast { get; set; }
-    public override async Task LoseFocusAsync()
+    protected override async Task<bool> CustomValid()
     {
         _value = await _helps!.GetValueAsync(InputElement);
         if (_value == "")
         {
             CurrentValue = default;
-            return;
+            return true;
         }
         bool rets = _value.IsValidDate(out DateOnly? date);
         if (rets == false)
@@ -21,13 +21,53 @@ public partial class InputEnterDate<TValue>
             Toast!.ShowUserErrorToast("Invalid Date");
             CurrentValue = default;
             await ClearTextAsync();
-            return;
+            return false;
         }
         _dateChosen = date;
         object temps = _dateChosen!;
-        CurrentValue = (TValue)temps;
+        try
+        {
+            CurrentValue = (TValue)temps;
+        }
+        catch (Exception)
+        {
+            temps = _dateChosen!.Value.ToDateTime();
+            CurrentValue = (TValue)temps;
+        }
+
         _previousValue = CurrentValue;
+        return true;
     }
+    //public override async Task LoseFocusAsync()
+    //{
+    //    _value = await _helps!.GetValueAsync(InputElement);
+    //    if (_value == "")
+    //    {
+    //        CurrentValue = default;
+    //        return;
+    //    }
+    //    bool rets = _value.IsValidDate(out DateOnly? date);
+    //    if (rets == false)
+    //    {
+    //        Toast!.ShowUserErrorToast("Invalid Date");
+    //        CurrentValue = default;
+    //        await ClearTextAsync();
+    //        return;
+    //    }
+    //    _dateChosen = date;
+    //    object temps = _dateChosen!;
+    //    try
+    //    {
+    //        CurrentValue = (TValue)temps;
+    //    }
+    //    catch (Exception)
+    //    {
+    //        temps = _dateChosen!.Value.ToDateTime();
+    //        CurrentValue = (TValue)temps;
+    //    }
+
+    //    _previousValue = CurrentValue;
+    //}
     private bool _invalid;
     private static string GetFormattedDate(DateOnly date)
     {
@@ -93,6 +133,18 @@ public partial class InputEnterDate<TValue>
             else
             {
                 _dateChosen = aa;
+            }
+        }
+        else if (Value is DateTime ab)
+        {
+            _invalid = false;
+            if (ab.Equals(default))
+            {
+                _dateChosen = null;
+            }
+            else
+            {
+                _dateChosen = ab.ToDateOnly();
             }
         }
         else

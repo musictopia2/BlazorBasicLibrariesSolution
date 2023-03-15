@@ -18,6 +18,11 @@ export function start(dotnetRef, element) {
                 cancelKeyEvent(evt); //don't allow default search popup by F3
                 return false;
             }
+            if (evt == null) evt = event; if (testKeyCode(evt, 116)) //F5   
+            {
+                cancelKeyEvent(evt); //don't allow default clear form by F5
+                return false;
+            }
             //bad news is this was the only way i was able to disable tab.  this means can no longer use tab for my hotkey system.
             if (evt == null) evt = event; if (testKeyCode(evt, 9)) //tab
             {

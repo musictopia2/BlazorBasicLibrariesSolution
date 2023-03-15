@@ -3,6 +3,7 @@ using BasicBlazorLibrary.Components.Forms;
 using BasicBlazorLibrary.Components.InputNavigations;
 using Microsoft.AspNetCore.Components.Forms;
 using System.Linq.Expressions;
+using System.Reflection.Metadata;
 #nullable disable
 namespace BasicBlazorLibrary.Components.Inputs;
 
@@ -30,23 +31,37 @@ public abstract class EnterBase<TValue> : ComponentBase, IFocusInput, IDisposabl
     protected KeystrokeClass KeyStrokeHelper;
     private async void ProcessShiftTab()
     {
+        if (await CustomValid() == false)
+        {
+            return; //can't even shift tab if something is wrong (like the date).
+        }
         await LoseFocusAsync();
         await TabContainer.FocusPreviousAsync();
     }
+    
+    protected virtual bool AllowEnter => true;
     /// <summary>
-    /// this is used for cases like the date picker where its going to either submit or go to another field.
-    /// which means if there is anything to do in order to get the state proper for the object can be done.
+    /// was going to use the losefocus to handle date picker.
+    /// however, discovered that even though you get the popup, it already submitted the form or went to the next field (wrong)
     /// </summary>
+    /// <returns></returns>
+    protected virtual Task<bool> CustomValid() => Task.FromResult(true);
+    //still needed because the combo boxes still use this.
     public virtual Task LoseFocusAsync()
     {
         return Task.CompletedTask;
     }
-    protected virtual bool AllowEnter => true;
     protected virtual async void ProcessEnter()
     {
+        if (await CustomValid() == false)
+        {
+            //if not valid, then can't go to the next field no matter what.
+            return; //this means if not valid, then won't even process (which is what i want)
+        }
         await LoseFocusAsync();
         if (WasSubmit)
         {
+            
             await Form.HandleSubmitAsync();
             return;
         }
@@ -150,10 +165,7 @@ public abstract class EnterBase<TValue> : ComponentBase, IFocusInput, IDisposabl
             else
             {
                 parsingFailed = true;
-                if (_parsingValidationMessages == null)
-                {
-                    _parsingValidationMessages = new ValidationMessageStore(EditContext);
-                }
+                _parsingValidationMessages ??= new ValidationMessageStore(EditContext);
                 _parsingValidationMessages.Add(FieldIdentifier, validationErrorMessage);
                 EditContext.NotifyFieldChanged(FieldIdentifier);
             }
@@ -270,7 +282,9 @@ public abstract class EnterBase<TValue> : ComponentBase, IFocusInput, IDisposabl
     {
     }
     //the one on github did not.  i followed their pattern.
+#pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
     void IDisposable.Dispose()
+#pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
     {
         if (EditContext != null)
         {
