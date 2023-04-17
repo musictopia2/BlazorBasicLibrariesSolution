@@ -47,3 +47,6 @@ export function getbrowserheight() {
 export function getbrowserwidth() {
     return window.innerWidth;
 }
+export function refreshbrowser() {
+    window.location.reload();
+}
