@@ -1,0 +1,6 @@
+span::deep {
+    display: inline-block;
+}
+div{
+    overflow: auto;
+}

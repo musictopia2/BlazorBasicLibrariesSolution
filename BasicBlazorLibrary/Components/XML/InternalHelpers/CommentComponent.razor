@@ -1,0 +1,9 @@
+﻿@{
+    var list = GetList();
+}
+@foreach (var item in list)
+{
+    <div>
+        <TabComponent HowManyTabs="HowManyTabs" />@item
+    </div>
+}

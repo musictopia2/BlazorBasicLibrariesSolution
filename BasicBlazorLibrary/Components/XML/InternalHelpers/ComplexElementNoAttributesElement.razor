@@ -1,0 +1,23 @@
+﻿@inherits BaseComplex
+@if (Element is null)
+{
+    return;
+}
+<HtmlTagComponent HowManyTabs="HowManyTabs">
+    @OpeningName()
+    @foreach (var item in Nodes)
+    {
+        @if (item is XElement element)
+        {
+            <ChildElementViewer Element="element" HowManyTabs="IncrementTabs" />
+        }
+        else if (item.NodeType == System.Xml.XmlNodeType.Comment)
+        {
+            <CommentComponent HowManyTabs="HowManyTabs" Comment="item" />
+        }
+        else if (HasComments)
+        {
+            <TabComponent HowManyTabs="IncrementTabs" /><ValueSpan Text="@item.ToString()" />
+        }
+    }
+</HtmlTagComponent>

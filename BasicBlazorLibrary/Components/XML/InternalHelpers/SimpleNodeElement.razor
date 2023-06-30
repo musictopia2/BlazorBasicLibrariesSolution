@@ -1,0 +1,38 @@
+﻿@inherits RawElement
+@if (Element is null)
+{
+    return;
+}
+@if (Element.Value == "" && HasAttributes == false)
+{
+    <HtmlTagComponent HowManyTabs="HowManyTabs">
+        @OnlyName()
+    </HtmlTagComponent>
+    return;
+}
+@if (Element.Value == "")
+{
+    <HtmlTagComponent HowManyTabs="HowManyTabs">
+        @StartName()
+        @foreach (var item in Element.Attributes())
+        {
+            <AttributeComponent XAttribute="item" />
+        }
+    </HtmlTagComponent>
+    return;
+}
+@if (HasAttributes == false)
+{
+    <HtmlTagComponent HowManyTabs="HowManyTabs">
+        @OpeningName()<ValueSpan Text="@Element.Value" />@ClosingName()
+    </HtmlTagComponent>
+    return;
+}
+<HtmlTagComponent HowManyTabs="HowManyTabs">
+    @StartName()
+    @foreach (var item in Element.Attributes())
+    {
+        <AttributeComponent XAttribute="item" />
+    }
+    ><ValueSpan Text="@Element.Value" />@ClosingName()
+</HtmlTagComponent>

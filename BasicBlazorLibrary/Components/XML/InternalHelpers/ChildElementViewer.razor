@@ -1,0 +1,27 @@
+﻿@inherits RawElement
+@if (Element is null)
+{
+    return;
+}
+@{
+    bool hasElements = Element.HasElements;
+    bool hasAttributes = Element.HasAttributes;
+    bool hasComments = Element.Nodes().Any(x => x.NodeType == System.Xml.XmlNodeType.Comment);
+    BasicList<XNode> list = GetChildren();
+}
+@if (hasElements == false && hasComments == false)
+{
+    <SimpleNodeElement HowManyTabs="@HowManyTabs" Element="Element" />
+    return;
+}
+@if (hasAttributes)
+{
+    <ComplexElementWithAttributeElement Element="Element" Nodes="list" HowManyTabs="@HowManyTabs" />
+}
+else
+{
+    <ComplexElementNoAttributesElement Element="Element" Nodes="list" HowManyTabs="@HowManyTabs" />
+}
+<HtmlTagComponent HowManyTabs="HowManyTabs">
+    @ClosingName()
+</HtmlTagComponent>
