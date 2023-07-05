@@ -1,3 +1,5 @@
-﻿<div style="height: @Height">
+﻿<div @onclick="PrivateClickAsync" style="height: @Height; width: @Width;"
+     onmouseover="this.style.background='@GetHoverColor'"
+     onmouseout="this.style.background='@GetBackgroundColor'">
     <ChildElementViewer Element="Element" HowManyTabs="0" />
 </div>
