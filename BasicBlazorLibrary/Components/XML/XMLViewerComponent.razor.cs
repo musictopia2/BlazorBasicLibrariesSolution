@@ -9,14 +9,14 @@ public partial class XMLViewerComponent
     [Parameter]
     public string Width { get; set; } = "100%";
     [Parameter]
-    public EventCallback OnClick { get; set; }
+    public EventCallback<XElement> OnClick { get; set; } //looks like needs the entire element.  so if there are several elements on the page, then can see what needs to be done.
     private async Task PrivateClickAsync()
     {
         if (OnClick.HasDelegate == false)
         {
             return;
         }
-        await OnClick.InvokeAsync();
+        await OnClick.InvokeAsync(Element);
     }
     private static string GetBackgroundColor => cc1.White.ToWebColor();
     private string GetHoverColor => OnClick.HasDelegate ? cc1.LightYellow.ToWebColor() : GetBackgroundColor;
