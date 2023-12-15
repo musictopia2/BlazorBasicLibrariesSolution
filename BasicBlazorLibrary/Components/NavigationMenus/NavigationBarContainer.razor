@@ -2,6 +2,13 @@
 @using BasicBlazorLibrary.Components.Arrows 
 @using BasicBlazorLibrary.Components.Layouts
 <CascadingValue Value="this" IsFixed="true">
+    @if (MenuList.Count > 0 && HasMenu == false)
+    {
+        <div>
+            Cannot have menu items because you have chosen HasMenu as false
+        </div>
+        return;
+    }
     <LeftOverLayout>
         <TopContent>
             <div class="@GetFirstClass() main" style="padding: @Padding; font-size: @MainFontSize;  background-color: @MainBackgroundColor; color: @MainTextColor; ">
@@ -10,7 +17,7 @@
                         @if (BackClicked.HasDelegate == true && ShowBack)
                         {
                             <div class="inline centerdiv" style="margin-right: 10px;">
-                                <ArrowLeftComponent Clicked="BackClicked" BackgroundColor="white" StrokeColor="black" TargetHeight="@ArrowHeight" />
+                                <ArrowLeftComponent Clicked="BackClicked" BackgroundColor="@ArrowColor" StrokeColor="@ArrowStroke" TargetHeight="@ArrowHeight" />
                             </div>
                         }
                         @Title
@@ -57,14 +64,18 @@
                     </div>
                 </div>
             </div>
-            <MenuModal MenuList="MenuList"
-                       BackgroundColor="@MenuBackgroundColor"
-                       FontSize="@MenuFontSize"
-                       Height="@MenuHeight"
-                       TextColor="@MenuTextColor"
-                       Width="@MenuWidth"
-                       ItemHeight="@ItemHeight"
-                       @bind-Visible="_showMenu" />
+            @if(HasMenu == true)
+            {
+                <MenuModal MenuList="MenuList"
+                           BackgroundColor="@MenuBackgroundColor"
+                           FontSize="@MenuFontSize"
+                           Height="@MenuHeight"
+                           TextColor="@MenuTextColor"
+                           Width="@MenuWidth"
+                           ItemHeight="@ItemHeight"
+                           @bind-Visible="_showMenu" />
+            }
+            
         </TopContent>
         <MainContent>
             @if (CanChangeWithoutTabs == false)

@@ -4,6 +4,8 @@ public partial class NavigationBarContainer
 {
     [Parameter]
     public string Title { get; set; } = "";
+    [Parameter]
+    public bool Test { get; set; }
     private bool _showBar = false;
     [Parameter]
     public RenderFragment? MainContent { get; set; }
@@ -17,6 +19,10 @@ public partial class NavigationBarContainer
     public EventCallback CloseClicked { get; set; }
     [Parameter]
     public string ArrowHeight { get; set; } = "70px";
+    [Parameter]
+    public string ArrowColor { get; set; } = "white";
+    [Parameter]
+    public string ArrowStroke { get; set; } = "black";
     [Parameter]
     public string CloseHeight { get; set; } = "2rem";
     [Parameter]
@@ -41,6 +47,8 @@ public partial class NavigationBarContainer
     public string MenuHeight { get; set; } = "300px";
     [Parameter]
     public string MenuWidth { get; set; } = "50vmin";
+    [Parameter]
+    public bool HasMenu { get; set; } = true; //to improve performance, if something has no menu, can ignore some things.
     /// <summary>
     /// this is the height when the menu shows up.  helps so can make it easier to click proper item on phones.
     /// </summary>

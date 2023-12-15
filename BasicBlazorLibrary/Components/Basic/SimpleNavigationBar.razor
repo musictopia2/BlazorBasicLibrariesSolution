@@ -1,0 +1,12 @@
+﻿@using BasicBlazorLibrary.Components.NavigationMenus
+<NavigationBarContainer Title="@Title"
+                        ShowBack="@HasBack"
+                        BackClicked="BackClicked"
+                        AlwaysShowBar=true
+                        
+                        ArrowColor="@ArrowColor"
+                        ArrowStroke="@ArrowStroke">
+    <MainContent>
+        @ChildContent
+    </MainContent>
+</NavigationBarContainer>
