@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Components\Basic\SimpleNavigationBar.razor" />
+    <None Include="Components\NavigationMenus\SimpleNavigationBar.razor" />
   </ItemGroup>
 
 </Project>

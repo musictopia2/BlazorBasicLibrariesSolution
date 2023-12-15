@@ -1,4 +1,4 @@
-namespace BasicBlazorLibrary.Components.Basic;
+namespace BasicBlazorLibrary.Components.NavigationMenus;
 public partial class SimpleNavigationBar
 {
     [Parameter]
