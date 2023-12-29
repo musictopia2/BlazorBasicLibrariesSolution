@@ -29,8 +29,8 @@ public partial class CalendarSimpleModal<TValue>
         return "";
     }
     private string _monthLabel = "";
-    private readonly BasicList<string> _dayList = new()
-    {
+    private readonly BasicList<string> _dayList =
+    [
         DayOfWeek.Sunday.DayOfWeekShort(),
         DayOfWeek.Monday.DayOfWeekShort(),
         DayOfWeek.Tuesday.DayOfWeekShort(),
@@ -38,7 +38,7 @@ public partial class CalendarSimpleModal<TValue>
         DayOfWeek.Thursday.DayOfWeekShort(),
         DayOfWeek.Friday.DayOfWeekShort(),
         DayOfWeek.Saturday.DayOfWeekShort()
-    };
+    ];
     private ElementReference? _text;
     private string _realValue = "";
     protected override void OnInitialized()
@@ -50,7 +50,7 @@ public partial class CalendarSimpleModal<TValue>
 #pragma warning restore CA2012 // Use ValueTasks correctly
         //somehow worked properly for my case though.
         Key.AddAction(ConsoleKey.F2, () => DayClicked(DateOnly.FromDateTime(DateTime.Now)));
-        Key.AddAction(ConsoleKey.C, () => ClearText());
+        Key.AddAction(ConsoleKey.C, ClearText);
         Key.AddAction(ConsoleKey.X, () => Cancelled.InvokeAsync());
         Key.AddArrowUpAction(() =>
         {
@@ -108,9 +108,10 @@ public partial class CalendarSimpleModal<TValue>
         StateHasChanged();
     }
     private bool _invalid;
+    private bool _needsUpdate = false;
     protected override void OnParametersSet()
     {
-        if (_todisplay.Equals(DateToDisplay))
+        if (_todisplay.Equals(DateToDisplay) && _needsUpdate == false)
         {
             return;
         }
@@ -133,7 +134,7 @@ public partial class CalendarSimpleModal<TValue>
         DateOnly start = _todisplay.Value.FirstDayOfMonth();
         DateOnly end = _todisplay.Value.LastDayOfMonth();
         int howMany = _todisplay.Value.DaysInMonth();
-        _dates = new();
+        _dates = [];
         DateOnly current = start;
         howMany.Times(x =>
         {
@@ -141,6 +142,7 @@ public partial class CalendarSimpleModal<TValue>
             current = current.AddDays(1);
         });
         _needsFocus = true;
+        _needsUpdate = false;
         base.OnParametersSet();
     }
     private static DateSpot GetSpot(DateOnly date, DateOnly start, int howMany)
@@ -174,10 +176,11 @@ public partial class CalendarSimpleModal<TValue>
     private void DayClicked(DateOnly day)
     {
         object ourvalue = day;
+        _needsUpdate = true;
         DateToDisplayChanged.InvokeAsync((TValue?)ourvalue);
     }
     private bool _ran;
-    private BasicList<DateSpot> _dates = new();
+    private BasicList<DateSpot> _dates = [];
     private bool _needsFocus = true;
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
