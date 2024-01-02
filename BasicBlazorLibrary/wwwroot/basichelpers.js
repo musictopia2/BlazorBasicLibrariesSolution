@@ -50,3 +50,6 @@ export function getbrowserwidth() {
 export function refreshbrowser() {
     window.location.reload();
 }
+export function update() {
+    window.location.href = window.location.href.replace(/#.*$/, '');
+}

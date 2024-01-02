@@ -90,6 +90,11 @@ public static class BasicJavascriptExtensions
         var moduleTask = js.GetModuleTask();
         await moduleTask.InvokeVoidDisposeAsync("refreshbrowser");
     }
+    public static async Task Update(this IJSRuntime js)
+    {
+        var moduleTask = js.GetModuleTask();
+        await moduleTask.InvokeVoidDisposeAsync("update");
+    }
     public static async Task CopyTextAsync(this IJSRuntime js, string text)
     {
         var moduleTask = js.GetLibraryModuleTask("clipboard");
