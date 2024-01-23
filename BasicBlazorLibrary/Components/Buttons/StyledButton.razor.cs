@@ -22,6 +22,10 @@ public abstract partial class StyledButton
     public string ConfirmationMessage { get; set; } = "";
     [Parameter]
     public string ConfirmationTitle { get; set; } = "";
+    [Parameter]
+    public EventCallback BeforeConfirm { get; set; }
+    [Parameter]
+    public EventCallback RejectConfirm { get; set; } //this means for example, if you pause before confirming, then can unpause again.
     private bool _showConfirm;
     private void PrivateConfirm(bool confirm)
     {
@@ -30,12 +34,22 @@ public abstract partial class StyledButton
         {
             OnClick.InvokeAsync();
         }
+        else if (RejectConfirm.HasDelegate == false)
+        {
+            return;
+        }
+        RejectConfirm.InvokeAsync();
     }
-    private void PrivateClick()
+    private async Task PrivateClickAsync()
     {
         if (ConfirmationMessage == "" && ConfirmationTitle == "")
         {
-            OnClick.InvokeAsync();
+            await OnClick.InvokeAsync();
+            return;
+        }
+        if (BeforeConfirm.HasDelegate)
+        {
+            await BeforeConfirm.InvokeAsync();
             return;
         }
         _showConfirm = true;
