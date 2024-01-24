@@ -50,7 +50,6 @@ public abstract partial class StyledButton
         if (BeforeConfirm.HasDelegate)
         {
             await BeforeConfirm.InvokeAsync();
-            return;
         }
         _showConfirm = true;
     }
