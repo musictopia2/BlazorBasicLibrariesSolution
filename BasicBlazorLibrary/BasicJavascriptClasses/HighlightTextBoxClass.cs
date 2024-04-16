@@ -1,7 +1,6 @@
 ﻿namespace BasicBlazorLibrary.BasicJavascriptClasses;
-public class HighlightTextBoxClass : BaseLibraryJavascriptClass
+public class HighlightTextBoxClass(IJSRuntime js) : BaseLibraryJavascriptClass(js)
 {
-    public HighlightTextBoxClass(IJSRuntime js) : base(js) { }
     protected override string JavascriptFileName => "highlighter";
     public async Task PartialHighlightText(ElementReference? element, int startat)
     {
