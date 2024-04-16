@@ -3,7 +3,7 @@ public partial class RawTextViewerComponent
 {
     [Parameter]
     [EditorRequired]
-    public string JsonText { get; set; } = "";
+    public string Text { get; set; } = "";
     [Parameter]
     public string Height { get; set; } = "100%";
     [Parameter]
