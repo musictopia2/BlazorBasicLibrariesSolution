@@ -12,4 +12,7 @@ public partial class WrapLayout<T>
     public string Margins { get; set; } = "2px";
     [Parameter]
     public string Style { get; set; } = "";
+    [Parameter]
+    public bool UseCursor { get; set; } = true; //default to true.  but there can be cases where cursors would not be used.
+    private string CursorCss => UseCursor ? "cursor: pointer;" : "";
 }

@@ -10,10 +10,7 @@
 }
 @foreach (var item in RenderList)
 {
-    <div style="width: @ColumnWidth; display: inline-block; margin: @Margins; @Style">
+    <div style="width: @ColumnWidth; display: inline-block; @CursorCss margin: @Margins; @Style">
         @ChildContent(item)
     </div>
 }
-@*<CascadingValue IsFixed="true" Value="this">
-
-</CascadingValue>*@
