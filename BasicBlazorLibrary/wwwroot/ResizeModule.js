@@ -21,9 +21,21 @@
         window.removeEventListener("resize", this.throttleResizeHandler);
     }
     getBrowserWindowSize() {
+        // Get the physical screen dimensions
+        const screenWidth = window.screen.width;
+        const screenHeight = window.screen.height;
+
+        // Get the device pixel ratio (to account for higher DPI screens)
+        const devicePixelRatio = window.devicePixelRatio || 1;
+
+        // Calculate adjusted width and height (in actual pixels, not zoomed)
+        const actualWidth = window.innerWidth * devicePixelRatio;
+        const actualHeight = window.innerHeight * devicePixelRatio;
+
+        // Return the adjusted width and height (in real pixels, accounting for DPI and zoom)
         return {
-            height: window.innerHeight,
-            width: window.innerWidth
+            height: actualHeight,
+            width: actualWidth
         };
     }
 }
