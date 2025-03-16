@@ -1,0 +1,11 @@
+﻿.selected {
+    background-color: aqua;
+}
+
+.regular {
+    background-color: white;
+}
+
+.borders {
+    border: 2px solid black;
+}

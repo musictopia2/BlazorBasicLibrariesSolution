@@ -1,0 +1,8 @@
+﻿@typeparam T
+<WrapLayout ColumnWidth="300px" T=T RenderList="ItemList" UseCursor=UseCursor Context="item">
+
+    <div class="@CssName(item) borders" @onclick="() => ItemClicked(item)">
+        @ChildContent!(item)
+    </div>
+</WrapLayout>
+

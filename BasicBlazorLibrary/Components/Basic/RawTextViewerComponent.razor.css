@@ -1,3 +1,4 @@
-pre {
+div {
     overflow: auto;
+    white-space: pre-line;
 }
