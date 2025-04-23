@@ -4,8 +4,8 @@
     resizeHandler = () => {
         this.dotnet.invokeMethodAsync(
             'RaiseOnResized', {
-                height: window.screen.width,
-                width: window.screen.height
+                height: window.screen.height,
+                width: window.screen.width
         });
     }
     listenForResize(dotnetRef) {
