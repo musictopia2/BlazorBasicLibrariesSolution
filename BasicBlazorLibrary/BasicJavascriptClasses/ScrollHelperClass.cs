@@ -1,5 +1,5 @@
 ﻿namespace BasicBlazorLibrary.BasicJavascriptClasses;
-internal class ScrollHelperClass(IJSRuntime js) : BaseLibraryJavascriptClass(js)
+public class ScrollHelperClass(IJSRuntime js) : BaseLibraryJavascriptClass(js)
 {
     protected override string JavascriptFileName => "scrollhelpers.js";
     public async Task ScrollDownOnePage(ElementReference element, int buffer = 100)
