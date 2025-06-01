@@ -14,7 +14,8 @@ public abstract class BaseStandardJavascriptClass : IAsyncDisposable
         }
     }
 
-    async ValueTask IAsyncDisposable.DisposeAsync()
+    // Public DisposeAsync for easier access
+    public async ValueTask DisposeAsync()
     {
         await DisposeAsyncCore();
         GC.SuppressFinalize(this);
