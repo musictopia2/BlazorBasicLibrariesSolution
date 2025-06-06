@@ -11,3 +11,4 @@ global using bb1 = CommonBasicLibraries.BasicDataSettingsAndProcesses.BasicDataF
 global using jj1 = CommonBasicLibraries.AdvancedGeneralFunctionsAndProcesses.JsonSerializers.SystemTextJsonStrings;
 global using System.Xml.Linq;
 global using System.Text;
+global using ff1 = CommonBasicLibraries.AdvancedGeneralFunctionsAndProcesses.FileFunctions.FileFunctions;
