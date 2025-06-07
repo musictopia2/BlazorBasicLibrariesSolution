@@ -18,4 +18,11 @@ public partial class DataEntryGridComponent : IDataEntryGrid
     {
         await _tabs!.FocusFirstAsync();
     }
+    public async Task FocusHotkeyScopeAsync()
+    {
+        if (MainElement.HasValue)
+        {
+            await MainElement.Value.FocusAsync();
+        }
+    }
 }

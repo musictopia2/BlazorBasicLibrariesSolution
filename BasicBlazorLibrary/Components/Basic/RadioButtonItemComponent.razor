@@ -1,19 +1,35 @@
 ﻿@typeparam TValue
-@if (WidthHeight == "")
+@if (ParentDataEntryItem is null)
 {
-    <input type="radio" value="@SelectedValue" style="zoom: @Zoom" name="@GetName" checked="@Checked" @onchange="OnChange" />
+    @if (WidthHeight == "")
+    {
+        <input type="radio" value="@SelectedValue" style="zoom: @Zoom" name="@GetName" checked="@Checked" @onchange="OnChange" />
+        @if (ShowLabel)
+        {
+            <span style="cursor: pointer;  " @onclick="ManuelChange">
+                @GetText
+            </span>
+        }
+        return;
+    }
+    <input type="radio" value="@SelectedValue" style="height: @WidthHeight; width: @WidthHeight; vertical-align: middle;" name="@GetName" checked="@Checked" @onchange="OnChange" />
     @if (ShowLabel)
     {
-        <span style="cursor: pointer;  " @onclick="ManuelChange">
+        <span style="cursor: pointer; vertical-align:middle; margin-left: 10px;  " @onclick="ManuelChange">
             @GetText
         </span>
     }
     return;
 }
-<input type="radio" value="@SelectedValue" style="height: @WidthHeight; width: @WidthHeight; vertical-align: middle;" name="@GetName" checked="@Checked" @onchange="OnChange" />
-@if (ShowLabel)
-{
-    <span style="cursor: pointer; vertical-align:middle; margin-left: 10px;  " @onclick="ManuelChange">
+<label style="display: inline-flex; align-items: center; margin-right: 15px; cursor: pointer; user-select: none;">
+    <input type="radio"
+           value="@SelectedValue"
+           style="margin: 0;outline: none; box-shadow: none; border: none;"
+           name="@GetName"
+           checked="@Checked"
+           @onchange="OnChange" />
+    <span style="cursor: pointer; margin-left: 6px; " @onclick="ManuelChange">
         @GetText
     </span>
-}
+
+</label>

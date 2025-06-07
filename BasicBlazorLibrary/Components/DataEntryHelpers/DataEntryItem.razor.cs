@@ -8,6 +8,7 @@ public partial class DataEntryItem : IDisposable
     public RenderFragment? ChildContent { get; set; }
     [Parameter]
     public string Style { get; set; } = "";
+
     protected override void OnInitialized()
     {
         base.OnInitialized();

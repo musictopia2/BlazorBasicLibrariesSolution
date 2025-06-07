@@ -1,3 +1,4 @@
+using BasicBlazorLibrary.Components.DataEntryHelpers;
 using System.Globalization;
 namespace BasicBlazorLibrary.Components.Basic;
 public partial class RadioButtonItemComponent<TValue>
@@ -18,6 +19,12 @@ public partial class RadioButtonItemComponent<TValue>
     private string GetText => SelectedValue!.ToString()!.TextWithSpaces();
     [Parameter]
     public EventCallback<TValue> ValueChanged { get; set; }
+
+
+    [CascadingParameter]
+    public DataEntryItem? ParentDataEntryItem { get; set; }
+
+
     private bool Checked => SelectedValue!.Equals(Value);
     private void OnChange(ChangeEventArgs args)
     {
