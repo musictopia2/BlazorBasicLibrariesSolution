@@ -1,0 +1,17 @@
+﻿@using BasicBlazorLibrary.Components.CssGrids
+@attribute [CascadingTypeParameter(nameof(T))]
+@typeparam T
+@if (ChildContent == null)
+{
+    return;
+}
+<GridContainer RowGap="@RowGap" Class="@Class" Style="@Style" ColumnGap="@ColumnGap"
+               Columns="@Get2Columns()"
+               Inline="false">
+               @foreach (var item in RenderList)
+               {
+                    <div style="@CursorCss">
+                        @ChildContent(item)
+                    </div>
+               }
+</GridContainer>
