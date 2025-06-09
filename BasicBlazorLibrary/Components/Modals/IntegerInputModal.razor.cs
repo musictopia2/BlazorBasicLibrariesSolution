@@ -11,6 +11,10 @@ public partial class IntegerInputModal
     public EnumSideLocation SideOrder { get; set; } = EnumSideLocation.Last; //default to last
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public string? DisplayWidth { get; set; } = "30vmin";
+
     [Parameter] public int? MaxValue { get; set; } // optional limit
     [Parameter]
     public int? MinValue { get; set; }
@@ -100,4 +104,16 @@ public partial class IntegerInputModal
     int.TryParse(_display, out var result)
         ? result.ToString("N0") // e.g. "1,234"
         : _display;
+
+    protected override void OnParametersSet()
+    {
+        if (Visible == false || Value == 0)
+        {
+            _display = "";
+            return;
+        }
+        _display = Value.ToString(); //hopefully does not do onparameterset everytime i click an entry.
+        base.OnParametersSet();
+    }
+
 }

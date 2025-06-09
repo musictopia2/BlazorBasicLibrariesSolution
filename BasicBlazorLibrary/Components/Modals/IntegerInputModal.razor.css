@@ -1,4 +1,35 @@
-﻿.number {
+﻿.cell {
+    width: 24vmin;
+    height: 24vmin;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.action {
+    width: 24vmin;
+    height: 48vmin;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 7vmin;
+}
+
+.singlelarge {
+    width: 24vmin;
+    height: 24vmin;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 7vmin;
+}
+.number {
     font-size: 27vmin;
 }
 
@@ -19,11 +50,12 @@
     width: 95%;
     height: 30%;
 }
-
+.side {
+    font-size: 5vmin;
+}
 .finaldisplay {
     font-size: 15vmin;
     /*ai suggested below*/
-    font-family: monospace;
     text-align: right;
     padding: 0.2em 0.5em;
     border: 2px solid #ccc;
@@ -33,4 +65,5 @@
     margin-top: 1vmin;
     overflow-x: auto;
     white-space: nowrap;
+    min-height: 1.2em;
 }
