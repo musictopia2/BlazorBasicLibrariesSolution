@@ -1,0 +1,82 @@
+﻿@using BasicBlazorLibrary.Components.MediaQueries.MediaListUseClasses
+@using BasicBlazorLibrary.Components.CssGrids
+@using BasicBlazorLibrary.Components.Arrows
+@inherits PopupBase
+<PopupFullScreen @bind-Visible=Visible
+                 Style="user-select:none">
+                  @{
+        int row = 1;
+        int column = 1;
+    }
+    <FlexibleOrientationComponent SideOrder="SideOrder">
+        <MainContent>
+            <div style="width: 98vmin; height: 98vmin;">
+                <GridContainer Rows="@GetRowsColumns" Columns="@GetRowsColumns">
+                    @foreach (var number in _numbers)
+                    {
+                        <GridItem Row="row" Column="column">
+                            <div class="cell number" @onclick="() => UpdateValue(number)">
+                                @number
+                            </div>
+                        </GridItem>
+                        column++;
+                        if (column > 3)
+                        {
+                            column = 1;
+                            row++;
+                        }
+                    }
+                    <GridItem Row="1" Column="4" RowSpan="2">
+                        <div class="action" @onclick="ProcessEnter">
+                            Enter
+                        </div>
+                    </GridItem>
+                    <GridItem Row="3" Column="4">
+                        <div class="singlelarge" @onclick="ProcessCancel">
+                            Cancel
+                        </div>
+                    </GridItem>
+                    <GridItem Row="4">
+                        <ArrowLeftComponent Clicked="() => BackSpace()"
+                                            TargetHeight="22vmin" />
+                    </GridItem>
+                    <GridItem Row="4" Column="2">
+                        <div class="cell" @onclick="() => UpdateValue(0)">
+                            <div class="number">
+                                0
+                            </div>
+                        </div>
+                    </GridItem>
+                    @if (AllowNegative)
+                    {
+                        <GridItem Row="4" Column="3">
+                            @{
+                                string value = "-";
+                            }
+                            <svg viewBox="0 0 100 100" style="width: 100%; height: 100%;" @onclick="() => UpdateValue(value)">
+                                <rect width="80" height="20" x="10" y="40" style="background-color: black;" />
+                            </svg>
+                        </GridItem>
+                    }
+                    <GridItem Row="4" Column="4">
+                        <div class="singlelarge" @onclick="() => Clear()">
+                            Clear
+                        </div>
+                    </GridItem>
+                    @{
+                        row = 1;
+                        column = 1;
+                    }
+                </GridContainer>
+            </div>
+        </MainContent>
+        <SideContent>
+            <div>
+                @ChildContent
+            </div>
+            <div class="finaldisplay">
+                @FormattedDisplay
+            </div>
+        </SideContent>
+    </FlexibleOrientationComponent>
+</PopupFullScreen>
