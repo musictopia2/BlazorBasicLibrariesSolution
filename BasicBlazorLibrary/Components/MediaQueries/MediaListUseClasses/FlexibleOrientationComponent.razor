@@ -12,21 +12,46 @@
             <GridItem>
                 @HeaderContent
             </GridItem>
-            <GridItem Row="2">
-                @MainContent
-            </GridItem>
-            <GridItem Row="3">
-                @SideContent
-            </GridItem>
+            @if (SideOrder == EnumSideLocation.Last)
+            {
+                <GridItem Row="2">
+                    @MainContent
+                </GridItem>
+                <GridItem Row="3">
+                    @SideContent
+                </GridItem>
+            }
+            else
+            {
+                <GridItem Row="2">
+                    @SideContent
+                </GridItem>
+                <GridItem Row="3">
+                    @MainContent
+                </GridItem>
+            }
         }
         else
         {
-            <GridItem>
-                @MainContent
-            </GridItem>
-            <GridItem Row="2">
-                @SideContent
-            </GridItem>
+            if (SideOrder == EnumSideLocation.Last)
+            {
+                <GridItem>
+                    @MainContent
+                </GridItem>
+                <GridItem Row="2">
+                    @SideContent
+                </GridItem>
+            }
+            else
+            {
+                <GridItem>
+                    @SideContent
+                </GridItem>
+                <GridItem Row="2">
+                    @MainContent
+                </GridItem>
+            }
+            
         }
     </GridContainer>
     return;
@@ -34,25 +59,54 @@
 <GridContainer Columns="@GetColumns" Rows="@GetRows(true)">
     @if (HeaderContent != null)
     {
-        <GridItem>
-            @MainContent
-        </GridItem>
-        <GridItem Column="2">
-            <div>
-                @HeaderContent
-            </div>
-            <div>
+        @if (SideOrder == EnumSideLocation.Last)
+        {
+            <GridItem>
+                @MainContent
+            </GridItem>
+            <GridItem Column="2">
+                <div>
+                    @HeaderContent
+                </div>
+                <div>
+                    @SideContent
+                </div>
+            </GridItem>
+        }
+        else
+        {
+            <GridItem>
                 @SideContent
-            </div>
-        </GridItem>
+            </GridItem>
+            <GridItem Column="2">
+                <div>
+                    @HeaderContent
+                </div>
+                <div>
+                    @MainContent
+                </div>
+            </GridItem>
+        }
     }
     else
     {
-        <GridItem>
-            @MainContent
-        </GridItem>
-        <GridItem Column="2">
-            @SideContent
-        </GridItem>
+        @if (SideOrder == EnumSideLocation.Last)
+        {
+            <GridItem>
+                @MainContent
+            </GridItem>
+            <GridItem Column="2">
+                @SideContent
+            </GridItem>
+        }
+        else
+        {
+            <GridItem>
+                @SideContent
+            </GridItem>
+            <GridItem Column="2">
+                @MainContent
+            </GridItem>
+        }   
     }
 </GridContainer>

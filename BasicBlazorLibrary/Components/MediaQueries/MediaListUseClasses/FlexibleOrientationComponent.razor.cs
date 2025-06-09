@@ -11,6 +11,8 @@ public partial class FlexibleOrientationComponent
     public RenderFragment? SideContent { get; set; }
     [Parameter]
     public RenderFragment? HeaderContent { get; set; }
+    [Parameter]
+    public EnumSideLocation SideOrder { get; set; } = EnumSideLocation.Last;
     private string GetColumns
     {
         get
@@ -19,7 +21,11 @@ public partial class FlexibleOrientationComponent
             {
                 return aa1.RepeatMaximum(2);
             }
-            return $"{aa1.RepeatMaximum(1)} {aa1.RepeatSpreadOut(1)}";
+            if (SideOrder == EnumSideLocation.Last)
+            {
+                return $"{aa1.RepeatMaximum(1)} {aa1.RepeatSpreadOut(1)}";
+            }
+            return $"{aa1.RepeatSpreadOut(1)} {aa1.RepeatMaximum(1)}";
         }
     }
     private string GetRows(bool horizontal)
