@@ -1,0 +1,11 @@
+@inherits ArrowBase
+<svg style="@GetSvgStyle()" @onclick="Clicked" viewBox="0 0 100 100">
+    <!-- Circular background (optional) -->
+    <circle cx="50" cy="50" r="48" stroke="@StrokeColor" stroke-width="@StrokeWidth" fill="@BackgroundColor" />
+    <!-- Up arrow (larger, closer to edge) -->
+    <polygon fill="@BackgroundColor" stroke="@StrokeColor" stroke-width="@StrokeWidth"
+        points="50,12 33,38 42,38 42,75 58,75 58,38 67,38" />
+    <!-- Down arrow (larger, closer to edge) -->
+    <polygon fill="@BackgroundColor" stroke="@StrokeColor" stroke-width="@StrokeWidth"
+        points="50,88 67,62 58,62 58,25 42,25 42,62 33,62" />
+</svg>
