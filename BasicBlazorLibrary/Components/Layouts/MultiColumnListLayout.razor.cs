@@ -1,10 +1,9 @@
 using aa1 = BasicBlazorLibrary.Components.CssGrids.RowColumnHelpers;
 namespace BasicBlazorLibrary.Components.Layouts;
-public partial class MultiColumnLayout<T>
+public partial class MultiColumnListLayout<T>
 {
     [Parameter]
-    [EditorRequired]
-    public BasicList<T> RenderList { get; set; } = new(); //this is the only one that is absolutely required
+    public BasicList<T> RenderList { get; set; } = []; //this is the only one that is absolutely required
     [Parameter]
     public RenderFragment<T>? ChildContent { get; set; }
     [Parameter]

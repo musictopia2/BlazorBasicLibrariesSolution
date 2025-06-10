@@ -1,0 +1,6 @@
+﻿@using BasicBlazorLibrary.Components.CssGrids
+<GridContainer RowGap="@RowGap" Class="@Class" Style="@Style" ColumnGap="@ColumnGap"
+               Columns="@GetColumns()"
+               Inline="false">
+    @ChildContent
+</GridContainer>

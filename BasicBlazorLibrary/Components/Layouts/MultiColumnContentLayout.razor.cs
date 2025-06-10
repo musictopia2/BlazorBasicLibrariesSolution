@@ -1,12 +1,9 @@
 using aa1 = BasicBlazorLibrary.Components.CssGrids.RowColumnHelpers;
 namespace BasicBlazorLibrary.Components.Layouts;
-public partial class TwoColumnLayout<T>
+public partial class MultiColumnContentLayout
 {
     [Parameter]
-    [EditorRequired]
-    public BasicList<T> RenderList { get; set; } = []; //this is the only one that is absolutely required
-    [Parameter]
-    public RenderFragment<T>? ChildContent { get; set; }
+    public RenderFragment? ChildContent { get; set; }
     [Parameter]
     public string RowGap { get; set; } = "";
     [Parameter]
@@ -18,9 +15,17 @@ public partial class TwoColumnLayout<T>
 
     [Parameter]
     public bool UseCursor { get; set; } = true; //default to true.  but there can be cases where cursors would not be used.
+
+    [Parameter]
+    public int Columns { get; set; } = 3; //if doing two, just use the two one then.
+
     private string CursorCss => UseCursor ? "cursor: pointer;" : "";
-    private static string Get2Columns()
+    private string GetColumns()
     {
-        return $"{aa1.OneSpread} {aa1.OneSpread}";
+        if (Columns <= 1)
+        {
+            return aa1.OneSpread; // Fallback to single column
+        }
+        return string.Join(" ", Enumerable.Repeat(aa1.OneSpread, Columns));
     }
 }
