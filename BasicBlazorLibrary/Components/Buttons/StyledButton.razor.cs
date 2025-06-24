@@ -2,9 +2,6 @@ namespace BasicBlazorLibrary.Components.Buttons;
 public abstract partial class StyledButton
 {
     protected abstract string ButtonClass { get; }
-    protected const string BtnPrimary = "btn-primary";
-    protected const string BtnDanger = "btn-danger";
-    protected const string BtnSecondary = "btn-secondary";
     [Parameter]
     public EventCallback OnClick { get; set; }
     [Parameter]
@@ -42,6 +39,10 @@ public abstract partial class StyledButton
     }
     private async Task PrivateClickAsync()
     {
+        if (IsEnabled == false)
+        {
+            return;
+        }
         if (ConfirmationMessage == "" && ConfirmationTitle == "")
         {
             await OnClick.InvokeAsync();
@@ -52,5 +53,24 @@ public abstract partial class StyledButton
             await BeforeConfirm.InvokeAsync();
         }
         _showConfirm = true;
+    }
+    private string FinalStyle
+    {
+        get
+        {
+            var styles = new[]
+            {
+            string.IsNullOrWhiteSpace(Spacing) ? null : $"margin: {Spacing}",
+            string.IsNullOrWhiteSpace(FontSize) ? null : $"font-size: {FontSize}",
+            !IsEnabled ? $"color: {DisabledColor}" : null
+        }
+            .Where(s => !string.IsNullOrWhiteSpace(s))
+            .ToList();
+
+            if (styles.Count == 0)
+                return "";
+
+            return string.Join(";", styles) + ";";
+        }
     }
 }

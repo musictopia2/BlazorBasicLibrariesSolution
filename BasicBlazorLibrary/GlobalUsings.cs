@@ -12,3 +12,4 @@ global using jj1 = CommonBasicLibraries.AdvancedGeneralFunctionsAndProcesses.Jso
 global using System.Xml.Linq;
 global using System.Text;
 global using ff1 = CommonBasicLibraries.AdvancedGeneralFunctionsAndProcesses.FileFunctions.FileFunctions;
+global using aa1 = BasicBlazorLibrary.CssHelpers.AllCssClasses;

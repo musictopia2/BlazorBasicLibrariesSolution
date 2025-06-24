@@ -13,7 +13,7 @@
 {
 
     <textarea spellcheck="@SpellCheck" id="@TabIndex" placeholder="@Placeholder" @ref="InputElement"
-    @attributes="AdditionalAttributes" class="@CssClass" @oninput="HandleOnChange" @onclick:stopPropagation="true" @onclick:preventDefault="true" style="resize: none; width: 99%; height: 98%;">
+    @attributes="AdditionalAttributes" class="@CssClass @aa1.FormControl" @oninput="HandleOnChange" @onclick:stopPropagation="true" @onclick:preventDefault="true" style="resize: none; width: 99%; height: 98%;">
         @Value
     </textarea>
     return;
@@ -22,7 +22,7 @@
 {
     <div style="margin: 3px;  height: 97%;">
         <textarea spellcheck="@SpellCheck" id="@TabIndex" placeholder="@Placeholder" @ref="InputElement"
-       @attributes="AdditionalAttributes" class="@CssClass" @oninput="HandleOnChange" @onclick:stopPropagation="true" @onclick:preventDefault="true" style="resize: none; width: 99%; height: 100%;">
+                  @attributes="AdditionalAttributes" class="@CssClass  @aa1.FormControl" @oninput="HandleOnChange" @onclick:stopPropagation="true" @onclick:preventDefault="true" style="resize: none; width: 99%; height: 100%;">
             @Value
         </textarea>
     </div>
@@ -30,13 +30,13 @@
 }
 @if (ReadOnly)
 {
-    <textarea spellcheck="@SpellCheck" id="@TabIndex" class="@CssClass" placeholder="@Placeholder" @ref="InputElement"
+    <textarea spellcheck="@SpellCheck" id="@TabIndex" class="@CssClass  @aa1.FormControl" placeholder="@Placeholder" @ref="InputElement"
        @attributes="AdditionalAttributes" @oninput="HandleOnChange" @onclick:stopPropagation="true" @onclick:preventDefault="true" style="resize: none; width: @Width; " readonly rows="@Rows">
         @Value
     </textarea>
     return;
 }
-<textarea spellcheck="@SpellCheck" id="@TabIndex" class="@CssClass" placeholder="@Placeholder" @ref="InputElement"
+<textarea spellcheck="@SpellCheck" id="@TabIndex" class="@CssClass  @aa1.FormControl" placeholder="@Placeholder" @ref="InputElement"
        @attributes="AdditionalAttributes" @oninput="HandleOnChange" @onclick:stopPropagation="true" @onclick:preventDefault="true" style="resize: none; width: @Width; " rows="@Rows">
     @Value
 </textarea>

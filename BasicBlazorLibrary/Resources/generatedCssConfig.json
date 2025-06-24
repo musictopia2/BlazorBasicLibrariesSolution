@@ -1,0 +1,387 @@
+{
+  "DefaultBasePath": "",
+  "DefaultOutputPath": "Resources",
+  "Files": [
+    {
+      "FileName": "custom-bootstrap.css",
+      "BasePath": "C:\\VS\\OneNet\\BasicLibraries\\BlazorBasicLibrariesSolution\\BasicBlazorLibrary\\wwwroot",
+      "OutputName": "custom-bootstrap.xml",
+      "DefaultNamespace": "",
+      "DefaultCategory": "",
+      "LocalExcludedClasses": [],
+      "Overrides": [
+        {
+          "OriginalName": "display",
+          "DisplayName": "DisplayVisibility",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "list",
+          "DisplayName": "list",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "container",
+          "DisplayName": "Layout",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "row",
+          "DisplayName": "Layout",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "col",
+          "DisplayName": "Layout",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "offset",
+          "DisplayName": "Layout",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "g",
+          "DisplayName": "Layout",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "gx",
+          "DisplayName": "Layout",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "gy",
+          "DisplayName": "Layout",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "table",
+          "DisplayName": "table",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "form",
+          "DisplayName": "Component",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "btn",
+          "DisplayName": "Component",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "input",
+          "DisplayName": "Component",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "dropdown",
+          "DisplayName": "Component",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "nav",
+          "DisplayName": "Component",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "navbar",
+          "DisplayName": "Component",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "card",
+          "DisplayName": "Component",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "accordion",
+          "DisplayName": "Component",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "alert",
+          "DisplayName": "Component",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "progress",
+          "DisplayName": "Component",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "toast",
+          "DisplayName": "Component",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "modal",
+          "DisplayName": "Component",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "bs",
+          "DisplayName": "Utility",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "popover",
+          "DisplayName": "Component",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "carousel",
+          "DisplayName": "Component",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "spinner",
+          "DisplayName": "Component",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "offcanvas",
+          "DisplayName": "Component",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "placeholder",
+          "DisplayName": "Component",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "text",
+          "DisplayName": "TextTypography",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "link",
+          "DisplayName": "Utility",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "focus",
+          "DisplayName": "Helper",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "ratio",
+          "DisplayName": "Sizing",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "align",
+          "DisplayName": "Alignment",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "float",
+          "DisplayName": "Helper",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "object",
+          "DisplayName": "Helper",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "opacity",
+          "DisplayName": "DisplayVisibility",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "overflow",
+          "DisplayName": "DisplayVisibility",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "d",
+          "DisplayName": "DisplayVisibility",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "shadow",
+          "DisplayName": "Shadow",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "position",
+          "DisplayName": "Positioning",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "top",
+          "DisplayName": "Positioning",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "bottom",
+          "DisplayName": "Positioning",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "start",
+          "DisplayName": "Positioning",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "end",
+          "DisplayName": "Positioning",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "translate",
+          "DisplayName": "Positioning",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "border",
+          "DisplayName": "Border",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "w",
+          "DisplayName": "Sizing",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "h",
+          "DisplayName": "Sizing",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "flex",
+          "DisplayName": "FlexGrid",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "justify",
+          "DisplayName": "FlexGrid",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "order",
+          "DisplayName": "FlexGrid",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "m",
+          "DisplayName": "Spacing",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "mx",
+          "DisplayName": "Spacing",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "my",
+          "DisplayName": "Spacing",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "mt",
+          "DisplayName": "Spacing",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "me",
+          "DisplayName": "Spacing",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "mb",
+          "DisplayName": "Spacing",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "ms",
+          "DisplayName": "Spacing",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "p",
+          "DisplayName": "Spacing",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "px",
+          "DisplayName": "Spacing",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "py",
+          "DisplayName": "Spacing",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "pt",
+          "DisplayName": "Spacing",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "pe",
+          "DisplayName": "Spacing",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "pb",
+          "DisplayName": "Spacing",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "ps",
+          "DisplayName": "Spacing",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "gap",
+          "DisplayName": "Spacing",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "column",
+          "DisplayName": "Utility",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "fs",
+          "DisplayName": "TextTypography",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "fw",
+          "DisplayName": "TextTypography",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "lh",
+          "DisplayName": "TextTypography",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "bg",
+          "DisplayName": "Background",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "user",
+          "DisplayName": "Helper",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "rounded",
+          "DisplayName": "Border",
+          "Namespace": ""
+        },
+        {
+          "OriginalName": "z",
+          "DisplayName": "Positioning",
+          "Namespace": ""
+        }
+      ]
+    }
+  ],
+  "GlobalExcludedClasses": []
+}
