@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="Components\Basic\SimpleNavigationBar.razor" />
+    <Content Remove="Resources\generatedCssConfig.json" />
   </ItemGroup>
   <ItemGroup>
     <SupportedPlatform Include="browser" />
@@ -25,7 +26,7 @@
     <_ContentIncludedByDefault Remove="Components\Basic\SimpleNavigationBar.razor" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Components\NavigationMenus\SimpleNavigationBar.razor" />
+    <None Include="Resources\generatedCssConfig.json" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="C:\VS\OneNet\Apps\CommandLines\PostBuildPackageHandler\bin\Release\net9.0\PostBuildPackageHandler.exe $(ProjectName) $(ProjectDir) $(ProjectFileName) $(TargetDir)" Condition="'$(Configuration)' == 'Release' and '$(RunPostBuildAppCondition)' == 'true'" />

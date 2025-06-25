@@ -3264,7 +3264,7 @@ textarea.form-control-lg {
     font-size: var(--bs-btn-font-size);
     font-weight: var(--bs-btn-font-weight);
     line-height: var(--bs-btn-line-height);
-    color: var(--bs-btn-light);
+    color: var(--bs-btn-color, var(--bs-btn-light));
     text-align: center;
     text-decoration: none;
     vertical-align: middle;
@@ -3401,7 +3401,7 @@ textarea.form-control-lg {
 }
 
 .btn-warning {
-    --bs-btn-light: var(--bs-btn-dark);
+    --bs-btn-color: var(--bs-btn-dark);
     --bs-btn-bg: var(--bs-warning); /* Use --bs-warning for background */
     --bs-btn-border-color: var(--bs-warning); /* Use --bs-warning for border */
     --bs-btn-hover-color: var(--bs-btn-dark);
@@ -3418,7 +3418,7 @@ textarea.form-control-lg {
 }
 
 .btn-danger {
-    --bs-btn-light: var(--bs-btn-light);
+    --bs-btn-color: var(--bs-btn-light);
     --bs-btn-bg: var(--bs-danger); /* Use --bs-danger for background */
     --bs-btn-border-color: var(--bs-danger); /* Use --bs-danger for border */
     --bs-btn-hover-color: var(--bs-btn-light);
