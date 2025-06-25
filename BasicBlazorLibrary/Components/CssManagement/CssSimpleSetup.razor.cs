@@ -2,8 +2,6 @@ namespace BasicBlazorLibrary.Components.CssManagement;
 public partial class CssSimpleSetup
 {
     [Parameter]
-    public bool UseAppCss { get; set; }
-    [Parameter]
     public string AppStyleName { get; set; } = "";
 
     [Parameter]

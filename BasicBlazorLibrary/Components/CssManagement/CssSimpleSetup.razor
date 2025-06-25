@@ -1,8 +1,8 @@
 ﻿<FullCssSetup AppStyleName="@AppStyleName" />
-<BaseCssLoader UseAppCss=@UseAppCss>
+<BaseCssLoader>
     @foreach (var item in CssFiles)
     {
         <link rel="stylesheet" href=@item" />
     }
-    @ChildContent
 </BaseCssLoader>
+@ChildContent
