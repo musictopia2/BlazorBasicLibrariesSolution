@@ -1,4 +1,4 @@
-using aa1 = BasicBlazorLibrary.Components.CssGrids.RowColumnHelpers;
+using aa2 = BasicBlazorLibrary.Components.CssGrids.RowColumnHelpers;
 namespace BasicBlazorLibrary.Components.Layouts;
 public partial class TwoColumnLayout<T>
 {
@@ -21,6 +21,6 @@ public partial class TwoColumnLayout<T>
     private string CursorCss => UseCursor ? "cursor: pointer;" : "";
     private static string Get2Columns()
     {
-        return $"{aa1.OneSpread} {aa1.OneSpread}";
+        return $"{aa2.OneSpread} {aa2.OneSpread}";
     }
 }

@@ -1,19 +1,19 @@
 ﻿using CommonBasicLibraries.AdvancedGeneralFunctionsAndProcesses.Misc;
-using aa1 = BasicBlazorLibrary.Components.CssGrids.RowColumnHelpers;
+using aa2 = BasicBlazorLibrary.Components.CssGrids.RowColumnHelpers;
 namespace BasicBlazorLibrary.Components.CssGrids;
 public static class Helpers
 {
     public static string RepeatAuto(this int times)
     {
-        return RepeatContentLength(times, aa1.Auto);
+        return RepeatContentLength(times, aa2.Auto);
     }
     public static string RepeatMinimum(this int times)
     {
-        return RepeatContentLength(times, aa1.MinContent);
+        return RepeatContentLength(times, aa2.MinContent);
     }
     public static string RepeatMaximum(this int times)
     {
-        return RepeatContentLength(times, aa1.MaxContent);
+        return RepeatContentLength(times, aa2.MaxContent);
     }
     public static string RepeatContentLength(this int times, string content)
     {

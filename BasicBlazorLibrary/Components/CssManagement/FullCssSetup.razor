@@ -1,0 +1,18 @@
+﻿@using cc2 = BasicBlazorLibrary.Components.CssManagement.CssSectionHelpers
+<style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+</style>
+<HeadContent>
+    <SectionOutlet SectionName="@cc2.PreloadCssSection" />
+    <link href="_content/ButtonLibrary/custom-bootstrap.css" rel="stylesheet" />
+    <SectionOutlet SectionName="@cc2.PreBaseCssSection" />
+    <SectionOutlet SectionName="@cc2.BaseCssSection" />
+    <SectionOutlet SectionName="@cc2.ComponentCssSection" />
+    <SectionOutlet SectionName="@cc2.PostComponentCssSection" />
+    <link rel="stylesheet" href="@ScopedName" />
+    <SectionOutlet SectionName="@cc2.PostScopedCssSection" />
+</HeadContent>

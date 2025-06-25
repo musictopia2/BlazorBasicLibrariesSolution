@@ -1,5 +1,5 @@
 using System.Reflection.Metadata;
-using aa1 = BasicBlazorLibrary.Components.CssGrids.Helpers;
+using aa2 = BasicBlazorLibrary.Components.CssGrids.Helpers;
 namespace BasicBlazorLibrary.Components.Basic;
 public partial class MultiselectCheckboxComponent<TValue>
 {
@@ -9,7 +9,7 @@ public partial class MultiselectCheckboxComponent<TValue>
     public string UncheckedImage { get; set; } = "";
     [Parameter]
     public bool Mobile { get; set; }
-    private static string GetColumns => aa1.RepeatMaximum(2);
+    private static string GetColumns => aa2.RepeatMaximum(2);
     [Parameter]
     [EditorRequired]
     public BasicList<TValue> Data { get; set; } = new();

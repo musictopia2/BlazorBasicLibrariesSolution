@@ -1,4 +1,4 @@
-using aa1 = BasicBlazorLibrary.Components.CssGrids.RowColumnHelpers;
+using aa2 = BasicBlazorLibrary.Components.CssGrids.RowColumnHelpers;
 namespace BasicBlazorLibrary.Components.CssGrids;
 public partial class GridTwoByTwo
 {
@@ -20,7 +20,7 @@ public partial class GridTwoByTwo
     public string Style { get; set; } = "";
 
     [Parameter]
-    public string ColumnLength { get; set; } = $"{aa1.OneSpread}";
+    public string ColumnLength { get; set; } = $"{aa2.OneSpread}";
     //the length has to be the same for both.
     private string Get2SpreadContentEntries()
     {
@@ -28,6 +28,6 @@ public partial class GridTwoByTwo
     }
     private static string Get2AutoContentEntries()
     {
-        return $"{aa1.Auto} {aa1.Auto}";
+        return $"{aa2.Auto} {aa2.Auto}";
     }
 }

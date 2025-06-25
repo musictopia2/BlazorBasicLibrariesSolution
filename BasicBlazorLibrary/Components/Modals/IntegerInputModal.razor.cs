@@ -1,5 +1,5 @@
 using BasicBlazorLibrary.Components.MediaQueries.MediaListUseClasses;
-using aa1 = BasicBlazorLibrary.Components.CssGrids.Helpers;
+using aa2 = BasicBlazorLibrary.Components.CssGrids.Helpers;
 namespace BasicBlazorLibrary.Components.Modals;
 public partial class IntegerInputModal
 {
@@ -99,7 +99,7 @@ public partial class IntegerInputModal
     {
         VisibleChanged.InvokeAsync(false); //hopefully this simple.
     }
-    private static string GetRowsColumns => aa1.RepeatMinimum(4);
+    private static string GetRowsColumns => aa2.RepeatMinimum(4);
     private string FormattedDisplay =>
     int.TryParse(_display, out var result)
         ? result.ToString("N0") // e.g. "1,234"

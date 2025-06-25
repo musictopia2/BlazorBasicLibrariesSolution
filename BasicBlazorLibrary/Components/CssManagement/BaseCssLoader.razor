@@ -1,0 +1,12 @@
+﻿@inherits CssSectionComponentBase
+<SectionContent SectionName="@SectionName">
+    @if (NeedsDefaultCss)
+    {
+        <link rel="stylesheet" href="app.css" />
+    }
+    @if (string.IsNullOrEmpty(SingleCssFile) == false)
+    {
+        <link rel="stylesheet" href="@SingleCssFile" />
+    }
+    @ChildContent
+</SectionContent>

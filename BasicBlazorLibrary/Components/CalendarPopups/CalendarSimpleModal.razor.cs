@@ -1,5 +1,5 @@
 using CommonBasicLibraries.BasicUIProcesses;
-using aa1 = BasicBlazorLibrary.Components.CssGrids.Helpers;
+using aa2 = BasicBlazorLibrary.Components.CssGrids.Helpers;
 namespace BasicBlazorLibrary.Components.CalendarPopups;
 public partial class CalendarSimpleModal<TValue>
 {
@@ -10,8 +10,8 @@ public partial class CalendarSimpleModal<TValue>
     public EventCallback Cancelled { get; set; }
     [Parameter]
     public EventCallback ChoseDate { get; set; }
-    private static string GetColumns() => aa1.RepeatSpreadOut(7);
-    private static string GetRows() => aa1.RepeatSpreadOut(8);
+    private static string GetColumns() => aa2.RepeatSpreadOut(7);
+    private static string GetRows() => aa2.RepeatSpreadOut(8);
     [Parameter]
     public TValue? DateToDisplay { get; set; }
     private DateOnly? _todisplay;
@@ -45,9 +45,7 @@ public partial class CalendarSimpleModal<TValue>
     {
         _text = null;
         base.OnInitialized();
-#pragma warning disable CA2012 // Use ValueTasks correctly
         Key!.AddAction(ConsoleKey.F1, () => _text!.Value.FocusAsync());
-#pragma warning restore CA2012 // Use ValueTasks correctly
         //somehow worked properly for my case though.
         Key.AddAction(ConsoleKey.F2, () => DayClicked(DateOnly.FromDateTime(DateTime.Now)));
         Key.AddAction(ConsoleKey.C, ClearText);

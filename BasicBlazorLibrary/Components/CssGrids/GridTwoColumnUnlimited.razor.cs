@@ -1,4 +1,4 @@
-using aa1 = BasicBlazorLibrary.Components.CssGrids.RowColumnHelpers;
+using aa2 = BasicBlazorLibrary.Components.CssGrids.RowColumnHelpers;
 namespace BasicBlazorLibrary.Components.CssGrids;
 public partial class GridTwoColumnUnlimited
 {
@@ -20,8 +20,8 @@ public partial class GridTwoColumnUnlimited
     {
         if (MaxContent)
         {
-            return $"{aa1.MaxContent} {aa1.OneSpread}";
+            return $"{aa2.MaxContent} {aa2.OneSpread}";
         }
-        return $"{aa1.MinContent} {aa1.OneSpread}";
+        return $"{aa2.MinContent} {aa2.OneSpread}";
     }
 }

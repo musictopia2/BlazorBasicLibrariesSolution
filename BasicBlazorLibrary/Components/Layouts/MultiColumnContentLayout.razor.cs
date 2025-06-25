@@ -1,4 +1,4 @@
-using aa1 = BasicBlazorLibrary.Components.CssGrids.RowColumnHelpers;
+using aa2 = BasicBlazorLibrary.Components.CssGrids.RowColumnHelpers;
 namespace BasicBlazorLibrary.Components.Layouts;
 public partial class MultiColumnContentLayout
 {
@@ -24,8 +24,8 @@ public partial class MultiColumnContentLayout
     {
         if (Columns <= 1)
         {
-            return aa1.OneSpread; // Fallback to single column
+            return aa2.OneSpread; // Fallback to single column
         }
-        return string.Join(" ", Enumerable.Repeat(aa1.OneSpread, Columns));
+        return string.Join(" ", Enumerable.Repeat(aa2.OneSpread, Columns));
     }
 }

@@ -1,5 +1,5 @@
 using System.Drawing;
-using aa1 = BasicBlazorLibrary.Components.CssGrids.Helpers;
+using aa2 = BasicBlazorLibrary.Components.CssGrids.Helpers;
 namespace BasicBlazorLibrary.Components.Arrows;
 public partial class ArrowCompleteComponent
 {
@@ -74,6 +74,6 @@ public partial class ArrowCompleteComponent
             return output;
         }
     }
-    private static string GetCommonRowsColumns => aa1.RepeatMinimum(2);
-    private static string GetThreeColumns => aa1.RepeatMinimum(3);
+    private static string GetCommonRowsColumns => aa2.RepeatMinimum(2);
+    private static string GetThreeColumns => aa2.RepeatMinimum(3);
 }
