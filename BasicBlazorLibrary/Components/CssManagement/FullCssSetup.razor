@@ -13,6 +13,10 @@
     <SectionOutlet SectionName="@cc2.BaseCssSection" />
     <SectionOutlet SectionName="@cc2.ComponentCssSection" />
     <SectionOutlet SectionName="@cc2.PostComponentCssSection" />
-    <link rel="stylesheet" href="@ScopedName" />
+    @if (string.IsNullOrWhiteSpace(AppStyleName) == false)
+    {
+        <link rel="stylesheet" href="@ScopedName" />
+
+    }
     <SectionOutlet SectionName="@cc2.PostScopedCssSection" />
 </HeadContent>
