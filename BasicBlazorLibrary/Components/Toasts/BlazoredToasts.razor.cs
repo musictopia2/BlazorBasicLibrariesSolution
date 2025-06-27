@@ -9,7 +9,8 @@ public partial class BlazoredToasts
     [Parameter] public string SuccessClass { get; set; } = "";
     [Parameter] public string WarningClass { get; set; } = "";
     [Parameter] public string ErrorClass { get; set; } = "";
-    [Parameter] public int Timeout { get; set; } = 5;
+    public static int Timeout { get; set; } = 5; //so game package can set to 3.
+    //[Parameter] public int Timeout { get; set; } = 5;
     [Parameter] public bool RemoveToastsOnNavigation { get; set; }
     [Parameter] public bool ShowProgressBar { get; set; }
     private ToastSettings BuildToastSettings(EnumToastLevel level, RenderFragment message, string heading)

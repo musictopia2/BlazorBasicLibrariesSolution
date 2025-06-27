@@ -4,12 +4,11 @@ public partial class BlazoredToast : IDisposable
     [CascadingParameter] private BlazoredToasts? ToastsContainer { get; set; }
     [Parameter] public Guid ToastId { get; set; }
     [Parameter] public ToastSettings? ToastSettings { get; set; }
-    [Parameter] public int Timeout { get; set; }
     private CountdownTimer? _countdownTimer;
     private int _progress = 100;
     protected override void OnInitialized()
     {
-        _countdownTimer = new CountdownTimer(Timeout);
+        _countdownTimer = new CountdownTimer(BlazoredToasts.Timeout);
         _countdownTimer.OnTick += CalculateProgress;
         _countdownTimer.OnElapsed += () => { Close(); };
         _countdownTimer.Start();
