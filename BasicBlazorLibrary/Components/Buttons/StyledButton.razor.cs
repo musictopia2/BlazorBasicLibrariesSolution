@@ -9,7 +9,7 @@ public abstract partial class StyledButton
     [Parameter]
     public bool IsEnabled { get; set; } = true;
     [Parameter]
-    public string Spacing { get; set; } = "5px";
+    public string Spacing { get; set; } = ""; //i like the idea of defaulting to blank now since i have global.
     [Parameter]
     public string FontSize { get; set; } = "";
     [Parameter]
@@ -58,19 +58,30 @@ public abstract partial class StyledButton
     {
         get
         {
-            var styles = new[]
+            var styles = new List<string>();
+            if (!string.IsNullOrWhiteSpace(Spacing))
             {
-            string.IsNullOrWhiteSpace(Spacing) ? null : $"margin: {Spacing}",
-            string.IsNullOrWhiteSpace(FontSize) ? null : $"font-size: {FontSize}",
-            !IsEnabled ? $"color: {DisabledColor}" : null
-        }
-            .Where(s => !string.IsNullOrWhiteSpace(s))
-            .ToList();
+                styles.Add($"margin: {Spacing}");
+            }
+            else if (string.IsNullOrWhiteSpace(StyleDefaults.DefaultSpacing) == false)
+            {
+                styles.Add($"margin: {StyleDefaults.DefaultSpacing}");
+            }
+            if (!string.IsNullOrWhiteSpace(FontSize))
+            {
+                styles.Add($"font-size: {FontSize}");
+            }
+            else if (string.IsNullOrWhiteSpace(StyleDefaults.DefaultFontSize) == false)
+            {
+                styles.Add($"font-size: {StyleDefaults.DefaultFontSize}");
+            }
+            if (!IsEnabled)
+            {
+                styles.Add($"color: {DisabledColor}");
+            }
 
-            if (styles.Count == 0)
-                return "";
+            return styles.Count > 0 ? string.Join(";", styles) + ";" : "";
 
-            return string.Join(";", styles) + ";";
         }
     }
 }
