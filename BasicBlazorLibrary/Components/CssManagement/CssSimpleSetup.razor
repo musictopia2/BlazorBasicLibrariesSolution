@@ -1,8 +1,15 @@
-﻿<FullCssSetup AppStyleName="@AppStyleName" />
+﻿<FullCssSetup AppStyleName="@AppStyleName" UseBlazorAssetMappingFormat=UseBlazorAssetMappingFormat />
 <BaseCssLoader>
     @foreach (var item in CssFiles)
     {
-        <link rel="stylesheet" href=@item />
+        @if (UseBlazorAssetMappingFormat == false)
+        {
+            <link rel="stylesheet" href=@item />
+        }
+        else
+        {
+            <link rel="stylesheet" href=@Assets[@item] />
+        }
     }
 </BaseCssLoader>
 @ChildContent

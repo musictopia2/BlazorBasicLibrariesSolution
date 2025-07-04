@@ -8,15 +8,28 @@
 </style>
 <HeadContent>
     <SectionOutlet SectionName="@cc2.PreloadCssSection" />
-    <link href="_content/BasicBlazorLibrary/custom-bootstrap.css" rel="stylesheet" />
+    @if (UseBlazorAssetMappingFormat == false)
+    {
+        <link href="_content/BasicBlazorLibrary/custom-bootstrap.css" rel="stylesheet" />
+    }
+    else
+    {
+        <link href="@Assets["_content/BasicBlazorLibrary/custom-bootstrap.css"]" rel="stylesheet" />
+    }
     <SectionOutlet SectionName="@cc2.PreBaseCssSection" />
     <SectionOutlet SectionName="@cc2.BaseCssSection" />
     <SectionOutlet SectionName="@cc2.ComponentCssSection" />
     <SectionOutlet SectionName="@cc2.PostComponentCssSection" />
     @if (string.IsNullOrWhiteSpace(AppStyleName) == false)
     {
-        <link rel="stylesheet" href="@ScopedName" />
-
+        @if (UseBlazorAssetMappingFormat == false)
+        {
+            <link rel="stylesheet" href="@ScopedName" />
+        }
+        else
+        {
+            <link rel="stylesheet" href="@Assets[@ScopedName]" />
+        }
     }
     <SectionOutlet SectionName="@cc2.PostScopedCssSection" />
 </HeadContent>
