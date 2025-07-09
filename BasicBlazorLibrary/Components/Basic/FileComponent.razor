@@ -1,0 +1,23 @@
+﻿@if (FileInfo is null)
+{
+    <div>
+        Needs File Information
+    </div>
+    return;
+}
+@if (FileInfo.MaxSize <= 0)
+{
+    <div>
+        Needs maximum file size
+    </div>
+    return;
+}
+@if (!string.IsNullOrEmpty(_errorMessage))
+{
+    <div class="text-danger">@_errorMessage</div>
+}
+<InputFile OnChange="HandleChange"
+           accept="@AcceptString"
+           multiple="@(MaxFiles > 1)"
+           style="@Style"
+           class="@CssClass" />

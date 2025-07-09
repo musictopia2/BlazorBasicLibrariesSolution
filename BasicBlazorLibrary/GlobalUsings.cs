@@ -14,3 +14,5 @@ global using System.Text;
 global using ff1 = CommonBasicLibraries.AdvancedGeneralFunctionsAndProcesses.FileFunctions.FileFunctions;
 global using aa1 = BasicBlazorLibrary.CssHelpers.AllCssClasses;
 global using cc2 = BasicBlazorLibrary.Components.CssManagement.CssSectionHelpers;
+global using CommonBasicLibraries.AdvancedGeneralFunctionsAndProcesses.UploadHelpers;
+global using Microsoft.AspNetCore.Components.Forms;
