@@ -10,4 +10,8 @@ public partial class RawTextViewerComponent
     public string Width { get; set; } = "100%";
     [Parameter]
     public EventCallback OnClick { get; set; }
+    [Parameter]
+    public bool DisableOverflow { get; set; }
+    private string GetClass => DisableOverflow ? "" : "auto";
+
 }

@@ -3,7 +3,7 @@
         @TopContent
     </div> 
  @* will always assume its scrollable.  if i decide to change my mind, rethink *@
-    <div style="overflow-y: auto; overflow-x: hidden">
+    <div @ref="ScrollElement" style="overflow-y: auto; overflow-x: hidden">
         @MainContent
     </div>
     <div>

@@ -38,7 +38,14 @@ export function getparentWidth(element) {
     }
     return element.parentElement.clientWidth;
 }
-export function scrolltotop() {
+export function scrollToTopElement(element) {
+    if (element && element.firstElementChild) {
+        element.scrollTop = 0;
+    }
+    
+}
+export function scrollToTopWindow() {
+    consol.log("scrollToTopWindow called");
     window.scrollTo(0, 0);
 }
 export function getbrowserheight() {

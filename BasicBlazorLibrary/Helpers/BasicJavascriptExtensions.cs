@@ -83,7 +83,12 @@ public static class BasicJavascriptExtensions
     public static async Task ScrollToTopAsync(this IJSRuntime js)
     {
         var moduleTask = js.GetModuleTask();
-        await moduleTask.InvokeVoidDisposeAsync("scrolltotop");
+        await moduleTask.InvokeVoidDisposeAsync("scrollToTopWindow");
+    }
+    public static async Task ScrollToTopAsync(this IJSRuntime js, ElementReference? element)
+    {
+        var moduleTask = js.GetModuleTask();
+        await moduleTask.InvokeVoidDisposeAsync("scrollToTopElement", element);
     }
     public static async Task RefreshBrowser(this IJSRuntime js)
     {

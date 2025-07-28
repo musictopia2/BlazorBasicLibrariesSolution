@@ -8,4 +8,5 @@ public partial class LeftOverLayout
     [Parameter]
     public RenderFragment? BottomContent { get; set; }
     public ElementReference? MainElement { get; private set; }
+    public ElementReference? ScrollElement { get; private set; }
 }

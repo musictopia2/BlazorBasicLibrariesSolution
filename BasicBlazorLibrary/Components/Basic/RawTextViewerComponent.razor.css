@@ -1,4 +1,7 @@
 div {
-    overflow: auto;
     white-space: pre-line;
+}
+
+.overflow {
+    overflow: auto;
 }
