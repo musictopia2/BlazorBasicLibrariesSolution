@@ -1,4 +1,5 @@
-﻿.cell {
+﻿
+.cell {
     width: 24vmin;
     height: 24vmin;
     border: 1px solid black;
@@ -54,10 +55,10 @@
     font-size: 5vmin;
 }
 .finaldisplay {
+    padding: 1px;
     font-size: 15vmin;
     /*ai suggested below*/
     text-align: right;
-    padding: 0.2em 0.5em;
     border: 2px solid #ccc;
     border-radius: 8px;
     background-color: #f0f0f0;
