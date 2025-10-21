@@ -44,7 +44,9 @@ public partial class InputEnterNumber<TValue>
     /// </summary>
     [Parameter]
     public bool ValidateOnInput { get; set; }
+#pragma warning disable CS8765 // Nullability of type of parameter doesn't match overridden member (possibly because of nullability attributes).
     protected override bool TryParseValueFromString(string? value, [MaybeNullWhen(false)] out TValue result, [NotNullWhen(false)] out string? validationErrorMessage)
+#pragma warning restore CS8765 // Nullability of type of parameter doesn't match overridden member (possibly because of nullability attributes).
     {
         if (BindConverter.TryConvertTo(value, CultureInfo.InvariantCulture, out result))
         {

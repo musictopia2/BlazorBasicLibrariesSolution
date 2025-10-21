@@ -12,14 +12,14 @@ public partial class InputEnterDate<TValue>
         _value = await _helps!.GetValueAsync(InputElement);
         if (_value == "")
         {
-            CurrentValue = default;
+            CurrentValue = default!;
             return true;
         }
         bool rets = _value.IsValidDate(out DateOnly? date);
         if (rets == false)
         {
             Toast!.ShowUserErrorToast("Invalid Date");
-            CurrentValue = default;
+            CurrentValue = default!;
             await ClearTextAsync();
             return false;
         }

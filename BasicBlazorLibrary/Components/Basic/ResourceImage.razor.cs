@@ -1,3 +1,4 @@
+using AssemblyHelpersLibrary.BasicExtensions;
 using CommonBasicLibraries.AdvancedGeneralFunctionsAndProcesses.FileFunctions;
 namespace BasicBlazorLibrary.Components.Basic;
 public partial class ResourceImage
