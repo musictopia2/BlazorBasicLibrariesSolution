@@ -16,7 +16,7 @@
     <SupportedPlatform Include="browser" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="CommonBasicLibraries" Version="9.0.76" />
+    <PackageReference Include="CommonBasicLibraries" Version="9.0.78" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.0" />
   </ItemGroup>
   <ItemGroup>
@@ -33,7 +33,6 @@
   </Target>
   <ItemGroup>
     <PackageReference Include="CssClassConstGenerator" Version="1.0.3" PrivateAssets="all" />
-    <PackageReference Include="Musictopia.AssemblyHelpersLibrary" Version="9.0.1" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="Resources/**/*.xml" />
