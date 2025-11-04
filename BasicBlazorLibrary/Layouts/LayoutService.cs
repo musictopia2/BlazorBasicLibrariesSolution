@@ -6,6 +6,7 @@ public class LayoutService : ILayout
     {
         BlazorUIHelpers.SystemError = this;
         BlazorUIHelpers.MessageBox = this;
+        BlazorUIHelpers.Exit = this;
     }
     public StartLayout? Layout { get; set; }
     private void Check()

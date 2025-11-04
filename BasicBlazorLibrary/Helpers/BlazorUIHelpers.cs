@@ -7,4 +7,5 @@ public static class BlazorUIHelpers
     public static IToast? Toast { get; set; }
     public static ISystemError? SystemError { get; set; }
     public static IMessageBox? MessageBox { get; set; }
+    public static IExit? Exit { get; set; }
 }
