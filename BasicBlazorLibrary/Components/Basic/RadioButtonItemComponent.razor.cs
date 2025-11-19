@@ -16,7 +16,7 @@ public partial class RadioButtonItemComponent<TValue>
     public TValue? Value { get; set; }
     [Parameter]
     public bool ShowLabel { get; set; }
-    private string GetText => SelectedValue!.ToString()!.TextWithSpaces();
+    private string GetText => SelectedValue!.ToString()!.TextWithSpaces;
     [Parameter]
     public EventCallback<TValue> ValueChanged { get; set; }
 

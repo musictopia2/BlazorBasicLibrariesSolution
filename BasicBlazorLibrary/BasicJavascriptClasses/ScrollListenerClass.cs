@@ -19,12 +19,12 @@ public class ScrollListenerClass : BaseLibraryJavascriptClass
         }
         if (isVertical)
         {
-            await ModuleTask.InvokeVoidFromClassAsync("starty", DotNetObjectReference.Create(this), element); //i am forced to use the dotnetobjectreferencecreate method 
+            await ModuleTask.InvokeVoidFromClassAsync("starty", DotNetObjectReference.Create(this)!, element); //i am forced to use the dotnetobjectreferencecreate method 
         }
         else
         {
 
-            await ModuleTask.InvokeVoidFromClassAsync("startx", DotNetObjectReference.Create(this), element);
+            await ModuleTask.InvokeVoidFromClassAsync("startx", DotNetObjectReference.Create(this)!, element);
         }
     }
     protected override string JavascriptFileName => "scrolllistener";

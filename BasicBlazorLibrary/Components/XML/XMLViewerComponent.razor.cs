@@ -18,6 +18,6 @@ public partial class XMLViewerComponent
         }
         await OnClick.InvokeAsync(Element);
     }
-    private static string GetBackgroundColor => cc1.White.ToWebColor();
-    private string GetHoverColor => OnClick.HasDelegate ? cc1.LightYellow.ToWebColor() : GetBackgroundColor;
+    private static string GetBackgroundColor => cc1.White.ToWebColor;
+    private string GetHoverColor => OnClick.HasDelegate ? cc1.LightYellow.ToWebColor : GetBackgroundColor;
 }

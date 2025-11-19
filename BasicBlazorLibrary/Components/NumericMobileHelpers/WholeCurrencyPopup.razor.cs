@@ -89,6 +89,6 @@ public partial class WholeCurrencyPopup
         {
             _display = _display.Substring(0, _display.Length - 1);
         }
-        _display = _display.BackSpaceRemoveEnding0s();
+        _display = _display.BackSpaceRemoveEnding0s;
     }
 }

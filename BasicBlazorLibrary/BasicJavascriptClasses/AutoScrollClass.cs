@@ -21,6 +21,10 @@ public class AutoScrollClass : BaseLibraryJavascriptClass
     }
     public async Task SetScrollPosition(ElementReference? element, float position)
     {
+        if (element is null)
+        {
+            return;
+        }
         await ModuleTask.InvokeVoidFromClassAsync("setscroll", element, position);
     }
     public async Task<int> GetLeftScrollValue(ElementReference? element)

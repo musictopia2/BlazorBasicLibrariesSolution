@@ -1,108 +1,121 @@
 ﻿namespace BasicBlazorLibrary.Helpers;
 public static class BasicJavascriptExtensions
 {
-    private static Lazy<Task<IJSObjectReference>> GetModuleTask(this IJSRuntime js)
+    extension(IJSRuntime js)
     {
-        return js.GetLibraryModuleTask("basichelpers");
-    }
-    public static async Task<int> GetContainerTop(this IJSRuntime js, ElementReference? element)
-    {
-        var moduleTask = js.GetModuleTask();
-        double firstValue = await moduleTask.InvokeDisposeAsync<double>("getcontainertop", element);
-        int results = (int)firstValue;
-        return results;
-    }
-    public static async Task<int> GetContainerLeft(this IJSRuntime js, ElementReference? element)
-    {
-        var moduleTask = js.GetModuleTask();
-        double firstValue = await moduleTask.InvokeDisposeAsync<double>("getcontainerleft", element);
-        int results = (int)firstValue;
-        return results;
-    }
-    public static async Task OpenFullScreen(this IJSRuntime js)
-    {
-        var task = js.GetLibraryModuleTask("fullscreen");
-        await task.InvokeVoidDisposeAsync("openFullscreen");
-    }
-    public static async Task ExitFullScreen(this IJSRuntime js)
-    {
-        var task = js.GetLibraryModuleTask("fullscreen");
-        await task.InvokeVoidDisposeAsync("exitFullscreen");
-    }
-    public static async Task<int> GetContainerHeight(this IJSRuntime js, ElementReference? element)
-    {
-        var moduleTask = js.GetModuleTask();
-        return await moduleTask.InvokeDisposeAsync<int>("getcontainerheight", element);
-    }
-    public static async Task<int> GetContainerWidth(this IJSRuntime js, ElementReference? element)
-    {
-        var moduleTask = js.GetModuleTask();
-        return await moduleTask.InvokeDisposeAsync<int>("getcontainerwidth", element);
-    }
-    public static async Task<int> GetParentHeight(this IJSRuntime js, ElementReference? element)
-    {
-        var moduleTask = js.GetModuleTask();
-        return await moduleTask.InvokeDisposeAsync<int>("getparentHeight", element);
-    }
-    public static async Task<int> GetParentWidth(this IJSRuntime js, ElementReference? element)
-    {
-        var moduleTask = js.GetModuleTask();
-        return await moduleTask.InvokeDisposeAsync<int>("getparentWidth", element);
-    }
-    public static async Task<int> GetBrowserHeight(this IJSRuntime js)
-    {
-        var moduleTask = js.GetModuleTask();
-        return await moduleTask.InvokeDisposeAsync<int>("getbrowserheight");
-    }
-    public static async Task<int> GetBrowserWidth(this IJSRuntime js)
-    {
-        var moduleTask = js.GetModuleTask();
-        return await moduleTask.InvokeDisposeAsync<int>("getbrowserwidth");
-    }
-    public static async Task<int> PixelsPerRem(this IJSRuntime js)
-    {
-        var moduleTask = js.GetModuleTask();
-        return await moduleTask.InvokeDisposeAsync<int>("convertRemToPixels", 1);
-    }
-    public static async Task<string> GetOperatingSystemAsync(this IJSRuntime js)
-    {
-        var module = js.GetLibraryModuleTask("operatingsystemhelpers");
-        string results = await module.InvokeDisposeAsync<string>("getOS");
-        return results;
-    }
-    public static async Task<bool> HasKeyboard(this IJSRuntime js)
-    {
-        var module = js.GetLibraryModuleTask("operatingsystemhelpers");
-        bool output = await module.InvokeDisposeAsync<bool>("hasKeyboard");
-        return output;
-    }
-    public static async Task NavigateToOnAnotherTabAsync(this IJSRuntime js, string url)
-    {
-        await js.InvokeVoidAsync("open", url, "_blank");
-    }
-    public static async Task ScrollToTopAsync(this IJSRuntime js)
-    {
-        var moduleTask = js.GetModuleTask();
-        await moduleTask.InvokeVoidDisposeAsync("scrollToTopWindow");
-    }
-    public static async Task ScrollToTopAsync(this IJSRuntime js, ElementReference? element)
-    {
-        var moduleTask = js.GetModuleTask();
-        await moduleTask.InvokeVoidDisposeAsync("scrollToTopElement", element);
-    }
-    public static async Task RefreshBrowser(this IJSRuntime js)
-    {
-        var moduleTask = js.GetModuleTask();
-        await moduleTask.InvokeVoidDisposeAsync("refreshbrowser");
-    }
-    public static async Task Update(this IJSRuntime js)
-    {
-        var moduleTask = js.GetModuleTask();
-        await moduleTask.InvokeVoidDisposeAsync("update");
-    }
-    public static async Task CopyTextAsync(this IJSRuntime js, string text)
-    {
-        var moduleTask = js.GetLibraryModuleTask("clipboard");
-        await moduleTask.InvokeVoidFromClassAsync("clipboardCopy", text);
+        private Lazy<Task<IJSObjectReference>> GetModuleTask()
+        {
+            return js.GetLibraryModuleTask("basichelpers");
+        }
+        public async Task<int> GetContainerTop(ElementReference? element)
+        {
+            CustomBasicException.ThrowIfNull(element);
+            var moduleTask = js.GetModuleTask();
+            double firstValue = await moduleTask.InvokeDisposeAsync<double>("getcontainertop", element);
+            int results = (int)firstValue;
+            return results;
+        }
+        public async Task<int> GetContainerLeft(ElementReference? element)
+        {
+            CustomBasicException.ThrowIfNull(element);
+            var moduleTask = js.GetModuleTask();
+            double firstValue = await moduleTask.InvokeDisposeAsync<double>("getcontainerleft", element);
+            int results = (int)firstValue;
+            return results;
+        }
+        public async Task OpenFullScreen()
+        {
+            var task = js.GetLibraryModuleTask("fullscreen");
+            await task.InvokeVoidDisposeAsync("openFullscreen");
+        }
+        public async Task ExitFullScreen()
+        {
+            var task = js.GetLibraryModuleTask("fullscreen");
+            await task.InvokeVoidDisposeAsync("exitFullscreen");
+        }
+        public async Task<int> GetContainerHeight(ElementReference? element)
+        {
+            CustomBasicException.ThrowIfNull(element);
+            var moduleTask = js.GetModuleTask();
+            return await moduleTask.InvokeDisposeAsync<int>("getcontainerheight", element);
+        }
+        public async Task<int> GetContainerWidth(ElementReference? element)
+        {
+            CustomBasicException.ThrowIfNull(element);
+            var moduleTask = js.GetModuleTask();
+            return await moduleTask.InvokeDisposeAsync<int>("getcontainerwidth", element);
+        }
+        public async Task<int> GetParentHeight(ElementReference? element)
+        {
+            CustomBasicException.ThrowIfNull(element);
+            var moduleTask = js.GetModuleTask();
+            return await moduleTask.InvokeDisposeAsync<int>("getparentHeight", element);
+        }
+        public async Task<int> GetParentWidth(ElementReference? element)
+        {
+            CustomBasicException.ThrowIfNull(element);
+            var moduleTask = js.GetModuleTask();
+            return await moduleTask.InvokeDisposeAsync<int>("getparentWidth", element);
+        }
+        public async Task<int> GetBrowserHeight()
+        {
+            var moduleTask = js.GetModuleTask();
+            return await moduleTask.InvokeDisposeAsync<int>("getbrowserheight");
+        }
+        public async Task<int> GetBrowserWidth()
+        {
+            var moduleTask = js.GetModuleTask();
+            return await moduleTask.InvokeDisposeAsync<int>("getbrowserwidth");
+        }
+        public async Task<int> PixelsPerRem()
+        {
+            var moduleTask = js.GetModuleTask();
+            return await moduleTask.InvokeDisposeAsync<int>("convertRemToPixels", 1);
+        }
+        public async Task<string> GetOperatingSystemAsync()
+        {
+            var module = js.GetLibraryModuleTask("operatingsystemhelpers");
+            string results = await module.InvokeDisposeAsync<string>("getOS");
+            return results;
+        }
+        public async Task<bool> HasKeyboard()
+        {
+            var module = js.GetLibraryModuleTask("operatingsystemhelpers");
+            bool output = await module.InvokeDisposeAsync<bool>("hasKeyboard");
+            return output;
+        }
+        public async Task NavigateToOnAnotherTabAsync(string url)
+        {
+            await js.InvokeVoidAsync("open", url, "_blank");
+        }
+        public async Task ScrollToTopAsync()
+        {
+            var moduleTask = js.GetModuleTask();
+            await moduleTask.InvokeVoidDisposeAsync("scrollToTopWindow");
+        }
+        public async Task ScrollToTopAsync(ElementReference? element)
+        {
+            if (element is null)
+            {
+                return;
+            }
+            var moduleTask = js.GetModuleTask();
+            await moduleTask.InvokeVoidDisposeAsync("scrollToTopElement", element);
+        }
+        public async Task RefreshBrowser()
+        {
+            var moduleTask = js.GetModuleTask();
+            await moduleTask.InvokeVoidDisposeAsync("refreshbrowser");
+        }
+        public async Task Update()
+        {
+            var moduleTask = js.GetModuleTask();
+            await moduleTask.InvokeVoidDisposeAsync("update");
+        }
+        public async Task CopyTextAsync(string text)
+        {
+            var moduleTask = js.GetLibraryModuleTask("clipboard");
+            await moduleTask.InvokeVoidFromClassAsync("clipboardCopy", text!);
+        }
     }
 }

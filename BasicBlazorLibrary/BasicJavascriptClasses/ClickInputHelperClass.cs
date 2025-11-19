@@ -1,15 +1,12 @@
 ﻿namespace BasicBlazorLibrary.BasicJavascriptClasses;
-internal class ClickInputHelperClass : BaseLibraryJavascriptClass //had to keep because had 2 classes.  this is okay this time.
+internal class ClickInputHelperClass(IJSRuntime js) : BaseLibraryJavascriptClass(js) //had to keep because had 2 classes.  this is okay this time.
 {
-    public ClickInputHelperClass(IJSRuntime js) : base(js)
-    {
-    }
     public Action<int>? InputClicked;
     public Action? OtherClicked;
     protected override string JavascriptFileName => "elementselector";
     public async Task InitAsync()
     {
-        await ModuleTask.InvokeVoidFromClassAsync("start", DotNetObjectReference.Create(this));
+        await ModuleTask.InvokeVoidFromClassAsync("start", DotNetObjectReference.Create(this)!);
     }
     [JSInvokable]
     public void JsOtherClicked()

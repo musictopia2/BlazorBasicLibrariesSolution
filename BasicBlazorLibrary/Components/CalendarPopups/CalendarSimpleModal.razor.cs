@@ -23,7 +23,7 @@ public partial class CalendarSimpleModal<TValue>
         {
             if (_todisplay.Value.Day == date.Day)
             {
-                return $"background-color: {cc1.Aqua.ToWebColor()};";
+                return $"background-color: {cc1.Aqua.ToWebColor};";
             }
         }
         return "";

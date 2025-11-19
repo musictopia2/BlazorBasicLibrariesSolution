@@ -9,7 +9,7 @@ public class ResizeListenerClass : BaseLibraryJavascriptClass
     public Action<BrowserSize>? Onresized { get; set; }
     public async Task InitAsync()
     {
-        await ModuleTask.InvokeVoidFromClassAsync("listenForResize", DotNetObjectReference.Create(this));
+        await ModuleTask.InvokeVoidFromClassAsync("listenForResize", DotNetObjectReference.Create(this)!);
     }
     /// <summary>
     /// Invoked by jsInterop, use the OnResized delgate to subscribe.

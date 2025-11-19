@@ -31,7 +31,8 @@ public partial class InputEnterDate<TValue>
         }
         catch (Exception)
         {
-            temps = _dateChosen!.Value.ToDateTime();
+            DateOnly newDate = _dateChosen!.Value;
+            temps = new DateTime(newDate, new()); //not working for now to convert to datetime.
             CurrentValue = (TValue)temps;
         }
 
@@ -144,7 +145,7 @@ public partial class InputEnterDate<TValue>
             }
             else
             {
-                _dateChosen = ab.ToDateOnly();
+                _dateChosen = ab.ToDateOnly;
             }
         }
         else

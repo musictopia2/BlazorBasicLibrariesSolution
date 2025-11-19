@@ -7,6 +7,10 @@ public class CenterClass : BaseLibraryJavascriptClass //can eliminate after gett
     protected override string JavascriptFileName => "center";
     public async Task CenterDiv(ElementReference? element)
     {
+        if (element is null)
+        {
+            return;
+        }
         await ModuleTask.InvokeVoidFromClassAsync("center", element);
     }
 }

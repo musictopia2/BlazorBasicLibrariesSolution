@@ -2,9 +2,9 @@ namespace BasicBlazorLibrary.Components.NavigationMenus;
 public partial class MenuModal
 {
     [Parameter]
-    public string BackgroundColor { get; set; } = cc1.Black.ToWebColor();
+    public string BackgroundColor { get; set; } = cc1.Black.ToWebColor;
     [Parameter]
-    public string TextColor { get; set; } = cc1.White.ToWebColor();
+    public string TextColor { get; set; } = cc1.White.ToWebColor;
     [Parameter]
     public string FontSize { get; set; } = "1.5rem";
     [Parameter]

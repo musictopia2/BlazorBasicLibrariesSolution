@@ -11,7 +11,7 @@ public partial class CanvasLayout
     [Parameter]
     public SizeF ViewPort { get; set; }
     [Parameter]
-    public string BackgroundColor { get; set; } = cc1.Transparent.ToWebColor();
+    public string BackgroundColor { get; set; } = cc1.Transparent.ToWebColor;
     [Parameter]
     public EventCallback Clicked { get; set; }
     private async Task Submit()

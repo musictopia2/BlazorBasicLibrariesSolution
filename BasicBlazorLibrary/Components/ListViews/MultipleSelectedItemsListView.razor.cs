@@ -4,9 +4,9 @@ public partial class MultipleSelectedItemsListView<TValue>
     [Parameter]
     public BasicList<TValue> SelectedList { get; set; } = new();
     [Parameter]
-    public string HighlightColor { get; set; } = cc1.Lime.ToWebColor();
+    public string HighlightColor { get; set; } = cc1.Lime.ToWebColor;
     [Parameter]
-    public string HoverColor { get; set; } = cc1.LightYellow.ToWebColor();
+    public string HoverColor { get; set; } = cc1.LightYellow.ToWebColor;
     [Parameter]
     public EventCallback OnChangeSelectedItems { get; set; }
     private string GetHoverColor(TValue selectedItem)

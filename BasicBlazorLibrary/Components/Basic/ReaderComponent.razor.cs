@@ -27,7 +27,7 @@ public partial class ReaderComponent<T> : IAsyncDisposable
     public bool CanFocusFirst { get; set; } = true;
     [Parameter]
     public bool Enabled { get; set; } = true; //sometimes won't even be enabled.
-    private bool NeedsHighlighting => DataContext!.HighlightColor != cc1.Transparent.ToWebColor();
+    private bool NeedsHighlighting => DataContext!.HighlightColor != cc1.Transparent.ToWebColor;
     private KeystrokeClass? _keystroke;
     private AutoScrollClass? _autoScroll;
     private string GetColorStyle(int id)

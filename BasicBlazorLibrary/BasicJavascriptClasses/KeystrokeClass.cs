@@ -32,7 +32,7 @@ public class KeystrokeClass : BaseLibraryJavascriptClass
             return;
         }
         _didInit = true; //has to be before.  otherwise, can have bad timing (causing issues).
-        await ModuleTask.InvokeVoidFromClassAsync("start", DotNetObjectReference.Create(this), element);
+        await ModuleTask.InvokeVoidFromClassAsync("start", DotNetObjectReference.Create(this)!, element);
     }
     public void AddAction(ConsoleKey key, Action action)
     {

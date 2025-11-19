@@ -6,34 +6,32 @@ using Microsoft.Extensions.DependencyInjection; //not common enough to put to gl
 namespace BasicBlazorLibrary.Helpers;
 public static class ServiceCollectionExtensions
 {
-    public static ServiceCollection RegisterRealDatePicker(this ServiceCollection services)
+    extension (IServiceCollection services)
     {
-        services.AddSingleton<IDatePicker, RealDatePicker>();
-        services.AddSingleton<IDateOnlyPicker, RealDatePicker>();
-        return services;
-        //this means i can do mocks if necessary.
-    }
-    public static IServiceCollection RegisterRealDatePicker(this IServiceCollection services)
-    {
-        services.AddSingleton<IDatePicker, RealDatePicker>();
-        services.AddSingleton<IDateOnlyPicker, RealDatePicker>();
-        return services;
-    }
-    public static IServiceCollection RegisterBlazorBeginningClasses(this IServiceCollection services)
-    {
-        services.AddScoped<ToastService>();
-        services.AddScoped<IToast>(xx => xx.GetRequiredService<ToastService>());
-        services.AddScoped<IToastComponent>(xx => xx.GetRequiredService<ToastService>());
-        if (bb1.OS == BasicDataFunctions.EnumOS.WindowsDT)
+        //hopefully i can start using IServiceCollection instead of directly the ServiceCollection (?)
+        //if not, then add back as another extension (?)
+        public IServiceCollection RegisterRealDatePicker()
         {
-            return services; //nothing to register because windows does something different for them.
+            services.AddSingleton<IDatePicker, RealDatePicker>();
+            services.AddSingleton<IDateOnlyPicker, RealDatePicker>();
+            return services;
         }
-        services.AddScoped<LayoutService>();
-        services.AddScoped<ILayout>(xx => xx.GetRequiredService<LayoutService>());
-        services.AddScoped<IExit>(xx => xx.GetRequiredService<LayoutService>());
-        services.AddScoped<ISystemError>(xx => xx.GetRequiredService<LayoutService>());
-        services.AddScoped<IMessageBox>(xx => xx.GetRequiredService<LayoutService>());
-        //services.AddScoped<ILayout, LayoutService>();
-        return services;
+        public IServiceCollection RegisterBlazorBeginningClasses()
+        {
+            services.AddScoped<ToastService>();
+            services.AddScoped<IToast>(xx => xx.GetRequiredService<ToastService>());
+            services.AddScoped<IToastComponent>(xx => xx.GetRequiredService<ToastService>());
+            if (bb1.OS == BasicDataFunctions.EnumOS.WindowsDT)
+            {
+                return services; //nothing to register because windows does something different for them.
+            }
+            services.AddScoped<LayoutService>();
+            services.AddScoped<ILayout>(xx => xx.GetRequiredService<LayoutService>());
+            services.AddScoped<IExit>(xx => xx.GetRequiredService<LayoutService>());
+            services.AddScoped<ISystemError>(xx => xx.GetRequiredService<LayoutService>());
+            services.AddScoped<IMessageBox>(xx => xx.GetRequiredService<LayoutService>());
+            //services.AddScoped<ILayout, LayoutService>();
+            return services;
+        }
     }
 }

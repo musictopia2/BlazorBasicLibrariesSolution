@@ -19,7 +19,7 @@ public partial class VirtualSimpleComponent<TItem> : IAsyncDisposable
     [Parameter]
     public bool HasSolidBlackBorders { get; set; } = false;
     [Parameter]
-    public string BackgroundColor { get; set; } = cc1.White.ToWebColor();
+    public string BackgroundColor { get; set; } = cc1.White.ToWebColor;
     private ScrollListenerClass? _listen;
     private AutoScrollClass? _autoScroll;
     private ElementReference? _mainScroll;

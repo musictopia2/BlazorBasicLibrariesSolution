@@ -6,9 +6,9 @@ public partial class SingleSelectedItemListView<TValue>
     [Parameter]
     public EventCallback<TValue?> SelectedItemChanged { get; set; }
     [Parameter]
-    public string HighlightColor { get; set; } = cc1.Lime.ToWebColor();
+    public string HighlightColor { get; set; } = cc1.Lime.ToWebColor;
     [Parameter]
-    public string HoverColor { get; set; } = cc1.LightYellow.ToWebColor();
+    public string HoverColor { get; set; } = cc1.LightYellow.ToWebColor;
     private string GetHoverColor(TValue selectedItem)
     {
         if (selectedItem is null)

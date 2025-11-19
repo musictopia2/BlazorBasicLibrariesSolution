@@ -14,9 +14,9 @@ public partial class ArrowCompleteComponent
     [Parameter]
     public EventCallback DownClicked { get; set; }
     [Parameter]
-    public string BackgroundColor { get; set; } = cc1.Black.ToWebColor();
+    public string BackgroundColor { get; set; } = cc1.Black.ToWebColor;
     [Parameter]
-    public string StrokeColor { get; set; } = cc1.Transparent.ToWebColor();
+    public string StrokeColor { get; set; } = cc1.Transparent.ToWebColor;
     [Parameter]
     public string StrokeWidth { get; set; } = "1px";
     [Parameter]

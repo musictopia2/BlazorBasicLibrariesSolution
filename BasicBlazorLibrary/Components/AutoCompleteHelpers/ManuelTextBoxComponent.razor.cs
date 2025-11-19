@@ -19,7 +19,7 @@ public partial class ManuelTextBoxComponent
     {
         return $"font-size: {Style!.FontSize}; color: {Style.HeaderTextColor};";
     }
-    private string GetTextBackgroundColor => Style!.HeaderBackgroundColor == cc1.Transparent.ToWebColor() ? "inherit" : Style.HeaderBackgroundColor;
+    private string GetTextBackgroundColor => Style!.HeaderBackgroundColor == cc1.Transparent.ToWebColor ? "inherit" : Style.HeaderBackgroundColor;
     public async Task<string> GetValueAsync()
     {
         return await _helps!.GetValueAsync(Text);
