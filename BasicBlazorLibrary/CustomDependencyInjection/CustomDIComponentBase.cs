@@ -1,4 +1,24 @@
-﻿
+﻿using Microsoft.Extensions.DependencyInjection;
+//try this to bring back the CustomDIComponentBase now.
+namespace BasicBlazorLibrary.CustomDependencyInjection;
+public abstract class CustomDIComponentBase : ComponentBase
+{
+    protected static IServiceProvider Provider =>
+        GlobalDIClass.NewProvider
+        ?? throw new InvalidOperationException("Bootstrapper not initialized");
+
+    protected static T GetRequiredService<T>()
+    {
+        var service = Provider.GetService<T>() ?? throw new InvalidOperationException($"Service {typeof(T).Name} not registered.");
+        return service;
+    }
+
+    protected static object GetRequiredService(Type type)
+        => Provider.GetRequiredService(type);
+}
+
+
+
 //if i need reflection, try something else.
 
 
