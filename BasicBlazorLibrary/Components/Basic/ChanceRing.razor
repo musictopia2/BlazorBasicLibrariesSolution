@@ -1,0 +1,25 @@
+﻿<svg width="@Size" height="@Size" viewBox="0 0 120 120">
+    <rect x="0" y="0" width="120" height="120" fill="@FillColor" />
+    <!-- Base ring -->
+    <circle cx="@_center"
+            cy="@_center"
+            r="@_radius"
+            stroke="#444"
+            stroke-width="@StrokeWidth"
+            fill="none" />
+
+    @if (ChancePercent > 0)
+    {
+        <!-- Progress ring -->
+        <circle cx="@_center"
+                cy="@_center"
+                r="@_radius"
+                stroke="@ProgressColor"
+                stroke-width="@StrokeWidth"
+                fill="none"
+                stroke-dasharray="@Circumference"
+                stroke-dashoffset="@DashOffset"
+                stroke-linecap="butt"
+                transform="rotate(-90 @_center @_center)" />
+    }
+</svg>
