@@ -2,11 +2,11 @@ namespace BasicBlazorLibrary.Components.Basic;
 public partial class ChanceRing
 {
     [Parameter]
-    public int ChancePercent { get; set; }
+    public double PercentChance { get; set; }
     [Parameter]
-    public int StartMedium { get; set; } = 30;
+    public double StartMedium { get; set; } = 30;
     [Parameter]
-    public int StartHigh { get; set; } = 65;
+    public double StartHigh { get; set; } = 65;
     [Parameter]
     public string BaseColor { get; set; } = cc1.DarkGray.ToWebColor;
     [Parameter]
@@ -25,24 +25,36 @@ public partial class ChanceRing
     private const double _center = 60; // center of 120x120 viewBox
     private static double Circumference => 2 * Math.PI * _radius;
     private double DashOffset =>
-        Circumference * (1 - (ChancePercent / 100.0));
+        Circumference * (1 - (PercentChance / 100.0));
     private string ProgressColor
     {
         get
         {
-            if (ChancePercent == 0)
+            if (PercentChance == 0)
             {
                 return BaseColor;
             }
-            if (ChancePercent <= StartMedium)
+            if (PercentChance <= StartMedium)
             {
                 return LowChanceColor;
             }
-            if (ChancePercent <= StartHigh)
+            if (PercentChance <= StartHigh)
             {
                 return MediumChanceColor;
             }
             return HighChanceColor;
+        }
+    }
+    protected override void OnParametersSet()
+    {
+        PercentChance = Math.Clamp(PercentChance, 0, 100);
+
+        StartMedium = Math.Clamp(StartMedium, 0, 100);
+        StartHigh = Math.Clamp(StartHigh, 0, 100);
+
+        if (StartMedium > StartHigh)
+        {
+            (StartMedium, StartHigh) = (StartHigh, StartMedium);
         }
     }
 }
