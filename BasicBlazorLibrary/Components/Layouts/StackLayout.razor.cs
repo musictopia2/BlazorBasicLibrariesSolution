@@ -1,5 +1,4 @@
 using CommonBasicLibraries.AdvancedGeneralFunctionsAndProcesses.Misc;
-using System.Text;
 namespace BasicBlazorLibrary.Components.Layouts;
 public partial class StackLayout
 {
@@ -28,6 +27,10 @@ public partial class StackLayout
     public bool Inline { get; set; }
     [Parameter]
     public string ItemSpacing { get; set; } = "3px";
+
+    [Parameter]
+    public bool ModalSafe { get; set; } = true;
+
     public void Refresh()
     {
         StateHasChanged();
@@ -100,7 +103,11 @@ public partial class StackLayout
         }
         if (FontSize != "")
         {
-            sb.Append($"font-size: {FontSize}");
+            sb.Append($"font-size: {FontSize};");
+        }
+        if (ModalSafe)
+        {
+            sb.Append("min-width:0; min-height:0; align-content:start; align-items:start; box-sizing:border-box;");
         }
         if (Style != "")
         {

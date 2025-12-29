@@ -1,4 +1,3 @@
-using System.Text;
 namespace BasicBlazorLibrary.Components.CssGrids;
 public partial class GridContainer
 {
@@ -6,6 +5,8 @@ public partial class GridContainer
     public string Class { get; set; } = "";
     [Parameter]
     public string Style { get; set; } = "";
+    [Parameter] 
+    public bool ModalSafe { get; set; } = true;
     /// <summary>
     /// Definition of the space between each row.  Examples: auto 80px
     /// </summary>
@@ -16,6 +17,11 @@ public partial class GridContainer
     /// </summary>
     [Parameter]
     public string ColumnGap { get; set; } = "";
+    /// <summary>
+    /// this would specify the same for both column and row.
+    /// </summary>
+    [Parameter] 
+    public string Gap { get; set; } = "";
     [Parameter]
     public string Height { get; set; } = "";
     [Parameter]
@@ -40,14 +46,48 @@ public partial class GridContainer
     public RenderFragment? ChildContent { get; set; }
     private string GetStyle()
     {
-        StringBuilder sb = new ();
-        if (Height != "")
+        StringBuilder sb = new();
+        
+
+        if (string.IsNullOrWhiteSpace(Height) == false)
         {
             sb.Append($"height: {Height};");
         }
-        if (Width != "")
+        if (string.IsNullOrWhiteSpace(Width) == false)
         {
             sb.Append($"width: {Width};");
+        }
+        
+        if (string.IsNullOrWhiteSpace(Gap) == false)
+        {
+            sb.Append($"gap: {Gap};");
+        }
+        else
+        {
+            if (string.IsNullOrWhiteSpace(ColumnGap) == false)
+            {
+                sb.Append($"column-gap: {ColumnGap};");
+            }
+            if (string.IsNullOrWhiteSpace(RowGap) == false)
+            {
+                sb.Append($"row-gap: {RowGap};");
+            }
+        }
+        if (string.IsNullOrWhiteSpace(Columns) == false)
+        {
+            sb.Append($"grid-template-columns: {Columns};");
+        }
+        if (string.IsNullOrWhiteSpace(Rows) == false)
+        {
+            sb.Append($"grid-template-rows: {Rows};");
+        }
+        if (ModalSafe)
+        {
+            sb.Append("min-width: 0; min-height: 0; max-width: 100%; box-sizing: border-box; align-content: start; align-items: start;");
+        }
+        if (string.IsNullOrWhiteSpace(Style) == false)
+        {
+            sb.Append(Style.Trim().TrimEnd(';')).Append(';');
         }
         if (Inline)
         {
@@ -56,23 +96,6 @@ public partial class GridContainer
         else
         {
             sb.Append("display: grid;");
-        }
-        if (ColumnGap != "")
-        {
-            sb.Append($"grid-column-gap: {ColumnGap};");
-        }
-        if (RowGap != "")
-        {
-            sb.Append($"grid-row-gap: {RowGap};");
-        }
-
-        if (Columns != "")
-        {
-            sb.Append($"grid-template-columns: {Columns};");
-        }
-        if (Rows != "")
-        {
-            sb.Append($"grid-template-rows: {Rows};");
         }
         return sb.ToString();
     }

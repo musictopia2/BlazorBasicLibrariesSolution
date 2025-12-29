@@ -49,11 +49,11 @@ public partial class StackItem
         StringBuilder sb = new();
         if (HorizontalAlignment != "")
         {
-            sb.Append($"justify-content: {HorizontalAlignment}");
+            sb.Append($"justify-content: {HorizontalAlignment};");
         }
         if (VerticalAlignment != "")
         {
-            sb.Append($"align-content: {VerticalAlignment}");
+            sb.Append($"align-content: {VerticalAlignment};");
         }
         if (Scrollable && Stack!.Orientation == EnumOrientation.Vertical)
         {
@@ -61,7 +61,7 @@ public partial class StackItem
         }
         else if (Scrollable && Stack!.Orientation == EnumOrientation.Horizontal)
         {
-            sb.Append("overflow: auto: width: 100%;");
+            sb.Append("overflow: auto; width: 100%;");
         }
         sb.Append($"opacity: {GetVisibleStyle};");
         if (BackgroundColor != "transparent")
