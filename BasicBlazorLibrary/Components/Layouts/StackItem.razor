@@ -1,3 +1,12 @@
-﻿<div style="@GetStyle()">
-    @ChildContent
-</div>
+﻿@if (StopClickPropagation)
+{
+    <div style="@GetStyle()" @onclick:stopPropagation="true">
+        @ChildContent
+    </div>
+}
+else
+{
+    <div style="@GetStyle()">
+        @ChildContent
+    </div>
+}

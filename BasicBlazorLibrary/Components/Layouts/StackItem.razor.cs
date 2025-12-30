@@ -10,6 +10,10 @@ public partial class StackItem
     public bool Scrollable { get; set; }
     [Parameter]
     public string Style { get; set; } = "";
+
+    [Parameter]
+    public bool StopClickPropagation { get; set; } = false;
+
     /// <summary>
     /// Horizontal alignement (Example: "@Justify.Center")
     /// </summary>
