@@ -1,4 +1,7 @@
 ﻿@inherits PopupBase
-<div class="topmodal @GetFirstClass()" style="z-index: @ZIndex; background-color: @BackgroundColor; @Style">
-    @ChildContent
-</div> 
+@if (Visible)
+{
+    <div class="topmodal" style="z-index: @ZIndex; background-color: @BackgroundColor; @Style">
+        @ChildContent
+    </div>
+}

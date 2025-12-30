@@ -7,12 +7,5 @@ public partial class PopupFullScreen
     public RenderFragment? ChildContent { get; set; }
     [Parameter]
     public string Style { get; set; } = "";
-    private string GetFirstClass()
-    {
-        if (Visible == true)
-        {
-            return "";
-        }
-        return "hidden";
-    }
+    
 }

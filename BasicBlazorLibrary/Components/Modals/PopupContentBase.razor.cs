@@ -44,26 +44,26 @@ public abstract partial class PopupContentBase
         }
         return $"background-color: {BackgroundColor};";
     }
-    protected string GetHiddenStyle()
-    {
-        if (Visible == true)
-        {
-            return "";
-        }
-        return "display: none;";
-    }
+    //protected string GetHiddenStyle()
+    //{
+    //    if (Visible == true)
+    //    {
+    //        return "";
+    //    }
+    //    return "display: none;";
+    //}
     protected virtual bool ProtectedHiddenFull => DisableParentClickThrough;
     protected string TopModalStyle()
     {
         if (FullScreen)
         {
-            return $"display: flex;  top: 0; left: 0; width: 100%; height: 100%; position: fixed; z-index: {ZIndex}; background-color: rgba(0,0,0,0.5); {GetHiddenStyle()}";
+            return $"display: flex;  top: 0; left: 0; width: 100%; height: 100%; position: fixed; z-index: {ZIndex}; background-color: rgba(0,0,0,0.5); ";
         }
         if (ProtectedHiddenFull)
         {
-            return $"display: flex;  top: 0; left: 0; width: 100%; height: 100%; position: fixed; z-index: {ZIndex}; background-color: transparent; {GetHiddenStyle()}";
+            return $"display: flex;  top: 0; left: 0; width: 100%; height: 100%; position: fixed; z-index: {ZIndex}; background-color: transparent;";
         }
-        return $"display: flex;  z-index: {ZIndex};  {GetHiddenStyle()}";
+        return $"display: flex;  z-index: {ZIndex};";
     }
     protected string ScrollStyle()
     {
