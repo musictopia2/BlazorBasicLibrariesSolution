@@ -1,12 +1,18 @@
 ﻿@inherits JavascriptComponentBase
-@if (MainSource == "")
+
+@if (string.IsNullOrWhiteSpace(ResolvedMainSource))
 {
-    <div>You must have at least the main source in order to use the control</div>
+    <div>You must provide either Name or MainSource to use the control.</div>
     return;
 }
-@if (HoverSource == "")
-{
-    <img src="@HoverSource" style="margin-left: @MarginLeft; cursor: pointer;" @onclick="OnClick" />
-    return;
-}
-<img @ref="_element" style="cursor: pointer; margin-left: @MarginLeft" @onclick="OnClick" @onmouseover="HoverAsync" @onmouseout="UnhoverAsync" src="@MainSource" />
+
+<img @ref="_element"
+     src="@ResolvedMainSource"
+     alt="@Alt"
+     class="@Class"
+     style="@BuildStyle()"
+     width="@Width"
+     height="@Height"
+     @onclick="OnClick"
+     @onmouseover="HoverAsync"
+     @onmouseout="UnhoverAsync" />
