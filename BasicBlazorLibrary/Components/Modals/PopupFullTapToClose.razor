@@ -24,9 +24,13 @@
                 <div style="display:flex; font-size:2rem; justify-content:center; align-items:center;">
                     @HeaderTitle
                 </div>
-                <div style="display:inline-block; font-size:2rem;">
-                    X
-                </div>
+                @if (CanCloseAutomatically)
+                {
+                    <div style="display:inline-block; font-size:2rem;">
+                        X
+                    </div>
+                }
+                
             </div>
 
             <!-- BODY: click closes -->

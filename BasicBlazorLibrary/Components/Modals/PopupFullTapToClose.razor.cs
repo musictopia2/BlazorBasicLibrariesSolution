@@ -5,6 +5,9 @@ public partial class PopupFullTapToClose
     [Parameter]
     public EventCallback CloseButtonClick { get; set; }
 
+    [Parameter]
+    public bool CanCloseAutomatically { get; set; } = true; //there are times when you cannot.
+
 
     [Parameter]
     public string HeaderTitle { get; set; } = "";
@@ -36,6 +39,14 @@ public partial class PopupFullTapToClose
     public RenderFragment? ChildContent { get; set; }
     [Parameter]
     public string Style { get; set; } = "";
-    
+
+    protected override void ClosePopup()
+    {
+        if (CanCloseAutomatically == false)
+        {
+            return; //becase you can't even close out for some reason.
+        }
+        base.ClosePopup();
+    }
 
 }

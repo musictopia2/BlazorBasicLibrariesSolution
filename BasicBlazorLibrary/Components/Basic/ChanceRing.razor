@@ -1,25 +1,48 @@
-﻿<svg width="@Size" height="@Size" viewBox="0 0 120 120">
-    <rect x="0" y="0" width="120" height="120" fill="@FillColor" />
-    <!-- Base ring -->
-    <circle cx="@_center"
-            cy="@_center"
-            r="@_radius"
-            stroke="#444"
-            stroke-width="@StrokeWidth"
-            fill="none" />
+﻿<div class="chance-ring-container" @onclick="OnClick" style="width:@Size; height:@Size;">
+    <svg width="@Size" height="@Size" viewBox="0 0 120 120">
+        @if (ShowBackground)
+        {
+            <rect x="0" y="0" width="120" height="120" fill="@FillColor" />
+        }
+        else
+        {
+            <!-- Circle-only fill (so interior isn't transparent/white) -->
+            <circle cx="@_center"
+                    cy="@_center"
+                    r="@(_radius - (StrokeWidthPx / 2.0))"
+                    fill="@FillColor" />
+        }
 
-    @if (PercentChance > 0)
-    {
-        <!-- Progress ring -->
+        <!-- Base ring -->
         <circle cx="@_center"
                 cy="@_center"
                 r="@_radius"
-                stroke="@ProgressColor"
+                stroke="@BaseRingColor"
                 stroke-width="@StrokeWidth"
-                fill="none"
-                stroke-dasharray="@Circumference"
-                stroke-dashoffset="@DashOffset"
-                stroke-linecap="butt"
-                transform="rotate(-90 @_center @_center)" />
+                fill="none" />
+
+        @if (PercentChance > 0)
+        {
+            <!-- Progress ring -->
+            <circle cx="@_center"
+                    cy="@_center"
+                    r="@_radius"
+                    stroke="@ProgressColor"
+                    stroke-width="@StrokeWidth"
+                    fill="none"
+                    stroke-dasharray="@Circumference"
+                    stroke-dashoffset="@DashOffset"
+                    stroke-linecap="butt"
+                    transform="rotate(-90 @_center @_center)" />
+        }
+    </svg>
+
+    @if (ChildContent is not null)
+    {
+        <div class="chance-ring-content" style="@ContentInsetStyle">
+            <div style="@ContentTransformStyle">
+                @ChildContent
+            </div>
+        </div>
     }
-</svg>
+</div>

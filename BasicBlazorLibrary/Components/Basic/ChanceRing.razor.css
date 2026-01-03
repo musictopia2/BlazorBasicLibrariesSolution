@@ -1,0 +1,18 @@
+.chance-ring-container {
+    position: relative;
+    display: inline-block;
+}
+
+    .chance-ring-container svg {
+        position: absolute;
+        inset: 0;
+    }
+
+.chance-ring-content {
+    position: absolute; /* inset comes from inline style */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* content doesn't block clicks unless you want it to */
+    overflow: hidden; /* keeps big images from overlapping the ring */
+}

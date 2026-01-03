@@ -16,6 +16,8 @@ public partial class GridTwoColumnUnlimited
     public string Class { get; set; } = ""; //so you can add other parts to this.
     [Parameter]
     public string Style { get; set; } = "";
+    [Parameter]
+    public bool StopClickPropagation { get; set; } = false;
     private string Get2Columns()
     {
         if (MaxContent)

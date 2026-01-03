@@ -1,4 +1,16 @@
-﻿<GridContainer RowGap="@RowGap" Class="@Class" Style="@Style" ColumnGap="@ColumnGap"
+﻿@if (StopClickPropagation)
+{
+    <StopClickPropagation>
+        <GridContainer RowGap="@RowGap" Class="@Class" Style="@Style" ColumnGap="@ColumnGap"
+                       Columns="@Get2Columns()"
+                       Inline="@Inline">
+            @ChildContent
+        </GridContainer>
+    </StopClickPropagation>
+    return;
+}
+
+<GridContainer RowGap="@RowGap" Class="@Class" Style="@Style" ColumnGap="@ColumnGap"
                Columns="@Get2Columns()"
                Inline="@Inline">
     @ChildContent
