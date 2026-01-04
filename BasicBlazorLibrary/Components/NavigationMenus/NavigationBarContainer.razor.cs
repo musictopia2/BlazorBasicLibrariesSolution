@@ -12,6 +12,8 @@ public partial class NavigationBarContainer
     [Parameter]
     public RenderFragment? BarContent { get; set; }
     [Parameter]
+    public RenderFragment? IndicatorContent { get; set; }
+    [Parameter]
     public EventCallback BackClicked { get; set; }
     [Parameter]
     public bool ShowBack { get; set; } = true;

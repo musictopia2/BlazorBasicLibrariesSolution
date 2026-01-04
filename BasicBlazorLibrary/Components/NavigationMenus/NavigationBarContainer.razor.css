@@ -1,5 +1,6 @@
 ﻿.main {
     width: 100%;
+    z-index: 1000;
 }
 
 .firstflex {
@@ -24,4 +25,23 @@
 
 .barcontent{
     margin-right: 10px;
+}
+.nav-title-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.nav-title-anchor {
+    display: inline-flex; /* shrink-to-fit */
+    align-items: center;
+    gap: 30px; /* EXACT spacing you want */
+    position: relative;
+}
+
+.nav-title-indicator {
+    display: inline-flex;
+    align-items: center;
+    pointer-events: none;
+    z-index: 2147483647;
 }

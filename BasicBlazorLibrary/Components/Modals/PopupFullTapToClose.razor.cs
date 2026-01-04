@@ -8,6 +8,8 @@ public partial class PopupFullTapToClose
     [Parameter]
     public bool CanCloseAutomatically { get; set; } = true; //there are times when you cannot.
 
+    [Parameter]
+    public bool ShowHeaders { get; set; } = true;
 
     [Parameter]
     public string HeaderTitle { get; set; } = "";

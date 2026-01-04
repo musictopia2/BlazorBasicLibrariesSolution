@@ -1,0 +1,9 @@
+/* Default: close-catcher gets all taps */
+.pftc-body {
+    pointer-events: none;
+}
+
+    /* Allow interaction inside child content across component boundaries */
+    .pftc-body :deep(.allow-interact) {
+        pointer-events: auto;
+    }

@@ -8,33 +8,42 @@
                     position:fixed; z-index:@ZIndex;
                     justify-content:center; align-items:center;
                     background-color: rgba(0,0,0,0.5);">
-
+        
         <!-- PANEL: prevent overlay click when clicking inside -->
         <div @onclick:stopPropagation="true"
              style="padding: 2px; background-color: white; @PanelSizeStyle() @Style">
-
-            <!-- HEADER: click closes -->
-            <div @onclick="ClosePopup"
-                 style="border-bottom: solid black 1px;
-                            user-select:none;
-                            font-weight: bold;
-                            display: flex;
-                            justify-content: space-between;
-                            cursor: pointer;">
-                <div style="display:flex; font-size:2rem; justify-content:center; align-items:center;">
-                    @HeaderTitle
-                </div>
-                @if (CanCloseAutomatically)
-                {
-                    <div style="display:inline-block; font-size:2rem;">
-                        X
+            @if (ShowHeaders)
+            {
+                <!-- HEADER: click closes -->
+                <div @onclick="ClosePopup"
+                     style="border-bottom: solid black 1px;
+                                    user-select:none;
+                                    font-weight: bold;
+                                    display: flex;
+                                    justify-content: space-between;
+                                    cursor: pointer;">
+                    <div style="display:flex; font-size:2rem; justify-content:center; align-items:center;">
+                        @HeaderTitle
                     </div>
-                }
-                
+                    @if (CanCloseAutomatically)
+                    {
+                        <div style="display:inline-block; font-size:2rem;">
+                            X
+                        </div>
+                    }
+
+                </div>
+            }
+            
+
+            <!-- Close-catcher: receives taps by default -->
+            <div @onclick="ClosePopup"
+                 style="position:absolute; inset:0; z-index:1; background:transparent;">
             </div>
 
-            <!-- BODY: click closes -->
-            <div @onclick="ClosePopup" style="width: 100%; height: 100%; overflow:auto;">
+            <!-- Content: NO pointer events by default -->
+            <div class="pftc-body"
+                 style="position:relative; z-index:2; pointer-events:none;">
                 @ChildContent
             </div>
 

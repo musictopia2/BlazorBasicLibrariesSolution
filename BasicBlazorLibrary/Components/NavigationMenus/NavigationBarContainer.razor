@@ -17,10 +17,23 @@
                         @if (BackClicked.HasDelegate == true && ShowBack)
                         {
                             <div class="inline centerdiv" style="margin-right: 10px;">
-                                <ArrowLeftComponent Clicked="BackClicked" BackgroundColor="@ArrowColor" StrokeColor="@ArrowStroke" TargetHeight="@ArrowHeight" />
+                                <ArrowLeftComponent Clicked="BackClicked"
+                                                    BackgroundColor="@ArrowColor"
+                                                    StrokeColor="@ArrowStroke"
+                                                    TargetHeight="@ArrowHeight" />
                             </div>
                         }
-                        @Title
+
+                        <span class="nav-title-anchor">
+                            <span class="nav-title-text">@Title</span>
+
+                            @if (IndicatorContent is not null)
+                            {
+                                <span class="nav-title-indicator">
+                                    @IndicatorContent
+                                </span>
+                            }
+                        </span>
                     </div>
                     <div class="centerdiv">
                         <div class="barcontent">
