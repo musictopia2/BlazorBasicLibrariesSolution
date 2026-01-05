@@ -1,4 +1,7 @@
 ﻿<div @onclick:stopPropagation="true"
+     @onpointerdown:stopPropagation="true"
+     @ontouchstart:stopPropagation="true"
+     @onmousedown:stopPropagation="true"
     class="@Class"
      style="pointer-events:auto;@Style">
     @ChildContent
