@@ -3,7 +3,8 @@
     <ConfirmationBlazor Message="@ConfirmationMessage" Title="@ConfirmationTitle" Results="PrivateConfirm" />
 }
 
-<button class="btn @ButtonClass"
+<button @onclick:stopPropagation="true"
+    class="btn @ButtonClass"
         style="@FinalStyle @Style"
         @onclick="PrivateClickAsync"
         disabled="@(!IsEnabled)">

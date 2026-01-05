@@ -79,7 +79,7 @@ public abstract partial class StyledButton
             {
                 styles.Add($"color: {DisabledColor}");
             }
-
+            styles.Add("pointer-events:auto;");
             return styles.Count > 0 ? string.Join(";", styles) + ";" : "";
 
         }

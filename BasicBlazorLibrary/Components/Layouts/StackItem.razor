@@ -1,6 +1,6 @@
 ﻿@if (StopClickPropagation)
 {
-    <div style="@GetStyle()" @onclick:stopPropagation="true">
+    <div style="pointer-events:auto; @GetStyle()" @onclick:stopPropagation="true">
         @ChildContent
     </div>
 }
