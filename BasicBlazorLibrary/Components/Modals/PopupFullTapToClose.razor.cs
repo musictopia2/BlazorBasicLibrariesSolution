@@ -6,6 +6,11 @@ public partial class PopupFullTapToClose
     public EventCallback CloseButtonClick { get; set; }
 
     [Parameter]
+    public bool TapAnywhereClosesWithIslands { get; set; }
+
+    private bool UseIslands => TapAnywhereClosesWithIslands && CanCloseAutomatically;
+
+    [Parameter]
     public bool CanCloseAutomatically { get; set; } = true; //there are times when you cannot.
 
     [Parameter]
