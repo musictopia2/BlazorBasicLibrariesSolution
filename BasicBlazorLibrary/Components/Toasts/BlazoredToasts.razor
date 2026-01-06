@@ -1,6 +1,6 @@
 ﻿@if (ToastList.Any())
 {
-    <div class="blazored-toast-container mainposition">
+    <div class="blazored-toast-container mainposition" style="top:@BlazoredToasts.TopOffset;">
         <CascadingValue Value=this>
             @foreach (var toast in ToastList.OrderBy(x => x.TimeStamp))
             {

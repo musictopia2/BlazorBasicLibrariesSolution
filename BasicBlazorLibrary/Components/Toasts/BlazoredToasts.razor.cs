@@ -10,6 +10,9 @@ public partial class BlazoredToasts
     [Parameter] public string WarningClass { get; set; } = "";
     [Parameter] public string ErrorClass { get; set; } = "";
     public static int Timeout { get; set; } = 5; //so game package can set to 3.
+
+    public static string TopOffset { get; set; } = "4rem";
+
     //[Parameter] public int Timeout { get; set; } = 5;
     [Parameter] public bool RemoveToastsOnNavigation { get; set; }
     [Parameter] public bool ShowProgressBar { get; set; }
