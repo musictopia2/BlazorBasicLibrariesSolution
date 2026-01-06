@@ -1,6 +1,14 @@
-﻿.main {
+﻿
+.chrome {
+    position: relative;
+    z-index: 5000; /* or your chosen chrome z */
+}
+.subheader {
+    position: relative;
+    z-index: 1;
+}
+.main {
     width: 100%;
-    z-index: 1000;
 }
 
 .firstflex {
@@ -43,5 +51,4 @@
     display: inline-flex;
     align-items: center;
     pointer-events: none;
-    z-index: 2147483647;
 }

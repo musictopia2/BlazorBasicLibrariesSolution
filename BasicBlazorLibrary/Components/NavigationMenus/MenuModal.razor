@@ -9,6 +9,7 @@
                BackgroundColor="black"
                FullScreen="false"
                ShowHeader="false"
+               ZIndex="6000"
                Style="@GetMainStyle()"
                Width="@Width"
                Height="@Height">
@@ -16,13 +17,13 @@
     {
         @if (ItemHeight == "")
         {
-            <div class="clickable" @onclick="() => ClickMenu(item)">
+            <div class="clickable" @onclick="async () => await ClickMenuAsync(item)">
                 @item.Text
             </div>
         }
         else
         {
-            <div style="height: @ItemHeight" class="clickable" @onclick="() => ClickMenu(item)">
+            <div style="height: @ItemHeight" class="clickable" @onclick="async () => await ClickMenuAsync(item)">
                 @item.Text
             </div>
         }

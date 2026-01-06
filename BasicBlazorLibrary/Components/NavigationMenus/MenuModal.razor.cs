@@ -15,9 +15,9 @@ public partial class MenuModal
     public string Width { get; set; } = "50vmin";
     [Parameter]
     public BasicList<MenuItem> MenuList { get; set; } = new();
-    private void ClickMenu(MenuItem menu)
+    private async Task ClickMenuAsync(MenuItem menu)
     {
-        ClosePopup();
+        await ClosePopupAsync();
         menu.Clicked.Invoke();
     }
     private string GetMainStyle()

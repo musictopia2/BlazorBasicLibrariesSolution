@@ -7,6 +7,16 @@ public static class BasicJavascriptExtensions
         {
             return js.GetLibraryModuleTask("basichelpers");
         }
+        public async Task<int> GetElementHeight(ElementReference? element)
+        {
+            CustomBasicException.ThrowIfNull(element);
+            var moduleTask = js.GetModuleTask();
+            double height = await moduleTask.InvokeDisposeAsync<double>(
+                "getElementHeight", element);
+
+            // ALWAYS round UP
+            return (int)Math.Ceiling(height);
+        }
         public async Task<int> GetContainerTop(ElementReference? element)
         {
             CustomBasicException.ThrowIfNull(element);

@@ -73,21 +73,21 @@ public abstract partial class PopupContentBase
         }
         return "overflow: auto;";
     }
-    protected override void ClosePopup()
+    protected override async Task ClosePopupAsync()
     {
         if (CloseButtonClick.HasDelegate)
         {
-            CloseButtonClick.InvokeAsync();
+            await CloseButtonClick.InvokeAsync();
             return;
         }
-        base.ClosePopup();
+        await base.ClosePopupAsync();
     }
-    protected void PrivateBackgroundClicked()
+    protected async Task PrivateBackgroundClickedAsync()
     {
         if (DisableBackgroundClick)
         {
             return;
         }
-        ClosePopup(); //do this instead.
+        await ClosePopupAsync(); //do this instead.
     }
 }

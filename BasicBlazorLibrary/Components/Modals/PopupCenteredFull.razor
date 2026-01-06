@@ -3,7 +3,7 @@
 {
     @if (FullScreen == false && ProtectedHiddenFull == false)
     {
-        <div @onclick="PrivateBackgroundClicked" style="z-index: @ZIndex;">
+        <div @onclick="PrivateBackgroundClickedAsync" style="z-index: @ZIndex;">
             <div @ref="_element" style="display: none;">
                 @GetAllContent
             </div>
@@ -11,7 +11,7 @@
     }
     else
     {
-        <div @onclick="PrivateBackgroundClicked" style="@TopModalStyle() justify-content:center; align-items: center; ">
+        <div @onclick="PrivateBackgroundClickedAsync" style="@TopModalStyle() justify-content:center; align-items: center; ">
             @GetAllContent
         </div>
     }

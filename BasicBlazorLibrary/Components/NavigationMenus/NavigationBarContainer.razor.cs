@@ -1,16 +1,16 @@
 using System.Drawing;
 namespace BasicBlazorLibrary.Components.NavigationMenus;
-public partial class NavigationBarContainer
+public partial class NavigationBarContainer(IJSRuntime js)
 {
     [Parameter]
     public string Title { get; set; } = "";
-    [Parameter]
-    public bool Test { get; set; }
     private bool _showBar = false;
     [Parameter]
     public RenderFragment? MainContent { get; set; }
     [Parameter]
     public RenderFragment? BarContent { get; set; }
+    [Parameter]
+    public RenderFragment? HeaderContent { get; set; }
     [Parameter]
     public RenderFragment? IndicatorContent { get; set; }
     [Parameter]
@@ -63,12 +63,28 @@ public partial class NavigationBarContainer
     [Parameter]
     public bool CanChangeWithoutTabs { get; set; } = false;
     private SizeF _viewPort = new(40, 40);
+
+    public int HeightOfHeader { get; set; }
+
+    //if someone resizes, too bad for now.
+    private ElementReference? _element;
+
     private string GetContainer
     {
         get
         {
             string output = CircleSize.ContainerHeight(4, _viewPort);
             return output;
+        }
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            HeightOfHeader = await js.GetElementHeight(_element);
+            await Task.Delay(50);
+            HeightOfHeader = await js.GetElementHeight(_element);
+            return;
         }
     }
     protected override void OnInitialized()

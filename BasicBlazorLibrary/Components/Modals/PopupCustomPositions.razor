@@ -1,7 +1,7 @@
 ﻿@inherits PopupContentBase
 @if (Visible)
 {
-    <div @onclick="PrivateBackgroundClicked" style="@TopModalStyle() ">
+    <div @onclick="PrivateBackgroundClickedAsync" style="@TopModalStyle() ">
         <div style="position: absolute; left: @Left; top: @Top">
             @GetAllContent
         </div>

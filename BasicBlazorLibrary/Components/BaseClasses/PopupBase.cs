@@ -3,18 +3,37 @@ public abstract class PopupBase : JavascriptComponentBase, IDisposable
 {
     [Parameter]
     public bool Visible { get; set; }
+    [Inject]
+    private PopupRegistry? Popup { get; set; }
     [Parameter]
     public EventCallback<bool> VisibleChanged { get; set; }
+    
 
     private CancellationTokenSource? _autoCloseCts;
     private bool _lastVisible;
 
     [Parameter] public int AutoCloseMilliseconds { get; set; } = 0;
+    protected override void OnInitialized()
+    {
+        Popup?.Register(this);
+        base.OnInitialized();
+    }
+    internal async Task RequestCloseAsync()
+    {
+        if (Visible == false)
+        {
+            return;
+        }
+
+        CancelAutoClose();
+        await VisibleChanged.InvokeAsync(false);
+    }
 
     protected override void OnParametersSet()
     {
 
         base.OnParametersSet();
+
         // Detect rising edge: false -> true
         if (Visible && _lastVisible == false)
         {
@@ -73,14 +92,15 @@ public abstract class PopupBase : JavascriptComponentBase, IDisposable
         _autoCloseCts = null;
     }
 
-    protected virtual void ClosePopup()
+    protected virtual async Task ClosePopupAsync()
     {
         CancelAutoClose();
-        VisibleChanged.InvokeAsync(false);
+        await VisibleChanged.InvokeAsync(false);
     }
 
     public void Dispose()
     {
+        Popup?.Unregister(this);
         CancelAutoClose();
         GC.SuppressFinalize(this);
     }

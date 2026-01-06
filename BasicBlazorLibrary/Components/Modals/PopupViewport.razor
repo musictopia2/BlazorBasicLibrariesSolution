@@ -1,0 +1,64 @@
+﻿@inherits PopupBase
+@if (Insets is null)
+{
+    <div>
+        Must send in the insets so it can position properly   Otherwise don't even use this modal.
+    </div>
+    return;
+}
+@if (Visible)
+{
+    <!-- FULL SCREEN OVERLAY ROOT -->
+    <div style="@RootOverlayStyle">
+
+        <!-- FULL SCREEN DIMMER -->
+        <div style="@DimmerStyle" @onclick="ClosePopupAsync"></div>
+
+        <!-- SAFE AREA (this is where nav inset/gaps apply) -->
+        <div style="@SafeAreaStyle" @onclick:stopPropagation="true">
+
+            <!-- PANEL -->
+            <div style="@PanelStyle" @onclick:stopPropagation="true">
+
+                @if (ShowHeaders)
+                {
+                    <div style="@HeaderStyle">
+                        <div style="font-size:2rem; font-weight:900;">
+                            @HeaderTitle
+                        </div>
+
+                        @if (CanCloseAutomatically)
+                        {
+                            <button type="button"
+                                    style="@CloseButtonStyle"
+                                    @onclick="ClosePopupAsync"
+                                    @onclick:stopPropagation="true">
+                                X
+                            </button>
+                        }
+                    </div>
+                }
+
+                <div style="@BodyStyle">
+                    @if (TapToClose)
+                    {
+                        <!-- Close-catcher: receives taps by default -->
+                        <div @onclick="ClosePopupAsync"
+                             style="position:absolute; inset:0; z-index:1; background:transparent;">
+                        </div>
+
+                        <!-- Content: NO pointer events by default -->
+                        <div style="position:relative; z-index:2; pointer-events:none;">
+                            @ChildContent
+                        </div>
+                    }
+                    else
+                    {
+                        @ChildContent
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+}

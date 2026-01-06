@@ -13,6 +13,15 @@ export function getcontainerwidth(element) {
     }
     return element.clientWidth;
 }
+
+export function getElementHeight(element) {
+    if (element == null) {
+        return 0;
+    }
+    const rect = element.getBoundingClientRect();
+    return rect ? rect.height : 0;
+}
+
 export function getcontainertop(element) {
     var bodyRect = document.body.getBoundingClientRect();
     var elementRect = element.getBoundingClientRect();

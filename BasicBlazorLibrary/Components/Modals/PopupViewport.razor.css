@@ -1,0 +1,5 @@
+.pfs-inset {
+    position: fixed;
+    box-sizing: border-box;
+    overflow: auto; /* important: scroll inside the popup, not the page */
+}

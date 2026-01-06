@@ -11,78 +11,83 @@
     }
     <LeftOverLayout>
         <TopContent>
-            <div class="@GetFirstClass() main" style="padding: @Padding; font-size: @MainFontSize;  background-color: @MainBackgroundColor; color: @MainTextColor; ">
-                <div class="firstflex">
-                    <div class="centerdiv">
-                        @if (BackClicked.HasDelegate == true && ShowBack)
-                        {
-                            <div class="inline centerdiv" style="margin-right: 10px;">
-                                <ArrowLeftComponent Clicked="BackClicked"
-                                                    BackgroundColor="@ArrowColor"
-                                                    StrokeColor="@ArrowStroke"
-                                                    TargetHeight="@ArrowHeight" />
-                            </div>
-                        }
-
-                        <span class="nav-title-anchor">
-                            <span class="nav-title-text">@Title</span>
-
-                            @if (IndicatorContent is not null)
+            <div class="chrome" @ref="_element">
+                <div class="@GetFirstClass() main" style="padding: @Padding; font-size: @MainFontSize;  background-color: @MainBackgroundColor; color: @MainTextColor; ">
+                    <div class="firstflex">
+                        <div class="centerdiv">
+                            @if (BackClicked.HasDelegate == true && ShowBack)
                             {
-                                <span class="nav-title-indicator">
-                                    @IndicatorContent
-                                </span>
+                                <div class="inline centerdiv" style="margin-right: 10px;">
+                                    <ArrowLeftComponent Clicked="BackClicked"
+                                                        BackgroundColor="@ArrowColor"
+                                                        StrokeColor="@ArrowStroke"
+                                                        TargetHeight="@ArrowHeight" />
+                                </div>
                             }
-                        </span>
-                    </div>
-                    <div class="centerdiv">
-                        <div class="barcontent">
-                            @if (BarContent != null)
+
+                            <span class="nav-title-anchor">
+                                <span class="nav-title-text">@Title</span>
+
+                                @if (IndicatorContent is not null)
+                                {
+                                    <span class="nav-title-indicator">
+                                        @IndicatorContent
+                                    </span>
+                                }
+                            </span>
+                        </div>
+                        <div class="centerdiv">
+                            <div class="barcontent">
+                                @if (BarContent != null)
+                                {
+                                    @BarContent
+                                }
+                            </div>
+                            @if (MenuList.Count > 0)
                             {
-                                @BarContent
+                                <div class="inline centerdiv">
+                                    <CanvasLayout Clicked="() => _showMenu = true"
+                                                  ViewPort="_viewPort"
+                                                  ContainerHeight="@GetContainer"
+                                                  ContainerWidth="@GetContainer"
+                                                  style="cursor: pointer; margin-right: 5px;">
+                                        <CanvasItem Location="new PointF(15, 2)">
+                                            <div style="width: @CircleSize; height: @CircleSize; background-color: @CircleColor; border-radius: 50%;">
+                                            </div>
+                                        </CanvasItem>
+                                        <CanvasItem Location="new PointF(15, 15)">
+                                            <div style="width: @CircleSize; height: @CircleSize; background-color: @CircleColor; border-radius: 50%;">
+                                            </div>
+                                        </CanvasItem>
+                                        <CanvasItem Location="new PointF(15, 28)">
+                                            <div style="width: @CircleSize; height: @CircleSize; background-color: @CircleColor; border-radius: 50%;">
+                                            </div>
+                                        </CanvasItem>
+                                    </CanvasLayout>
+                                </div>
+                            }
+                            @if (CloseClicked.HasDelegate)
+                            {
+                                <div class="inline centerdiv;" style="font-size: @CloseHeight; cursor:pointer;" @onclick="() => CloseClicked.InvokeAsync()">
+                                    X
+                                </div>
                             }
                         </div>
-                        @if (MenuList.Count > 0)
-                        {
-                            <div class="inline centerdiv">
-                                <CanvasLayout Clicked="() => _showMenu = true"
-                                              ViewPort="_viewPort"
-                                              ContainerHeight="@GetContainer"
-                                              ContainerWidth="@GetContainer"
-                                              style="cursor: pointer; margin-right: 5px;">
-                                    <CanvasItem Location="new PointF(15, 2)">
-                                        <div style="width: @CircleSize; height: @CircleSize; background-color: @CircleColor; border-radius: 50%;">
-
-                                        </div>
-                                    </CanvasItem>
-                                    <CanvasItem Location="new PointF(15, 15)">
-                                        <div style="width: @CircleSize; height: @CircleSize; background-color: @CircleColor; border-radius: 50%;">
-
-                                        </div>
-                                    </CanvasItem>
-                                    <CanvasItem Location="new PointF(15, 28)">
-                                        <div style="width: @CircleSize; height: @CircleSize; background-color: @CircleColor; border-radius: 50%;">
-
-                                        </div>
-                                    </CanvasItem>
-                                </CanvasLayout>
-                            </div>
-                        }
-                        @if (CloseClicked.HasDelegate)
-                        {
-                            <div class="inline centerdiv;" style="font-size: @CloseHeight; cursor:pointer;" @onclick="()=> CloseClicked.InvokeAsync()">
-                                X
-                            </div>
-                        }
                     </div>
                 </div>
+                @if (HeaderContent is not null)
+                {
+                    @HeaderContent
+                }
             </div>
+            
             @if(HasMenu == true)
             {
                 <MenuModal MenuList="MenuList"
                            BackgroundColor="@MenuBackgroundColor"
                            FontSize="@MenuFontSize"
                            Height="@MenuHeight"
+                           ZIndex="6000"
                            TextColor="@MenuTextColor"
                            Width="@MenuWidth"
                            ItemHeight="@ItemHeight"
