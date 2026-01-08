@@ -31,7 +31,8 @@
     font-size: 7vmin;
 }
 .number {
-    font-size: 27vmin;
+    font-size: 22vmin;
+    line-height: 1;
 }
 
 .hidden {
