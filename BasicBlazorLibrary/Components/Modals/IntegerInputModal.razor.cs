@@ -12,6 +12,9 @@ public partial class IntegerInputModal
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
+    [Parameter] 
+    public bool StartBlank { get; set; } = false;
+
     [Parameter]
     public string? DisplayWidth { get; set; } = "30vmin";
 
@@ -105,15 +108,41 @@ public partial class IntegerInputModal
         ? result.ToString("N0") // e.g. "1,234"
         : _display;
 
+
+    private bool _wasVisible;
     protected override void OnParametersSet()
     {
-        if (Visible == false || Value == 0)
+        // only initialize when opening
+        if (Visible && _wasVisible == false)
+        {
+            if (StartBlank)
+            {
+                _display = "";
+            }
+            else
+            {
+                _display = Value.ToString();
+            }
+        }
+
+        // optionally clear when closing
+        if (Visible == false && _wasVisible)
         {
             _display = "";
-            return;
         }
-        _display = Value.ToString(); //hopefully does not do onparameterset everytime i click an entry.
+
+        _wasVisible = Visible;
         base.OnParametersSet();
     }
+    //protected override void OnParametersSet()
+    //{
+    //    if (Visible == false || Value == 0)
+    //    {
+    //        _display = "";
+    //        return;
+    //    }
+    //    _display = Value.ToString(); //hopefully does not do onparameterset everytime i click an entry.
+    //    base.OnParametersSet();
+    //}
 
 }
