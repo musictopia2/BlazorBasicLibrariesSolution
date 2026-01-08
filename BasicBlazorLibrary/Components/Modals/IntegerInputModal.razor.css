@@ -56,16 +56,27 @@
     font-size: 5vmin;
 }
 .finaldisplay {
-    padding: 1px;
-    font-size: 15vmin;
-    /*ai suggested below*/
+    box-sizing: border-box;
+    /* VISUALS */
+    padding: 0 1.5vmin;
+    font-size: 15vmin; /* your large font */
+    font-variant-numeric: tabular-nums;
     text-align: right;
     border: 2px solid #ccc;
     border-radius: 8px;
     background-color: #f0f0f0;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
     margin-top: 1vmin;
+    /* 🔒 LOCK THE SIZE */
+    height: 18vmin; /* MUST be >= font-size */
+    line-height: 1;
+    /* SCROLL WITHOUT SHIFTING */
     overflow-x: auto;
+    overflow-y: hidden;
     white-space: nowrap;
-    min-height: 1.2em;
+    scrollbar-gutter: stable;
+    /* ALIGN TEXT PROPERLY */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
