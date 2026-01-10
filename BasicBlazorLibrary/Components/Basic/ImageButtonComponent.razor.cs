@@ -96,11 +96,15 @@ public partial class ImageButtonComponent
         }
 
         if (string.IsNullOrWhiteSpace(Style) || !Style.Contains("cursor", StringComparison.OrdinalIgnoreCase))
+        {
             parts.Add("cursor: pointer");
-
+        }
+        parts.Add("pointer-events:auto;");
         if (!string.IsNullOrWhiteSpace(Style))
+        {
             parts.Add(Style.Trim().TrimEnd(';'));
-
+        }
+        
         return parts.Count == 0 ? "" : string.Join("; ", parts) + ";";
     }
 

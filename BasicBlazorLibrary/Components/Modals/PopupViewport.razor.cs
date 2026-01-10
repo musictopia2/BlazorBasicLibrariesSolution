@@ -41,10 +41,11 @@ public partial class PopupViewport
     protected string CloseButtonStyle =>
         "font-size:2rem; font-weight:900;" +
         "border:0; background:transparent; cursor:pointer; line-height:1;";
-
+    //attempt to change from overflow:auto; to hidden.  hopefully causes no other issues.
+    //if it does, may need another parameter or something.
     protected string BodyStyle =>
         "flex:1 1 auto;" +
-        "overflow:auto;" +
+        "overflow:hidden;" +
         "box-sizing:border-box;" +
         "padding:8px 12px;";
 
