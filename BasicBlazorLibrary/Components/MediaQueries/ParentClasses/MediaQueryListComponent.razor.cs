@@ -70,27 +70,27 @@ public partial class MediaQueryListComponent : IAsyncDisposable
     private void MediaQueryListComponent_OnResized(BrowserSize obj)
     {
         BrowserInfo = obj;
-        int largest;
-        if (BrowserInfo.Height > BrowserInfo.Width)
+
+        var w = obj.Width;
+        var h = obj.Height;
+
+        ScreenOrientation = (h > w)
+            ? EnumScreenOrientation.Portrait
+            : EnumScreenOrientation.Landscape;
+
+        var smallest = Math.Min(w, h);
+
+        DeviceSize = smallest switch
         {
-            ScreenOrientation = EnumScreenOrientation.Portrait;
-            largest = BrowserInfo.Height;
-        }
-        else
-        {
-            ScreenOrientation = EnumScreenOrientation.Landscape;
-            largest = BrowserInfo.Width;
-        }
-        DeviceSize = largest switch
-        {
-            >= 1500 => EnumDeviceSize.Desktop,
-            >= 1100 => EnumDeviceSize.LargeTablet,
-            >= 900 => EnumDeviceSize.SmallTablet,
-            >= 600 => EnumDeviceSize.LargePhone,
+            >= 900 => EnumDeviceSize.Desktop,
+            >= 700 => EnumDeviceSize.LargeTablet,
+            >= 600 => EnumDeviceSize.SmallTablet,
+            >= 420 => EnumDeviceSize.LargePhone,
             _ => EnumDeviceSize.SmallPhone
         };
+
         _loading = false;
-        StateHasChanged();
+        InvokeAsync(StateHasChanged);
         SizeChangedEvent?.Invoke(); //this time, we need events because more than one may be needed.  this seems to be the best way to handle this.
         //this is used when we don't care about the height and widths of the entire screen but may need to know the size of something within it.
         //if we do care about the heights and widths, then can use it as well.
