@@ -3,7 +3,7 @@ public partial class WrapLayout<T>
 {
     [Parameter]
     [EditorRequired]
-    public BasicList<T> RenderList { get; set; } = new(); //this is the only one that is absolutely required
+    public IEnumerable<T> RenderList { get; set; } = []; //this is the only one that is absolutely required
     [Parameter]
     public RenderFragment<T>? ChildContent { get; set; }
     [Parameter]

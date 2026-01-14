@@ -1,0 +1,8 @@
+﻿@typeparam T
+@foreach (var item in RenderList)
+{
+    @if (ChildContent is not null)
+    {
+        @ChildContent(item)
+    }
+}
