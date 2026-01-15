@@ -2,13 +2,16 @@
 .chrome {
     position: relative;
     z-index: 5000; /* or your chosen chrome z */
+    width: 100vw;
+    overflow-x: clip;
 }
 .subheader {
     position: relative;
     z-index: 1;
 }
 .main {
-    width: 100%;
+    width: 100vw;
+    overflow-x: clip;
 }
 
 .firstflex {
