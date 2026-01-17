@@ -11,6 +11,8 @@ public partial class IntegerInputModal
     public EnumSideLocation SideOrder { get; set; } = EnumSideLocation.Last; //default to last
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
+    [Parameter]
+    public bool CloseOnSubmit { get; set; } = true;
 
     [Parameter] 
     public bool StartBlank { get; set; } = false;
@@ -96,6 +98,10 @@ public partial class IntegerInputModal
         {
             ValueChanged.InvokeAsync(results);
         }
+        if (CloseOnSubmit == false)
+        {
+            return; //sometimes it can't because needs validation and if it fails would not close it.
+        }
         ProcessCancel(); //this too.
     }
     private void ProcessCancel()
@@ -134,15 +140,6 @@ public partial class IntegerInputModal
         _wasVisible = Visible;
         base.OnParametersSet();
     }
-    //protected override void OnParametersSet()
-    //{
-    //    if (Visible == false || Value == 0)
-    //    {
-    //        _display = "";
-    //        return;
-    //    }
-    //    _display = Value.ToString(); //hopefully does not do onparameterset everytime i click an entry.
-    //    base.OnParametersSet();
-    //}
+    
 
 }
