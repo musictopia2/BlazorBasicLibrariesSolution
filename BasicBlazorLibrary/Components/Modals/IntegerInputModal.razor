@@ -12,7 +12,7 @@
     <FlexibleOrientationComponent SideOrder="SideOrder">
         <MainContent>
             <StopClickPropagation>
-                <div style="width: 98vmin; height: 98vmin;">
+                <div style="width: 98vmin; height: 98vmin; margin-top: 5px; margin-left: 5px;">
                     <GridContainer Rows="@GetRowsColumns" Columns="@GetRowsColumns">
                         @foreach (var number in _numbers)
                         {
@@ -40,7 +40,7 @@
                         </GridItem>
                         <GridItem Row="4">
                             <ArrowLeftComponent Clicked="() => BackSpace()"
-                                                TargetHeight="22vmin" />
+                                                TargetHeight="19vmin" />
                         </GridItem>
                         <GridItem Row="4" Column="2">
                             <div class="cell" @onclick="() => UpdateValue(0)">

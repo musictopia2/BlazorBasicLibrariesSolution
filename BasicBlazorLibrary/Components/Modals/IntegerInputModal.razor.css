@@ -1,7 +1,7 @@
 ﻿
 .cell {
-    width: 24vmin;
-    height: 24vmin;
+    width: 21.5vmin;
+    height: 21.5vmin;
     border: 1px solid black;
     display: flex;
     justify-content: center;
@@ -10,8 +10,8 @@
 }
 
 .action {
-    width: 24vmin;
-    height: 48vmin;
+    width: 21.5vmin;
+    height: 43vmin;
     border: 1px solid black;
     display: flex;
     justify-content: center;
@@ -21,8 +21,8 @@
 }
 
 .singlelarge {
-    width: 24vmin;
-    height: 24vmin;
+    width: 21.5vmin;
+    height: 21.5vmin;
     border: 1px solid black;
     display: flex;
     justify-content: center;
@@ -31,7 +31,7 @@
     font-size: 7vmin;
 }
 .number {
-    font-size: 22vmin;
+    font-size: 19vmin;
     line-height: 1;
 }
 
