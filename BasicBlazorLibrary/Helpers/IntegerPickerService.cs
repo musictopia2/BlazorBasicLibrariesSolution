@@ -1,5 +1,5 @@
 ﻿namespace BasicBlazorLibrary.Helpers;
-public sealed class IntegerQuantityPickerService
+public sealed class IntegerPickerService
 {
     public Action? StateChanged;
 

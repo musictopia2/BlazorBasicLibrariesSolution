@@ -19,7 +19,8 @@ public static class ServiceCollectionExtensions
         public IServiceCollection RegisterBlazorBeginningClasses()
         {
             services.AddScoped<PopupRegistry>();
-            services.AddScoped<IntegerQuantityPickerService>();
+            services.AddScoped<IntegerPickerService>();
+            services.AddScoped<IntegerActionPickerService>();
             services.AddScoped<ToastService>();
             services.AddScoped<IToast>(xx => xx.GetRequiredService<ToastService>());
             services.AddScoped<IToastComponent>(xx => xx.GetRequiredService<ToastService>());

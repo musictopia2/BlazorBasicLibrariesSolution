@@ -17,6 +17,8 @@ public partial class IntegerInputModal
     [Parameter] 
     public bool StartBlank { get; set; } = false;
 
+    [Parameter] public bool AllowZero { get; set; } = false;
+
     [Parameter]
     public string? DisplayWidth { get; set; } = "30vmin";
 
@@ -37,12 +39,16 @@ public partial class IntegerInputModal
     }
     private void UpdateValue(string value)
     {
-        if (value == "0")
+        if (value == "0" && _display == "")
         {
-            if (_display == "")
+            if (AllowZero == false)
             {
-                return;
+                return; // keep current behavior
             }
+
+            // Allow entering 0 as the entire value (still respects MaxDigits)
+            _display = "0";
+            return;
         }
         if (value == "-")
         {
