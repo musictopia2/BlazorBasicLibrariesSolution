@@ -2,16 +2,18 @@
 <div style="width: 100%;">
     @foreach (TabPage tabPage in Pages)
     {
-        @if (tabPage == ActivePage)
+        var content = tabPage.HeaderTemplate ?? ((RenderFragment)(@<span>@tabPage.Text</span>));
+
+        if (tabPage == ActivePage)
         {
             <PrimaryButton OnClick="() => ActivatePage(tabPage)">
-                @tabPage.Text
+                @content
             </PrimaryButton>
         }
         else
         {
             <SecondaryButton OnClick="() => ActivatePage(tabPage)">
-                @tabPage.Text
+                @content
             </SecondaryButton>
         }
     }

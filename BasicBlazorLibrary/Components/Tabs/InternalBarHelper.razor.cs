@@ -6,6 +6,9 @@ public partial class InternalBarHelper<T>
     private IBarContainer<T>? Container { get; set; }
     [Parameter]
     public BasicList<T> Pages { get; set; } = new();
+
+
+
     private string GetMainStyle()
     {
         return $"background-color: {Container!.BackgroundColor}";
