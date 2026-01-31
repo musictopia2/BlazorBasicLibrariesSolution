@@ -1,3 +1,4 @@
+using ff2 = CommonBasicLibraries.AdvancedGeneralFunctionsAndProcesses.FileFunctions.FileContentRegistry;
 namespace BasicBlazorLibrary.Components.Basic;
 public partial class ImageButtonComponent
 {
@@ -21,6 +22,9 @@ public partial class ImageButtonComponent
 
     // Back-compat
     [Parameter] public string MarginLeft { get; set; } = "2px";
+
+    [Parameter] public bool FromResource { get; set; }
+
 
     [Parameter]
     public EventCallback OnClick { get; set; }
@@ -46,6 +50,12 @@ public partial class ImageButtonComponent
         {
             return "";
         }
+
+        if (FromResource)
+        {
+            return ff2.GetFile(name);
+        }
+
 
         // Ensure BasePath ends with /
         var basePath = string.IsNullOrWhiteSpace(BasePath) ? "/" : BasePath;
