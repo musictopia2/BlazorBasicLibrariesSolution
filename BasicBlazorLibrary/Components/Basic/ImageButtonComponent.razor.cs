@@ -2,7 +2,7 @@ using ff2 = CommonBasicLibraries.AdvancedGeneralFunctionsAndProcesses.FileFuncti
 namespace BasicBlazorLibrary.Components.Basic;
 public partial class ImageButtonComponent
 {
-
+    public static bool FromResource { get; set; } //i think if set to true, should apply to all.
     // Name-based source resolution
     [Parameter] public string Name { get; set; } = "";
     [Parameter] public string BasePath { get; set; } = "/";
@@ -23,7 +23,6 @@ public partial class ImageButtonComponent
     // Back-compat
     [Parameter] public string MarginLeft { get; set; } = "2px";
 
-    [Parameter] public bool FromResource { get; set; }
 
 
     [Parameter]
@@ -59,7 +58,7 @@ public partial class ImageButtonComponent
 
         // Ensure BasePath ends with /
         var basePath = string.IsNullOrWhiteSpace(BasePath) ? "/" : BasePath;
-        if (!basePath.EndsWith("/"))
+        if (!basePath.EndsWith('/'))
         {
             basePath += "/";
         }
