@@ -116,4 +116,9 @@ public partial class ChanceRing
     }
 
 
+    private double RingRadius => 50 - (StrokeWidthPx / 2.0);   // keep stroke safely inside
+    private double FillRadius => RingRadius - (StrokeWidthPx / 2.0); // so fill never covers stroke
+
+    private double RingCircumference => 2 * Math.PI * RingRadius;
+
 }

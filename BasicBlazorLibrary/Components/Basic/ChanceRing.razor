@@ -1,19 +1,17 @@
 ﻿<div class="chance-ring-container" @onclick="OnClick" style="width:@Size; height:@Size;">
-    <svg width="@Size" height="@Size" viewBox="0 0 120 120">
+    <svg class="chance-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
         @if (ShowBackground)
         {
             <rect x="0" y="0" width="120" height="120" fill="@FillColor" />
         }
         else
         {
-            <!-- Circle-only fill (so interior isn't transparent/white) -->
             <circle cx="@_center"
                     cy="@_center"
                     r="@(_radius - (StrokeWidthPx / 2.0))"
                     fill="@FillColor" />
         }
 
-        <!-- Base ring -->
         <circle cx="@_center"
                 cy="@_center"
                 r="@_radius"
@@ -23,7 +21,6 @@
 
         @if (PercentChance > 0)
         {
-            <!-- Progress ring -->
             <circle cx="@_center"
                     cy="@_center"
                     r="@_radius"

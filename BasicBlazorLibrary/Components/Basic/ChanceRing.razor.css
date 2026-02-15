@@ -1,18 +1,26 @@
 .chance-ring-container {
-    position: relative;
-    display: inline-block;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    isolation: isolate; /* prevents parent stacking weirdness */
 }
 
-    .chance-ring-container svg {
-        position: absolute;
-        inset: 0;
-    }
+/* Both layers occupy the same grid cell */
+.chance-ring-svg {
+    grid-area: 1 / 1;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 1;
+    pointer-events: none;
+}
 
 .chance-ring-content {
-    position: absolute; /* inset comes from inline style */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none; /* content doesn't block clicks unless you want it to */
-    overflow: hidden; /* keeps big images from overlapping the ring */
+    grid-area: 1 / 1;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+    overflow: visible; /* do NOT clip content */
 }
