@@ -33,6 +33,8 @@ public abstract class TextComponentBase<TValue> : JavascriptComponentBase, IFocu
     [Parameter] public EventCallback<TValue> ValueChanged { get; set; }
     [Parameter]
     public EventCallback OnEnterPressed { get; set; }
+    [Parameter]
+    public bool FocusAfterEnter { get; set; } = false;
     public ElementReference? InputElement { get; set; }
     /// <summary>
     /// Gets or sets the current value of the input.
@@ -87,7 +89,10 @@ public abstract class TextComponentBase<TValue> : JavascriptComponentBase, IFocu
         if (OnEnterPressed.HasDelegate)
         {
             await OnEnterPressed.InvokeAsync();
-            return;
+            if (FocusAfterEnter == false)
+            {
+                return;
+            }
         }
         if (TabContainer is null)
         {
