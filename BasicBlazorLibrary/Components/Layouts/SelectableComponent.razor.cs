@@ -12,9 +12,22 @@ public partial class SelectableComponent<T> where T : ISelectable
     public BasicList<T>? ItemList { get; set; }
     [Parameter]
     public bool UseCursor { get; set; }
+
+    [Parameter]
+    public bool OnlyOneAllowed { get; set; }
+
     private static string CssName(T item) => item.IsSelected ? "selected" : "regular";
-    public void ItemClicked(T item)
+    private void ItemClicked(T item)
     {
+        if (OnlyOneAllowed)
+        {
+            if (item.IsSelected)
+            {
+                item.IsSelected = false;
+                return;
+            }
+            ItemList?.ForEach(x => x.IsSelected = false);
+        }
         item.IsSelected = !item.IsSelected;
         OnSelected.InvokeAsync(); //so the parent can do something else too (since the parent needs to possiblyl update the count or do other things).
     }
