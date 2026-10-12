@@ -5,7 +5,7 @@ public class ResizeListenerClass : BaseLibraryJavascriptClass
     public ResizeListenerClass(IJSRuntime js) : base(js) //needs this separately because uses 2 javascript files.
     {
     }
-    protected override string JavascriptFileName => "Resize";
+    protected override string JavascriptFileName => "Resize2";
     public Action<BrowserSize>? Onresized { get; set; }
     public async Task InitAsync()
     {

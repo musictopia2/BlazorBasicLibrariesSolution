@@ -1,4 +1,4 @@
-﻿import { ResizeListener } from './ResizeModule.js';
+﻿import { ResizeListener } from './ResizeModule2.js';
 let instance = new ResizeListener();
 export function listenForResize(dotnetRef, options) {
     instance.listenForResize(dotnetRef, options);
