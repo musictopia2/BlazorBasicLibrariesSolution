@@ -71,14 +71,13 @@ public partial class MediaQueryListComponent : IAsyncDisposable
     {
         BrowserInfo = obj;
 
-        var w = obj.Width;
-        var h = obj.Height;
-
-        ScreenOrientation = (h > w)
+        // Browser shape determines portrait or landscape.
+        ScreenOrientation = obj.Height > obj.Width
             ? EnumScreenOrientation.Portrait
             : EnumScreenOrientation.Landscape;
 
-        var smallest = Math.Min(w, h);
+        // Screen size determines the device category.
+        var smallest = Math.Min(obj.ScreenWidth, obj.ScreenHeight);
 
         DeviceSize = smallest switch
         {
@@ -91,11 +90,7 @@ public partial class MediaQueryListComponent : IAsyncDisposable
 
         _loading = false;
         InvokeAsync(StateHasChanged);
-        SizeChangedEvent?.Invoke(); //this time, we need events because more than one may be needed.  this seems to be the best way to handle this.
-        //this is used when we don't care about the height and widths of the entire screen but may need to know the size of something within it.
-        //if we do care about the heights and widths, then can use it as well.
-        //this is just an option (not sure if i need or not).
-        //did include new extensions so a person has choices of what to use.
+        SizeChangedEvent?.Invoke();
     }
     public ValueTask DisposeAsync()
     {
