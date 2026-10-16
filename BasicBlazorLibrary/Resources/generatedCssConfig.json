@@ -4,7 +4,7 @@
   "Files": [
     {
       "FileName": "custom-bootstrap.css",
-      "BasePath": "C:\\VS\\OneNet\\BasicLibraries\\BlazorBasicLibrariesSolution\\BasicBlazorLibrary\\wwwroot",
+      "BasePath": "C:\\VS\\BasicLibraries\\BlazorBasicLibrariesSolution\\BasicBlazorLibrary\\wwwroot",
       "OutputName": "custom-bootstrap.xml",
       "DefaultNamespace": "",
       "DefaultCategory": "",
