@@ -96,7 +96,15 @@ public static class BasicJavascriptExtensions
         }
         public async Task NavigateToOnAnotherTabAsync(string url)
         {
-            await js.InvokeVoidAsync("open", url, "_blank");
+            try
+            {
+                await js.InvokeVoidAsync("open", url, "_blank");
+            }
+            catch (JSException ex)
+            {
+                throw new InvalidOperationException(
+                    $"Could not open '{url}' in another tab.", ex);
+            }
         }
         public async Task ScrollToTopAsync()
         {

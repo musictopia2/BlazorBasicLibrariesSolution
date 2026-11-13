@@ -1,21 +1,33 @@
-﻿<PopupCenteredFull
-                   HeaderTitle="@Title"
-                   CloseButtonClick="Cancel"
-                   ShowCloseButton="true"
-                   Width=""
-                   Height=""
-                   ZIndex="50000"
-                   Style="margin: 5px; user-select:none;"
-                   Visible="true"
-                   
-                   >
-    @Message
-    <div class="buttondiv">
-        <DangerButton OnClick="DoConfirm">
-            Yes
-        </DangerButton>
-        <PrimaryButton OnClick="Cancel">
-            No
-        </PrimaryButton>
-    </div>
-</PopupCenteredFull>
+﻿<DynamicComponent Type="@typeof(PopupCenteredFull)"
+                  Parameters="@PopupParameters" />
+
+@code {
+    private IDictionary<string, object> PopupParameters =>
+        new Dictionary<string, object>
+        {
+            [nameof(PopupCenteredFull.HeaderTitle)] = Title,
+            [nameof(PopupCenteredFull.CloseButtonClick)] =
+                EventCallback.Factory.Create(this, Cancel),
+            [nameof(PopupCenteredFull.ShowCloseButton)] = true,
+            [nameof(PopupCenteredFull.Width)] = "",
+            [nameof(PopupCenteredFull.Height)] = "",
+            [nameof(PopupCenteredFull.ZIndex)] = 50000,
+            [nameof(PopupCenteredFull.Style)] =
+                "margin: 5px; user-select:none;",
+            [nameof(PopupCenteredFull.Visible)] = true,
+            [nameof(PopupCenteredFull.ChildContent)] = ConfirmationContent
+        };
+
+    private RenderFragment ConfirmationContent => @<text>
+        @Message
+
+        <div class="buttondiv">
+            <DangerButton OnClick="DoConfirm">
+                Yes
+            </DangerButton>
+            <PrimaryButton OnClick="Cancel">
+                No
+            </PrimaryButton>
+        </div>
+    </text>;
+}

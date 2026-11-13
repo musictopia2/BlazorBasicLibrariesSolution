@@ -1,27 +1,41 @@
-﻿<PopupCenteredFull ShowHeader="false"
-                   Visible="true"
-                   Width=""
-                   Height=""
-                   Style="padding: 5px;">
-    @{
-        var list = Messages();
-    }
-    @if (list.Count == 1)
-    {
-        @Message
-    }
-    else
-    {
-        @foreach (string message in list)
+﻿<DynamicComponent Type="@typeof(PopupCenteredFull)"
+                  Parameters="@PopupParameters" />
+
+@code {
+    private IDictionary<string, object> PopupParameters =>
+        new Dictionary<string, object>
         {
-            <div>
-                @message
-            </div>
+            [nameof(PopupCenteredFull.ShowHeader)] = false,
+            [nameof(PopupCenteredFull.Visible)] = true,
+            [nameof(PopupCenteredFull.Width)] = "",
+            [nameof(PopupCenteredFull.Height)] = "",
+            [nameof(PopupCenteredFull.Style)] = "padding: 5px;",
+            [nameof(PopupCenteredFull.ChildContent)] = MessageContent
+        };
+
+    private RenderFragment MessageContent => @<text>
+        @{
+            var list = Messages();
         }
-    }
-    <div>
-        <PrimaryButton OnClick="CloseClicked">
-            Okay
-        </PrimaryButton>
-    </div>
-</PopupCenteredFull>
+
+        @if (list.Count == 1)
+        {
+            @Message
+        }
+        else
+        {
+            @foreach (string message in list)
+            {
+                <div>
+                    @message
+                </div>
+            }
+        }
+
+        <div>
+            <PrimaryButton OnClick="CloseClicked">
+                Okay
+            </PrimaryButton>
+        </div>
+    </text>;
+}

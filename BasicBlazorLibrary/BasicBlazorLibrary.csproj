@@ -4,7 +4,6 @@
     <TargetFramework>net11.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>9.0.1</Version>
     <FeedType>Public</FeedType>
     <RunPostBuildAppCondition Condition="'$(Configuration)' == 'Release'">true</RunPostBuildAppCondition>
     <StaticWebAssetBasePath>_content/BasicBlazorLibrary</StaticWebAssetBasePath>

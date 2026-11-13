@@ -27,23 +27,40 @@ public abstract class BaseStandardJavascriptClass : IAsyncDisposable
         {
             jsName = $"{jsName}.js";
         }
+
+        string fullPath;
+
         if (IsLocal)
         {
-            ModuleTask = new(() => js.InvokeAsync<IJSObjectReference>(
-            "import", $"./{jsName}").AsTask());
+            fullPath = $"./{jsName}";
         }
         else
         {
             Assembly? aa = Assembly.GetAssembly(GetType());
             if (aa == null)
             {
-                throw new CustomBasicException("You need an assmebly for this.  Otherwise, rethink");
+                throw new CustomBasicException(
+                    "You need an assmebly for this.  Otherwise, rethink");
             }
+
             string firsts = aa.FullName!;
             int index = firsts.IndexOf(", ");
             string ns = firsts.Substring(0, index);
-            ModuleTask = new(() => js.InvokeAsync<IJSObjectReference>(
-            "import", $"./_content/{ns}/{jsName}").AsTask());
+            fullPath = $"./_content/{ns}/{jsName}";
         }
+
+        ModuleTask = new(async () =>
+        {
+            try
+            {
+                return await js.InvokeAsync<IJSObjectReference>(
+                    "import", fullPath);
+            }
+            catch (JSException ex)
+            {
+                throw new InvalidOperationException(
+                    $"Could not import JavaScript module '{fullPath}'.", ex);
+            }
+        });
     }
 }

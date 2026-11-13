@@ -26,36 +26,87 @@ public static class JavascriptIsolationExtensions //sometimes i need this as wel
         }
         private Lazy<Task<IJSObjectReference>> GetModuleTask(string fullPath)
         {
-            Lazy<Task<IJSObjectReference>> output = new(() => js.InvokeAsync<IJSObjectReference>(
-             "import", fullPath).AsTask());
+            Lazy<Task<IJSObjectReference>> output = new(async () =>
+            {
+                try
+                {
+                    return await js.InvokeAsync<IJSObjectReference>(
+                        "import", fullPath);
+                }
+                catch (JSException ex)
+                {
+                    throw new InvalidOperationException(
+                        $"Could not import JavaScript module '{fullPath}'.", ex);
+                }
+            });
+
             return output;
         }
     }
     extension(Lazy<Task<IJSObjectReference>> moduleTask)
     {
-        public async Task InvokeVoidDisposeAsync(string identifier, params object?[] args)
+        public async Task InvokeVoidDisposeAsync(
+    string identifier, params object?[] args)
         {
-            var module = await moduleTask.Value;
-            await module.InvokeVoidAsync(identifier, args);
-            await module.DisposeAsync();
+            await using var module = await moduleTask.Value;
+
+            try
+            {
+                await module.InvokeVoidAsync(identifier, args);
+            }
+            catch (JSException ex)
+            {
+                throw new InvalidOperationException(
+                    $"JavaScript call '{identifier}' failed.", ex);
+            }
         }
-        public async Task<T> InvokeDisposeAsync<T>(string identifier, params object?[] args)
+
+        public async Task<T> InvokeDisposeAsync<T>(
+            string identifier, params object?[] args)
         {
-            var module = await moduleTask.Value;
-            var output = await module.InvokeAsync<T>(identifier, args);
-            await module.DisposeAsync();
-            return output;
+            await using var module = await moduleTask.Value;
+
+            try
+            {
+                return await module.InvokeAsync<T>(identifier, args);
+            }
+            catch (JSException ex)
+            {
+                throw new InvalidOperationException(
+                    $"JavaScript call '{identifier}' failed.", ex);
+            }
         }
-        public async Task InvokeVoidFromClassAsync(string identifier, params object?[] args)
+
+        public async Task InvokeVoidFromClassAsync(
+            string identifier, params object?[] args)
         {
             var module = await moduleTask.Value;
-            await module.InvokeVoidAsync(identifier, args);
+
+            try
+            {
+                await module.InvokeVoidAsync(identifier, args);
+            }
+            catch (JSException ex)
+            {
+                throw new InvalidOperationException(
+                    $"JavaScript call '{identifier}' failed.", ex);
+            }
         }
-        public async Task<T> InvokeFromClassAsync<T>(string identifier, params object?[] args)
+
+        public async Task<T> InvokeFromClassAsync<T>(
+            string identifier, params object?[] args)
         {
             var module = await moduleTask.Value;
-            var output = await module.InvokeAsync<T>(identifier, args);
-            return output;
+
+            try
+            {
+                return await module.InvokeAsync<T>(identifier, args);
+            }
+            catch (JSException ex)
+            {
+                throw new InvalidOperationException(
+                    $"JavaScript call '{identifier}' failed.", ex);
+            }
         }
     }
     
